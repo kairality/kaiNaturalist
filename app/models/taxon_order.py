@@ -6,5 +6,5 @@ class TaxonOrder(db.Model, TaxonMixin):
     parent_taxon_id = db.Column(db.Integer, db.ForeignKey("taxon_classes.id"))
 
     taxon = db.relationship("Taxon", back_populates="taxon_order", uselist=False)
-    parent_taxon = db.relationship("TaxonKingdom", back_populates="ancestors")
+    parent_taxon = db.relationship("TaxonClass", back_populates="ancestors")
     ancestors = db.relationship("TaxonFamily", back_populates="parent_taxon")
