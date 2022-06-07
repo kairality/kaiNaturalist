@@ -158,6 +158,8 @@ def seed_order():
                 dbTaxon.phylum_id = tClass.parent_taxon_id;
                 dbTaxon.kingdom_id = tClass.parent_taxon.parent_taxon_id;
                 dbTaxon.class_id = tClass.id
+                dbOrder.rank = TaxonRank.ORDER
+                dbOrder.parent_rank = TaxonRank.CLASS
                 dbTaxon.taxon_order = dbOrder
                 try:
                     default_photo = order.get("default_photo")
