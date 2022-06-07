@@ -19,9 +19,9 @@ def seed():
     time.sleep(15)
     classes = seed_class()
     print(classes)
-    time.sleep(15)
-    orders = seed_order()
-    print(orders)
+    # time.sleep(15)
+    # orders = seed_order()
+    # print(orders)
     # Add other seed functions here
 
 

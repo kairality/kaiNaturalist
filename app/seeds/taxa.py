@@ -1,5 +1,6 @@
 import requests
 from app.models import db, Taxon, TaxonKingdom, TaxonPhylum, TaxonClass, TaxonFamily, TaxonOrder
+from app.models.taxon_mixin import TaxonRank;
 import time;
 
 api = "https://api.inaturalist.org/v1/";
@@ -10,14 +11,6 @@ order_params = {"rank": "order", "per_page": 200}
 family_params = {"rank": 'family', "per_page": 200}
 
 kingdom_filter = {"Plantae", "Animalia", "Fungi"}
-
-# kingdoms_set = []
-# phyla_set = []
-# classes_set = []
-# orders_set = []
-# families_set = []
-
-
 
 def seed_kingdoms():
     kingdom_data = requests.get(url = api + "taxa", params= kingdom_params)
@@ -36,6 +29,9 @@ def seed_kingdoms():
             dbKingdom.scientific_name = kingdom.get("name");
             dbKingdom.common_name =kingdom.get("preferred_common_name")
             dbKingdom.external_id = kingdom.get("id")
+            print(TaxonRank.KINGDOM)
+            dbKingdom.rank = TaxonRank.KINGDOM
+            dbKingdom.parent_rank = None;
             dbTaxon.taxon_kingdom = dbKingdom
             try:
                 default_photo = kingdom.get("default_photo")
@@ -70,6 +66,8 @@ def seed_phyla():
                 dbPhylum.common_name = phylum.get("preferred_common_name")
                 dbPhylum.external_id = phylum.get("id")
                 dbPhylum.parent_taxon_id = kingdom.id
+                dbPhylum.rank = TaxonRank.PHYLUM
+                dbPhylum.parent_rank =  TaxonRank.KINGDOM
                 dbTaxon.kingdom_id = kingdom.id
                 dbTaxon.taxon_phylum = dbPhylum
                 try:
@@ -112,6 +110,8 @@ def seed_class():
                 dbClass.common_name = tClass.get("preferred_common_name")
                 dbClass.external_id = tClass.get("id")
                 dbClass.parent_taxon_id = phylum.id
+                dbClass.rank = TaxonRank.CLASS
+                dbClass.parent_rank = TaxonRank.PHYLUM
                 dbTaxon.kingdom_id = phylum.parent_taxon_id
                 dbTaxon.phylum_id = phylum.id
                 dbTaxon.taxon_class = dbClass

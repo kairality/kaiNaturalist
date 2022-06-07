@@ -24,6 +24,14 @@ class Taxon(db.Model, CrUpMixin):
         return self.taxon_family or self.taxon_order or self.taxon_class or self.taxon_phylum or self.taxon_kingdom
 
     @property
+    def rank(self):
+        return self.coalesce.rank;
+
+    @property
+    def parent_rank(self):
+        return self.coalesce.parent_rank
+
+    @property
     def scientific_name(self):
         return self.coalesce.scientific_name
     @property
@@ -32,11 +40,17 @@ class Taxon(db.Model, CrUpMixin):
 
     @property
     def parent_taxon(self):
-        return self.coalesce.parent_taxon
+        return getattr(self.coalesce, "parent_taxon", None)
 
     def to_dict(self):
         return {
             "id": self.id,
+            "taxon_info": self.coalesce.to_dict(),
             "common_name": self.common_name,
             "scientific_name": self.scientific_name,
+            "rank": self.rank.name,
+            "external_url": self.external_url,
+            "external_rank": self.external_rank,
+            "parent": self.parent_taxon.to_dict() if self.parent_taxon else None,
+            "parent_rank": self.parent_taxon.rank.name if self.parent_taxon else None,
         }
