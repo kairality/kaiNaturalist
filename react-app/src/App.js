@@ -10,6 +10,9 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import { genTaxa } from './store/taxonomy';
 
+import { MapContainer, TileLayer, Marker, Popup } from '@monsonjeremy/react-leaflet'
+import "leaflet/dist/leaflet.css";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -36,21 +39,37 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
+        <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
-          {loaded && Object.values(taxa).map(taxon => <p>{taxon.scientific_name}</p>)}
+          <MapContainer
+            center={[51.505, -0.09]}
+            zoom={13}
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[51.505, -0.09]}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </MapContainer>
+          {loaded &&
+            Object.values(taxa).map((taxon) => <p>{taxon.scientific_name}</p>)}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
