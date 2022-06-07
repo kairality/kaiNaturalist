@@ -6,3 +6,5 @@ from .taxon_phylum import TaxonPhylum
 from .taxon_class import TaxonClass
 from .taxon_order import TaxonOrder
 from .taxon_family import TaxonFamily
+from .observation import Observation
+from .identifications import Identification

@@ -19,6 +19,9 @@ class Taxon(db.Model, CrUpMixin):
     taxon_order = db.relationship("TaxonOrder", back_populates="taxon", uselist=False, lazy="joined")
     taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False, lazy="joined")
 
+    observations = db.relationship("Observation", back_populates="taxon")
+    identifications = db.relationship("Identifications", back_populates="taxon")
+
     @property
     def coalesce(self):
         return self.taxon_family or self.taxon_order or self.taxon_class or self.taxon_phylum or self.taxon_kingdom
