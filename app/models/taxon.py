@@ -20,7 +20,7 @@ class Taxon(db.Model, CrUpMixin):
     taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False, lazy="joined")
 
     observations = db.relationship("Observation", back_populates="taxon")
-    identifications = db.relationship("Identifications", back_populates="taxon")
+    identifications = db.relationship("Identification", back_populates="taxon")
 
     @property
     def coalesce(self):
