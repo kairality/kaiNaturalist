@@ -1,5 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .taxa import seed_kingdoms, undo_taxa
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -10,6 +11,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_kingdoms()
     # Add other seed functions here
 
 
@@ -18,3 +20,4 @@ def seed():
 def undo():
     undo_users()
     # Add other undo functions here
+    undo_taxa()
