@@ -19,7 +19,16 @@
     --font-tab: #337ab7;
 }
 
-body {
+* {
+    margin: 0px;
+}
+
+html {
+  height: 100%;
+}
+
+body, html {
+    min-height: 100%;
     font-family: 'Catamaran';
     background-color: var(--mainbg);
     color: var(--font-major);

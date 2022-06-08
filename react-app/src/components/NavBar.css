@@ -1,3 +1,14 @@
 nav {
-    display: flex
+    display: contents;
+}
+
+nav ul {
+    background-color: var(--barbg);
+    border-bottom: 1px solid var(--barborder);
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1em;
+    height: 56px;
 }
