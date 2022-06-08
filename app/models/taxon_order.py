@@ -8,4 +8,3 @@ class TaxonOrder(db.Model, TaxonMixin):
     taxon = db.relationship("Taxon", back_populates="taxon_order", uselist=False)
     parent_taxon = db.relationship("TaxonClass", back_populates="ancestors")
     ancestors = db.relationship("TaxonFamily", back_populates="parent_taxon")
-    

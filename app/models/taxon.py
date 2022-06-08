@@ -45,6 +45,7 @@ class Taxon(db.Model, CrUpMixin):
     def parent_taxon(self):
         return getattr(self.coalesce, "parent_taxon", None)
 
+
     def to_dict(self):
         return {
             "id": self.id,
