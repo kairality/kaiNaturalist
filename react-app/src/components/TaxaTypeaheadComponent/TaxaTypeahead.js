@@ -22,8 +22,8 @@ function TaxonPreview({taxon}) {
     while (currentTaxon.parent) {
         const parentId = currentTaxon.parent
         const parent = {...taxa[parentId]}
-        console.log(parent)
-        break
+        ancestry.unshift(parent)
+        currentTaxon = parent;
     //     console.log(parent);
     //     ancestry.unshift(parent);
     //     currentTaxon = parent;
