@@ -67,22 +67,6 @@ class Taxon(db.Model, CrUpMixin):
 
 
     def to_dict(self):
-        if (self.id == 163):
-            print(self.id)
-            print("coalesce")
-            print(self.coalesce)
-            print("parent")
-            print(self._parent)
-            print(self._parent.scientific_name)
-            print("********")
-            parent = self._parent
-            print(parent.taxon)
-            print(parent.taxon.scientific_name)
-            print(parent.taxon.coalesce)
-            print("**********")
-            text = TaxonClass.query.get(self.coalesce.id);
-            print(text)
-            print(text.taxon)
         return {
             "id": self.id,
             "taxon_info": self.coalesce.to_dict(),
