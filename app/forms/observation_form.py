@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField
+from wtforms import StringField, IntegerField, FloatField, DateField
 from wtforms.validators import DataRequired, ValidationError
 from ..models import Observation, Taxon
 
@@ -18,4 +18,5 @@ class ObservationForm(FlaskForm):
     taxon_id = IntegerField('taxon_id', validators=[is_taxon])
     latitude = FloatField('latitude', validators=[DataRequired()])
     longitude = FloatField('longitude', validators=[DataRequired()])
+    date = DateField('date', validators=[DataRequired()])
     description = StringField('description')

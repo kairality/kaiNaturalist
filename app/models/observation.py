@@ -1,6 +1,7 @@
 from app.models.identifications import Identification
 from .db import db
 from .creation_mixin import CrUpMixin
+import datetime
 
 class Observation(db.Model, CrUpMixin):
     __tablename__ = 'observations'
@@ -11,6 +12,7 @@ class Observation(db.Model, CrUpMixin):
     latitude = db.Column(db.Float(precision=32), nullable=False)
     longitude = db.Column(db.Float(precision=32), nullable=False)
     description = db.Column(db.Text)
+    date = db.Column(db.Date, nullable=False, default=datetime.date.today())
     verified = db.Column(db.Boolean, nullable=False, default=False)
 
     owner = db.relationship("User", back_populates="observations", lazy="joined")

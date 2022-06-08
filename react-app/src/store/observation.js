@@ -35,6 +35,7 @@ export const createObservation = (observationData) =>
     f.append("longitude", observationData.position.lng);
     f.append("taxon_id", observationData.taxon.id);
     f.append("description", observationData.description);
+    f.append("date", observationData.date)
     f.append("image", observationData.image)
     const response = await fetch(`/api/observations/`, {
       method: "POST",
