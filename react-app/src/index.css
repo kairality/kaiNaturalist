@@ -1,4 +1,31 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300&display=swap');
+
+:root {
+    --mainbg:  #ffffff;
+    --barbg: #eeeeee;
+    --barborder: #dddddd;
+    --lightaccent: #dfeed7;
+    --buttonbg: #337ab7;
+    --buttonborder: #2e6da4;
+    --brightaccent: #74ac00;
+
+    --boxborder: #dedede;
+    --boxbg: #ededed;
+
+    --inputborder: #cccccc;
+
+    --font-major: #333333;
+    --font-tab: #337ab7;
+}
+
+body {
+    font-family: 'Catamaran';
+    background-color: var(--mainbg);
+    color: var(--font-major);
+    box-sizing: border-box;
+}
+
 .leaflet-container {
   width: 500px;
   height: 500px;
