@@ -26,7 +26,7 @@ def post_observation():
     """
     user_id = current_user.id
     if "image" not in request.files:
-        return {'errors': ["Image is required"]}
+        return {'errors': ["Image is required"]}, 401
     else:
         form = ObservationForm()
         form['csrf_token'].data = request.cookies['csrf_token']

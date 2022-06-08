@@ -33,7 +33,7 @@ export const createObservation = (observationData) =>
     const f = new FormData();
     f.append("latitude", observationData.position.lat);
     f.append("longitude", observationData.position.lng);
-    f.append("taxon_id", observationData.taxon.id);
+    f.append("taxon_id", observationData.taxon?.id);
     f.append("description", observationData.description);
     f.append("date", observationData.date)
     f.append("image", observationData.image)
@@ -41,9 +41,10 @@ export const createObservation = (observationData) =>
       method: "POST",
       body: f,
     });
+    console.log(response.status)
     const observation = await response.json();
     if (response.ok) {
-        dispatch(addObservation(observation.observation))
+        dispatch(addObservation(observation))
         return observation;
     } else {
         return observation;

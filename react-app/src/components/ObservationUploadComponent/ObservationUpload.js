@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import {useDispatch} from "react-redux"
 import MapInput from "../MapInputComponent/MapInput";
 import TaxaTypeahead from "../TaxaTypeaheadComponent/TaxaTypeahead";
 import ImageUploader from "../ImageUploadComponent/ImageUpload";
+
+import "./ObservationUpload.css"
+import { createObservation, genObservations } from "../../store/observation";
 
 export default function ObservationUpload() {
     const test = {
@@ -13,11 +17,13 @@ export default function ObservationUpload() {
   const [date, setDate] = useState(new Date());
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState('');
+  const [errors, setErrors] = useState([]);
+  const dispatch = useDispatch();
 
 
   const data = {
       position,
-      taxonId: selectedTaxon?.id,
+      taxon: selectedTaxon,
       date,
       image,
       description
@@ -25,11 +31,44 @@ export default function ObservationUpload() {
 
   console.log(data)
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+    const observation = await dispatch(createObservation(data));
+    if (observation.errors) {
+      setErrors(observation.errors);
+      return;
+    }
+    if (observation && errors.length === 0) {
+        return observation;
+    }
+  };
+
+
   return (
-      <form>
-          {position && <MapInput position={position} onPositionChanged={(latlng) => setPosition(latlng)} />}
-          <TaxaTypeahead selectedTaxon={selectedTaxon} setSelectedTaxon={setSelectedTaxon}/>
+    <form className={"observation-upload"} onSubmit={handleSubmit}>
+      <div className="observation-upload-left">
+        <div className={"observation-upload-photo"}>
           <ImageUploader image={image} setImage={setImage} />
-      </form>
+        </div>
+        <div className={"observation-upload-taxon"}>
+          <TaxaTypeahead
+            selectedTaxon={selectedTaxon}
+            setSelectedTaxon={setSelectedTaxon}
+          />
+        </div>
+        <button className={"go-button"} id={"obs-submit"} type="submit">Submit Observation</button>
+      </div>
+      <div className={"observation-upload-right"}>
+        <div className={"observation-upload-map"}>
+          {position && (
+            <MapInput
+              position={position}
+              onPositionChanged={(latlng) => setPosition(latlng)}
+            />
+          )}
+        </div>
+      </div>
+    </form>
   );
 }
