@@ -29,7 +29,7 @@ function TaxonPreview({taxon}) {
     //     currentTaxon = parent;
     }
     return <ul>
-        {ancestry.map(tax => tax.scientific_name)}
+            {ancestry.map(tax => <li key={tax.scientific_name}>{tax.rank} {tax.scientific_name}</li>)}
     </ul>
 }
 

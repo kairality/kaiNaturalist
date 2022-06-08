@@ -11,5 +11,5 @@ class TaxonKingdom(db.Model, TaxonMixin):
         taxon = Taxon.query.filter(Taxon.kingdom_id == self.id and Taxon.phylum_id is None).first()
         return taxon
 
-    taxon = db.relationship("Taxon", back_populates="taxon_kingdom", uselist=False)
-    ancestors = db.relationship("TaxonPhylum", back_populates="parent")
+    taxon = db.relationship("Taxon", back_populates="taxon_kingdom", uselist=False, lazy="subquery")
+    ancestors = db.relationship("TaxonPhylum", back_populates="parent", lazy="subquery")

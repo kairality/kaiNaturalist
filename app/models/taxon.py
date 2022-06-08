@@ -14,11 +14,11 @@ class Taxon(db.Model, CrUpMixin):
     external_url = db.Column(db.String(255))
     external_rank = db.Column(db.Integer)
 
-    taxon_kingdom = db.relationship("TaxonKingdom", back_populates="taxon", uselist=False)
-    taxon_phylum = db.relationship("TaxonPhylum", back_populates="taxon", uselist=False)
-    taxon_class = db.relationship("TaxonClass", back_populates="taxon", uselist=False)
-    taxon_order = db.relationship("TaxonOrder", back_populates="taxon", uselist=False)
-    taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False)
+    taxon_kingdom = db.relationship("TaxonKingdom", back_populates="taxon", uselist=False, lazy="subquery")
+    taxon_phylum = db.relationship("TaxonPhylum", back_populates="taxon", uselist=False, lazy="subquery")
+    taxon_class = db.relationship("TaxonClass", back_populates="taxon", uselist=False, lazy="subquery")
+    taxon_order = db.relationship("TaxonOrder", back_populates="taxon", uselist=False, lazy="subquery")
+    taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False, lazy="subquery")
 
     observations = db.relationship("Observation", back_populates="taxon")
     identifications = db.relationship("Identification", back_populates="taxon")
