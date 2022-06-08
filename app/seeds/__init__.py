@@ -12,22 +12,23 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
-    kingdoms = seed_kingdoms()
-    print(kingdoms)
-    phyla = seed_phyla()
-    print(phyla)
-    time.sleep(15)
-    classes = seed_class()
-    print(classes)
-    time.sleep(15)
-    orders = seed_order()
-    print(orders)
     # Add other seed functions here
 
+@seed_commands.command('taxa')
+def taxa():
+    kingdoms = seed_kingdoms()
+    phyla = seed_phyla()
+    time.sleep(15)
+    classes = seed_class()
+    time.sleep(15)
+    orders = seed_order()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
     undo_users()
     # Add other undo functions here
+
+@seed_commands.command('detax')
+def detax():
     undo_taxa()
