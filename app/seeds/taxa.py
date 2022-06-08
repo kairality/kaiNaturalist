@@ -45,15 +45,14 @@ def seed_kingdoms():
     return TaxonKingdom.query.all()
 
 def seed_phyla():
-    kingdoms = [t for t in Taxon.query.all() if t.rank == TaxonRank.KINGDOM]
-    print(kingdoms)
-    print("*************************")
-    print("*************************")
-    print("*************************")
-    print("*************************")
+    kingdoms = TaxonKingdom.query.all();
     for kingdom in kingdoms:
-        taxon_kingdom = kingdom.coalesce;
-        phylum_params["taxon_id"] = taxon_kingdom.external_id
+        kingdom_taxon = kingdom.taxon
+        print("************************************")
+        print(kingdom)
+        print(kingdom_taxon)
+        print("************************************")
+        phylum_params["taxon_id"] = kingdom.external_id
         phyla_data = requests.get(url = api + "taxa", params=phylum_params)
         phyla = phyla_data.json()
         if not phyla:
@@ -65,7 +64,6 @@ def seed_phyla():
             if phylum.get('extinct') is True:
                 continue
             else:
-                print(phylum)
                 dbPhylum = TaxonPhylum()
                 dbTaxon = Taxon()
                 dbPhylum.scientific_name = phylum.get("name");
@@ -74,7 +72,7 @@ def seed_phyla():
                 dbPhylum.parent_taxon_id = kingdom.id
                 dbPhylum.rank = TaxonRank.PHYLUM
                 dbPhylum.parent_rank =  TaxonRank.KINGDOM
-                dbTaxon.kingdom_id = taxon_kingdom.id
+                dbTaxon.kingdom_id = kingdom_taxon.id
                 dbTaxon.taxon_phylum = dbPhylum
                 try:
                     default_photo = phylum.get("default_photo")
@@ -87,96 +85,105 @@ def seed_phyla():
     db.session.commit()
     return TaxonPhylum.query.all()
 
-# def seed_class():
-#     phyla = TaxonPhylum.query.all()
-#     count = 0;
-#     for phylum in phyla:
-#         count = count + 1;
-#         if count >= 60:
-#             print("sleeping...")
-#             time.sleep(60)
-#             print("waking  up...")
-#             count = 0;
-#         class_params["taxon_id"] = phylum.external_id
-#         class_data = requests.get(url = api + "taxa", params=class_params)
-#         classes = class_data.json()
-#         if not classes:
-#             raise Exception("Oops you're probably throttled")
-#         classes = classes.get("results")
-#         for tClass in classes:
-#             if tClass.get('observations_count') < 100:
-#                 continue
-#             if tClass.get('extinct') is True:
-#                 continue
-#             else:
-#                 print(tClass)
-#                 dbClass = TaxonClass()
-#                 dbTaxon = Taxon()
-#                 dbClass.scientific_name = tClass.get("name");
-#                 dbClass.common_name = tClass.get("preferred_common_name")
-#                 dbClass.external_id = tClass.get("id")
-#                 dbClass.parent_taxon_id = phylum.taxon.id
-#                 dbClass.rank = TaxonRank.CLASS
-#                 dbClass.parent_rank = TaxonRank.PHYLUM
-#                 dbTaxon.kingdom_id = phylum.parent_taxon_id
-#                 dbTaxon.phylum_id = phylum.id
-#                 dbTaxon.taxon_class = dbClass
-#                 try:
-#                     default_photo = tClass.get("default_photo")
-#                     photo_url = default_photo.get("medium_url")
-#                     dbTaxon.external_url = photo_url
-#                 except:
-#                     print("No Photo")
-#                 dbTaxon.external_rank = tClass.get("observations_count")
-#                 db.session.add(dbClass)
-#     db.session.commit()
-#     return TaxonClass.query.all()
+def seed_class():
+    phyla = TaxonPhylum.query.all()
+    count = 0;
+    for phylum in phyla:
+        count = count + 1;
+        if count >= 60:
+            print("sleeping...")
+            time.sleep(60)
+            print("waking  up...")
+            count = 0;
+        phylum_taxon = phylum.taxon;
+        kingdom = phylum.parent
+        kingdom_taxon = kingdom.taxon;
+        class_params["taxon_id"] = phylum.external_id
+        class_data = requests.get(url = api + "taxa", params=class_params)
+        classes = class_data.json()
+        if not classes:
+            raise Exception("Oops you're probably throttled")
+        classes = classes.get("results")
+        for tClass in classes:
+            if tClass.get('observations_count') < 100:
+                continue
+            if tClass.get('extinct') is True:
+                continue
+            else:
+                print(tClass)
+                dbClass = TaxonClass()
+                dbTaxon = Taxon()
+                dbClass.scientific_name = tClass.get("name");
+                dbClass.common_name = tClass.get("preferred_common_name")
+                dbClass.external_id = tClass.get("id")
+                dbClass.parent_taxon_id = phylum.id
+                dbClass.rank = TaxonRank.CLASS
+                dbClass.parent_rank = TaxonRank.PHYLUM
+                dbTaxon.kingdom_id = kingdom.id
+                dbTaxon.phylum_id = phylum.id
+                dbTaxon.taxon_class = dbClass
+                try:
+                    default_photo = tClass.get("default_photo")
+                    photo_url = default_photo.get("medium_url")
+                    dbTaxon.external_url = photo_url
+                except:
+                    print("No Photo")
+                dbTaxon.external_rank = tClass.get("observations_count")
+                db.session.add(dbClass)
+    db.session.commit()
+    return TaxonClass.query.all()
 
-# def seed_order():
-#     classes = TaxonClass.query.all()
-#     count = 0;
-#     for tClass in classes:
-#         count = count + 1;
-#         if count >= 60:
-#             print("sleeping...")
-#             time.sleep(60)
-#             print("waking  up...")
-#             count = 0;
-#         order_params["taxon_id"] = tClass.external_id
-#         order_data = requests.get(url = api + "taxa", params=order_params)
-#         orders = order_data.json()
-#         if not orders:
-#             raise Exception("Oops you're probably throttled")
-#         orders = orders.get("results")
-#         for order in orders:
-#             if order.get('observations_count') < 100:
-#                 continue
-#             if order.get('extinct') is True:
-#                 continue
-#             else:
-#                 print(order)
-#                 dbOrder = TaxonOrder()
-#                 dbTaxon = Taxon()
-#                 dbOrder.scientific_name = order.get("name");
-#                 dbOrder.common_name = order.get("preferred_common_name")
-#                 dbOrder.external_id = order.get("id")
-#                 dbOrder.parent_taxon_id = tClass.id
-#                 dbTaxon.phylum_id = tClass.parent_taxon_id;
-#                 dbTaxon.kingdom_id = tClass.parent_taxon.parent_taxon_id;
-#                 dbTaxon.class_id = tClass.id
-#                 dbOrder.rank = TaxonRank.ORDER
-#                 dbOrder.parent_rank = TaxonRank.CLASS
-#                 dbTaxon.taxon_order = dbOrder
-#                 try:
-#                     default_photo = order.get("default_photo")
-#                     photo_url = default_photo.get("medium_url")
-#                     dbTaxon.external_url = photo_url
-#                 except:
-#                     print("No Photo")
-#                 dbTaxon.external_rank = order.get("observations_count")
-#                 db.session.add(dbOrder)
-#     db.session.commit()
-#     return TaxonOrder.query.all()
+def seed_order():
+    classes = TaxonClass.query.all()
+    count = 0;
+    for tClass in classes:
+        count = count + 1;
+        if count >= 60:
+            print("sleeping...")
+            time.sleep(60)
+            print("waking  up...")
+            count = 0;
+        tClass_taxon = tClass.taxon
+        phylum = tClass.parent
+        phylum_taxon = phylum.taxon
+        kingdom = phylum.parent
+        kingdom_taxon = kingdom.taxon
+        order_params["taxon_id"] = tClass.external_id
+        order_data = requests.get(url = api + "taxa", params=order_params)
+        orders = order_data.json()
+        if not orders:
+            raise Exception("Oops you're probably throttled")
+        orders = orders.get("results")
+        for order in orders:
+            if order.get('observations_count') < 100:
+                continue
+            if order.get('extinct') is True:
+                continue
+            else:
+                print(order)
+                dbOrder = TaxonOrder()
+                dbTaxon = Taxon()
+                dbTaxon.phylum_id = phylum.id
+                dbTaxon.kingdom_id = kingdom.id
+                dbTaxon.class_id = tClass.id
+                dbOrder.scientific_name = order.get("name");
+                dbOrder.common_name = order.get("preferred_common_name")
+                dbOrder.external_id = order.get("id")
+                dbOrder.parent_taxon_id = tClass.id
+                dbOrder.rank = TaxonRank.ORDER
+                dbOrder.parent_rank = TaxonRank.CLASS
+
+                dbTaxon.taxon_order = dbOrder
+                try:
+                    default_photo = order.get("default_photo")
+                    photo_url = default_photo.get("medium_url")
+                    dbTaxon.external_url = photo_url
+                except:
+                    print("No Photo")
+                dbTaxon.external_rank = order.get("observations_count")
+                db.session.add(dbOrder)
+    db.session.commit()
+    return TaxonOrder.query.all()
 
 # def seed_taxa():
 #     count = 0;

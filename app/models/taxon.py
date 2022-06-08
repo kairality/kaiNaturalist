@@ -1,6 +1,7 @@
 from app.models.creation_mixin import CrUpMixin
 from .db import db
 from .creation_mixin import CrUpMixin
+from .taxon_class import TaxonClass
 
 class Taxon(db.Model, CrUpMixin):
     __tablename__ = 'taxa'
@@ -13,18 +14,26 @@ class Taxon(db.Model, CrUpMixin):
     external_url = db.Column(db.String(255))
     external_rank = db.Column(db.Integer)
 
-    taxon_kingdom = db.relationship("TaxonKingdom", back_populates="taxon", uselist=False, lazy="joined")
-    taxon_phylum = db.relationship("TaxonPhylum", back_populates="taxon", uselist=False, lazy="joined")
-    taxon_class = db.relationship("TaxonClass", back_populates="taxon", uselist=False, lazy="joined")
-    taxon_order = db.relationship("TaxonOrder", back_populates="taxon", uselist=False, lazy="joined")
-    taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False, lazy="joined")
+    taxon_kingdom = db.relationship("TaxonKingdom", back_populates="taxon", uselist=False)
+    taxon_phylum = db.relationship("TaxonPhylum", back_populates="taxon", uselist=False)
+    taxon_class = db.relationship("TaxonClass", back_populates="taxon", uselist=False)
+    taxon_order = db.relationship("TaxonOrder", back_populates="taxon", uselist=False)
+    taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False)
 
     observations = db.relationship("Observation", back_populates="taxon")
     identifications = db.relationship("Identification", back_populates="taxon")
 
     @property
     def coalesce(self):
-        return self.taxon_family or self.taxon_order or self.taxon_class or self.taxon_phylum or self.taxon_kingdom
+        if self.taxon_family:
+            return self.taxon_family
+        if self.taxon_order:
+            return self.taxon_order
+        if self.taxon_class:
+            return self.taxon_class
+        if self.taxon_phylum:
+            return self.taxon_phylum
+        return self.taxon_kingdom
 
     @property
     def rank(self):
@@ -42,11 +51,38 @@ class Taxon(db.Model, CrUpMixin):
         return self.coalesce.common_name
 
     @property
-    def parent_taxon(self):
-        return getattr(self.coalesce, "parent_taxon", None)
+    def _parent(self):
+        try:
+            return self.coalesce.parent
+        except:
+            return None
+
+    @property
+    def _parent_taxon(self):
+        parent = self._parent
+        if not parent:
+            return None;
+        else:
+            return parent.taxon
 
 
     def to_dict(self):
+        if (self.id == 163):
+            print(self.id)
+            print("coalesce")
+            print(self.coalesce)
+            print("parent")
+            print(self._parent)
+            print(self._parent.scientific_name)
+            print("********")
+            parent = self._parent
+            print(parent.taxon)
+            print(parent.taxon.scientific_name)
+            print(parent.taxon.coalesce)
+            print("**********")
+            text = TaxonClass.query.get(self.coalesce.id);
+            print(text)
+            print(text.taxon)
         return {
             "id": self.id,
             "taxon_info": self.coalesce.to_dict(),
@@ -55,6 +91,6 @@ class Taxon(db.Model, CrUpMixin):
             "rank": self.rank.name,
             "external_url": self.external_url,
             "external_rank": self.external_rank,
-            "parent": self.parent_taxon.to_dict() if self.parent_taxon else None,
-            "parent_rank": self.parent_taxon.rank.name if self.parent_taxon else None,
+            "parent": self._parent_taxon.id if self._parent else None,
+            "parent_rank": self._parent.rank.name if self._parent else None,
         }

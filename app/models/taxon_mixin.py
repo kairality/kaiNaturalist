@@ -22,7 +22,6 @@ class TaxonMixin(CrUpMixin):
     def to_dict(self):
         return {
             "id": self.id,
-            "reference_taxon_id": self.reference_taxon_id,
             "scientific_name": self.scientific_name,
             "common_name" : self.common_name,
         }
