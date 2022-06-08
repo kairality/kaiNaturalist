@@ -14,11 +14,11 @@ class Taxon(db.Model, CrUpMixin):
     external_url = db.Column(db.String(255))
     external_rank = db.Column(db.Integer)
 
-    taxon_kingdom = db.relationship("TaxonKingdom", back_populates="taxon", uselist=False, lazy="subquery")
-    taxon_phylum = db.relationship("TaxonPhylum", back_populates="taxon", uselist=False, lazy="subquery")
-    taxon_class = db.relationship("TaxonClass", back_populates="taxon", uselist=False, lazy="subquery")
-    taxon_order = db.relationship("TaxonOrder", back_populates="taxon", uselist=False, lazy="subquery")
-    taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False, lazy="subquery")
+    taxon_kingdom = db.relationship("TaxonKingdom", back_populates="taxon", uselist=False, lazy="selectin")
+    taxon_phylum = db.relationship("TaxonPhylum", back_populates="taxon", uselist=False, lazy="selectin")
+    taxon_class = db.relationship("TaxonClass", back_populates="taxon", uselist=False, lazy="selectin")
+    taxon_order = db.relationship("TaxonOrder", back_populates="taxon", uselist=False, lazy="selectin")
+    taxon_family = db.relationship("TaxonFamily", back_populates="taxon", uselist=False, lazy="selectin")
 
     observations = db.relationship("Observation", back_populates="taxon")
     identifications = db.relationship("Identification", back_populates="taxon")
@@ -65,6 +65,11 @@ class Taxon(db.Model, CrUpMixin):
         else:
             return parent.taxon
 
+    @property
+    def descendants(self):
+        des = self.coalesce.descendants
+        return [d.taxon for d in des]
+
 
     def to_dict(self):
         return {
@@ -76,5 +81,7 @@ class Taxon(db.Model, CrUpMixin):
             "external_url": self.external_url,
             "external_rank": self.external_rank,
             "parent": self._parent_taxon.id if self._parent else None,
+            "parent_info": self._parent_taxon.to_dict() if self._parent else None,
             "parent_rank": self._parent.rank.name if self._parent else None,
+            "descendants": [descendant.id for descendant in self.descendants]
         }

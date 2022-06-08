@@ -1,13 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import observationReducer from './observation';
 import session from './session'
 import taxonomyReducer from './taxonomy';
 
 const rootReducer = combineReducers({
   session,
-  taxonomy: taxonomyReducer
+  taxonomy: taxonomyReducer,
+  observations: observationReducer,
 });
-
 
 let enhancer;
 

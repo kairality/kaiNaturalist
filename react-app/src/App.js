@@ -14,6 +14,7 @@ import { MapContainer, TileLayer, Marker, Popup } from '@monsonjeremy/react-leaf
 // import "leaflet/dist/leaflet.css";
 
 import ObservationUpload from './components/ObservationUploadComponent/ObservationUpload';
+import NaturalistHome from './components/NaturalistHome/NaturalistHome';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,9 +56,8 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
+          <NaturalistHome />
           <ObservationUpload />
-          {loaded &&
-            Object.values(taxa).map((taxon) => <p>{taxon.scientific_name}</p>)}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

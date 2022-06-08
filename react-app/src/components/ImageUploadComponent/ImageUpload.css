@@ -1,0 +1,50 @@
+.dropArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  width: 500px;
+  height: 300px;
+  background-color: var(--boxbg);
+  border: 1px solid var(--boxborder);
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+.dropArea:hover {
+    background-color: var(--boxaccent);
+}
+
+.withError {
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-highlight)
+}
+
+.withError:hover {
+  background-color: var(--error-highlight);
+}
+
+.withError span {
+  color: var(--error)
+}
+
+.dropArea .uploadImg {
+  height: 200px;
+  width: auto;
+  object-fit: cover;
+}
+
+.dropAreaIcon {
+  font-size: 6em;
+  display: contents;
+}
+
+
+.iError {
+    color: var(--error);
+}
+
+.fileError {
+    font-weight: bold;
+}

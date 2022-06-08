@@ -12,11 +12,16 @@
 
     --boxborder: #dedede;
     --boxbg: #ededed;
+    --boxaccent: #bbbbbb;
 
     --inputborder: #cccccc;
 
     --font-major: #333333;
     --font-tab: #337ab7;
+
+    --error: #f44336;
+    --error-highlight: #ffaaaa;
+    --error-bg: #ffdddd;
 }
 
 * {

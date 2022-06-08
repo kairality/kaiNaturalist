@@ -6,9 +6,9 @@ class TaxonClass(db.Model, TaxonMixin):
     __tablename__ = 'taxon_classes'
     parent_taxon_id = db.Column(db.Integer, db.ForeignKey("taxon_phyla.id"), nullable=False)
 
-    taxon = db.relationship("Taxon", back_populates="taxon_class", uselist=False, lazy="subquery")
-    parent = db.relationship("TaxonPhylum", back_populates="ancestors", lazy="subquery")
-    ancestors = db.relationship("TaxonOrder", back_populates="parent", lazy="subquery")
+    taxon = db.relationship("Taxon", back_populates="taxon_class", uselist=False, lazy="selectin")
+    parent = db.relationship("TaxonPhylum", back_populates="descendants", lazy="selectin")
+    descendants = db.relationship("TaxonOrder", back_populates="parent", lazy="selectin")
 
     # @property
     # def uncoalesce(self):

@@ -33,8 +33,7 @@ function TaxonPreview({taxon}) {
     </ul>
 }
 
-export default function TaxaTypeahead() {
-    const [selectedTaxon, setSelectedTaxon] = useState();
+export default function TaxaTypeahead({selectedTaxon, setSelectedTaxon}) {
     const [query, setQuery] = useState('');
     const [showSearchSuggestions, setShowSearchSuggestions] = useState(false);
     const [suggestionsData, setSuggestionsData] = useState([]);
@@ -57,6 +56,8 @@ export default function TaxaTypeahead() {
                 );
             });
             setSuggestionsData(filtered);
+        } else {
+          setSuggestionsData([])
         }
     }, [query, taxa])
 
