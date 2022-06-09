@@ -7,3 +7,7 @@
 .observtion-upload-date {
     width: 500px;
 }
+
+#calendar-upload {
+    border-radius: 5px;
+}

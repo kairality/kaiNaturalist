@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch} from "react-redux"
 import DatePicker from "react-datepicker"
+import UploadCalendarComponent from "../UploadCalendarComponent/UploadCalendar";
 import dayjs from "dayjs";
 
 import MapInput from "../MapInputComponent/MapInput";
@@ -28,6 +29,8 @@ export default function ObservationUpload() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
+  console.log(loading)
+
 
   const data = {
       position,
@@ -40,6 +43,7 @@ export default function ObservationUpload() {
   console.log(data)
 
   const handleSubmit = async (e) => {
+    console.log("here");
     e.preventDefault();
     setErrors([]);
     setLoading(true);
@@ -72,7 +76,11 @@ export default function ObservationUpload() {
           />
         </div>
         <div className={"observation-upload-date"}>
-          <DatePicker selected={date} onChange={(date) => setDate(date)} />
+          <UploadCalendarComponent
+            date={date}
+            setDate={setDate}
+            maxDate={new Date()}
+          />
         </div>
         <div className={"observation-descrtiption"}>
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
