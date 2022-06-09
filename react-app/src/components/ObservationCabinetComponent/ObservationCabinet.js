@@ -7,6 +7,9 @@ import calendar from "dayjs/plugin/calendar";
 
 import "./ObservationCabinet.css";
 import ObservationCard from "../ObservationCard/ObservationCard";
+import ObservationMap from "../ObservationMapComponent/ObservationMap";
+import ObservationHeader from "./ObservationHeader";
+import CabinetPhoto from "./CabinetPhoto";
 
 dayjs.extend(calendar);
 
@@ -15,14 +18,29 @@ export default function ObservationCabinet() {
   const observations = useSelector((state) => state.observations);
   const {id} = useParams();
   const observation = observations?.[id];
-
-  console.log('yes')
-  console.log(id)
-  console.log(observations)
+  if (!observation) {
+    return null;
+  }
 
   return (
     <div className="observation-cabinet">
-        <ObservationCard observation={observation} />
+      <div className="cabinet-container">
+        <div className="cabinet-taxon-header">
+          <ObservationHeader observation={observation} />
+        </div>
+        <div className="cabinet-row">
+          <div className="cabinet-row-left">
+            <div className="cabinet-photo"><CabinetPhoto observation={observation}/></div>
+            <div className="cabinet-details">Comment goes here</div>
+          </div>
+          <div className="cabinet-row-right">
+            <div className="cabinet-user-info">
+              Placeholder for user details!
+            </div>
+            <ObservationMap observation={observation} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
