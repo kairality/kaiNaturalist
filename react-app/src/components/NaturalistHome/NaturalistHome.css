@@ -1,5 +1,5 @@
 .observation-display {
     display: flex;
-    flex-direction: row wrap;
+    flex-flow: row wrap;
     width: 100%
 }
