@@ -36,6 +36,7 @@ html {
 .wrapper {
   display: flex;
   flex-direction: column;
+  padding-bottom: 56px;
 }
 
 .crying {
@@ -60,4 +61,9 @@ body, html {
   background-color: var(--brightaccent);
   color:#ededed;
   border: none;
+}
+
+.protect-overflow {
+  text-overflow: ellipsis;
+  word-break: break-all;
 }

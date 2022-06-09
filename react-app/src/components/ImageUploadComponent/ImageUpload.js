@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +19,7 @@ export default function ImageUploader({ image, setImage }) {
     <span className="fileTypes">Accepted Types: {fileTypes.join(", ")}</span>
   );
 
-  const dropArea = (
+  const dropArea = useMemo(() => (
     <div className="dropArea">
       {previewImg ? (
         <img src={previewImg} alt={"img preview"} />
@@ -31,7 +31,7 @@ export default function ImageUploader({ image, setImage }) {
       <span>Drag & Drop or Click to Select an Image</span>
       {typeArea}
     </div>
-  );
+  ));
 
   const [dropChild, setDropChild] = useState(dropArea);
 
@@ -58,8 +58,16 @@ export default function ImageUploader({ image, setImage }) {
       );
       setDropChild(dropAreaFilled);
       setErrors([]);
+    } else {
+      setDropChild(dropArea)
     }
-  }, [previewImg]);
+  }, [previewImg, dropArea]);
+
+  useEffect(() => {
+    if (!image) {
+      setPreviewImg(null)
+    }
+  },[image])
 
   useEffect(() => {
     if (image && errors.length === 0) {

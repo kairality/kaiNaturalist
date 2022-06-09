@@ -22,8 +22,9 @@
     align-items: center;
 }
 
-.observation-card-caption{
-    padding: 5px 5px;
+
+.caption-pad {
+    padding: 0px 1em;
 }
 
 .observation-title {

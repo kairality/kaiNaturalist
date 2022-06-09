@@ -67,6 +67,12 @@ export default function TaxaTypeahead({selectedTaxon, setSelectedTaxon}) {
         }
     }, [suggestionsData])
 
+    useEffect(() => {
+      if (!selectedTaxon) {
+        setQuery('')
+      }
+    }, [selectedTaxon])
+
     return (
       <div>
         {selectedTaxon && <TaxonPreview taxon={selectedTaxon} />}

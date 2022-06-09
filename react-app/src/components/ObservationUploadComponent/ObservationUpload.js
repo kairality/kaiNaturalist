@@ -11,6 +11,7 @@ import ImageUploader from "../ImageUploadComponent/ImageUpload";
 import "./ObservationUpload.css"
 import "react-datepicker/dist/react-datepicker.css";
 import { createObservation, genObservations } from "../../store/observation";
+import Loader from "../Loader/Loader";
 
 
 export default function ObservationUpload() {
@@ -24,6 +25,7 @@ export default function ObservationUpload() {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState('test description');
   const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
 
@@ -40,12 +42,17 @@ export default function ObservationUpload() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    setLoading(true);
     const observation = await dispatch(createObservation(data));
     if (observation.errors) {
       setErrors(observation.errors);
+      setLoading(false)
       return;
     }
     if (observation && errors.length === 0) {
+        setLoading(false)
+        setImage(null)
+        setSelectedTaxon(null)
         return observation;
     }
   };
@@ -69,6 +76,7 @@ export default function ObservationUpload() {
             onChange={(date) => setDate(date)}
           />
         </div>
+        {loading && <Loader />}
         <button className={"go-button"} id={"observation-submit"} type="submit">
           Submit Observation
         </button>

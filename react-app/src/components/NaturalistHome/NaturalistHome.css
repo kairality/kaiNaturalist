@@ -3,3 +3,8 @@
     flex-flow: row wrap;
     width: 100%
 }
+
+#home-container {
+    margin-left: auto;
+    margin-right: auto;
+}

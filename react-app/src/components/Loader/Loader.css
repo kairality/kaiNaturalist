@@ -1,0 +1,71 @@
+
+.loader {
+  width: 60px;
+}
+
+.loader-glyph {
+  display: flex;
+  color: var(--brightaccent);
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: spin 1s infinite ease;
+  border: 4px solid var(--brightaccent);
+  border-left: 6px solid var(--boxaccent);
+  border-radius: 50%;
+  height: 100px;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+#leaf {
+    font-size: 2rem;
+}
+
+/* .fa-crow#leaf {
+    color: var(--font-major);
+}
+
+.fa-otter#leaf {
+    color: #574231;
+}
+
+.fa-kiwi-bird#leaf {
+    color: #50433b;
+}
+
+.fa-worm#leaf, .fa-locust#leaf {
+    color: darkgreen;
+} */
+
+
+
+.loader-caption:after {
+  content: 'Loading';
+  color: var(--boxaccent);
+  font-size: 2rem;
+  animation: load 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes load {
+  0% {
+    content: 'Loading';
+  }
+  33% {
+    content: 'Loading.';
+  }
+  67% {
+    content: 'Loading..';
+  }
+  100% {
+    content: 'Loading...';
+  }
+}
