@@ -19,7 +19,7 @@ export default function ObservationCard({observation}) {
       <NavLink
         className={"observation-card-img"}
         to={`/observations/${observation.id}`}
-        style={{background: `url(${observation.img_url})`, backgroundSize: "cover"}}
+        style={{backgroundImage: `url("${observation.img_url}")`, backgroundSize: "cover"}}
        />
       <div className="observation-card-caption">
           <div className="observation-title">{taxonName}</div>
