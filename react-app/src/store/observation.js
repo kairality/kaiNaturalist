@@ -46,7 +46,9 @@ export const createObservation = (observationData) =>
       method: "POST",
       body: f,
     });
-    console.log(response.status)
+    if (response.status >= 500) {
+      return {"errors": "Did you turn on the backend this time?"}
+    }
     const observation = await response.json();
     if (response.ok) {
         dispatch(addObservation(observation))

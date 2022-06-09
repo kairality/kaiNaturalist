@@ -48,59 +48,75 @@ export default function ObservationUpload() {
     setLoading(true);
     const observation = await dispatch(createObservation(data));
     console.log(observation)
-    if (observation.errors) {
+    if (observation && observation.errors) {
+      console.log("hello")
       setErrors(observation.errors);
       setLoading(false)
       return;
     }
-    if (observation && errors.length === 0) {
+    if (observation.id) {
+        console.log(errors);
+        console.log("we are here")
         setLoading(false)
         setImage(null)
         setSelectedTaxon(null)
         history.push(`/observations/${observation.id}`)
         return observation;
+    } else {
+      setErrors(["An error occured during upload. Please try again. Did you forget to start the backend again?"])
+      return;
     }
   };
 
 
   return (
-    <form className={"observation-upload"} onSubmit={handleSubmit}>
-      <div className="observation-upload-left">
-        <div className={"observation-upload-photo"}>
-          <ImageUploader image={image} setImage={setImage} />
-        </div>
-        <div className={"observation-upload-taxon"}>
-          <TaxaTypeahead
-            selectedTaxon={selectedTaxon}
-            setSelectedTaxon={setSelectedTaxon}
-          />
-        </div>
-        <div className={"observation-upload-date"}>
-          <UploadCalendarComponent
-            date={date}
-            setDate={setDate}
-            maxDate={new Date()}
-          />
-        </div>
-        <div className={"observation-descrtiption"}>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-        </div>
-        <button className={"go-button"} id={"observation-submit"} type="submit">
-          Submit Observation
-        </button>
-        <div className={'upload-errorrs'}>{errors}</div>
-      </div>
-      <div className={"observation-upload-right"}>
-        <div className={"observation-upload-map"}>
-          {position && (
-            <MapInput
-              position={position}
-              onPositionChanged={(latlng) => setPosition(latlng)}
+    <div className="upload-form-container">
+      <h1>Upload Your Observation</h1>
+      <form className={"observation-upload"} onSubmit={handleSubmit}>
+        <div className="observation-upload-left">
+          <div className={"observation-upload-photo"}>
+            <ImageUploader image={image} setImage={setImage} />
+          </div>
+          <div className={"observation-upload-taxon"}>
+            <TaxaTypeahead
+              selectedTaxon={selectedTaxon}
+              setSelectedTaxon={setSelectedTaxon}
             />
-          )}
+          </div>
+          <div className={"observation-upload-date"}>
+            <UploadCalendarComponent
+              date={date}
+              setDate={setDate}
+              maxDate={new Date()}
+            />
+          </div>
+          <div className={"observation-descrtiption"}>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <button
+            className={"go-button"}
+            id={"observation-submit"}
+            type="submit"
+          >
+            Submit Observation
+          </button>
+          <div className={"upload-errorrs"}>{errors}</div>
         </div>
-        {loading && <Loader />}
-      </div>
-    </form>
+        <div className={"observation-upload-right"}>
+          <div className={"observation-upload-map"}>
+            {position && (
+              <MapInput
+                position={position}
+                onPositionChanged={(latlng) => setPosition(latlng)}
+              />
+            )}
+          </div>
+          {loading && <Loader />}
+        </div>
+      </form>
+    </div>
   );
 }

@@ -10,7 +10,6 @@ class TaxonRank(enum.Enum):
     FAMILY = 5
 
 
-
 class TaxonMixin(CrUpMixin):
     id = db.Column(db.Integer, primary_key=True)
     external_id = db.Column(db.Integer)
