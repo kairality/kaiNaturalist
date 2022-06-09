@@ -1,43 +1,53 @@
 
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import LogoutButton from './auth/LogoutButton';
 import UploadButton from './UploadButton/UploadButton';
 import "./NavBar.css"
 
-const NavBar = () => {
+export default function NavBar() {
+  const sessionUser = useSelector((state) => state.session.user);
+  const loggedOut = !sessionUser;
+
+  let sessionLinks;
+  if (!loggedOut) {
+    sessionLinks = [
+      <li key="upload">
+        <UploadButton />
+      </li>,
+      <li key="logout">
+        <LogoutButton />
+      </li>,
+    ];
+  } else {
+    sessionLinks = [
+          <NavLink to='/login' exact={true} activeClassName='active'>
+            Login
+          </NavLink>,
+          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+            Sign Up
+          </NavLink>,
+    ];
+
+  }
+
   return (
     <nav>
-      <ul>
-        <li>
-          <UploadButton />
+      <ul className={loggedOut ? "loggedOutNav" : ""}>
+        <li key="logo">
+          <span>kaiNaturalist</span>
         </li>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
+        <li key="home">
+          <NavLink className="homeButton" exact to="/">
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
+        {sessionLinks}
       </ul>
     </nav>
   );
 }
 
-export default NavBar;
+// export default NavBar;

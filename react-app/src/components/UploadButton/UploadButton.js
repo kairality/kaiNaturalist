@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+import "../NavBar.css"
+
 
 export default function UploadButton() {
     const sessionUser = useSelector((state) => state.session.user)
@@ -10,11 +12,9 @@ export default function UploadButton() {
     }
 
     return (
-      <>
         <NavLink
-            className={"upload-button"}
+            className={"upload-button go-button"}
             to={`/observations/new`}
         >Upload</NavLink>
-      </>
     );
 }
