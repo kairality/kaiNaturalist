@@ -10,7 +10,7 @@ class Config:
     # so the connection uri must be updated here
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL').replace('postgres://', 'postgresql://')
-    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_ECHO = False
     GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
     REACT_APP_GOOGLE_MAPS_API_KEY = os.environ.get('REACT_APP_GOOGLE_MAPS_API_KEY')
     AWS_S3_ACCESS_KEY = os.environ.get('AWS_S3_ACCESS_KEY')

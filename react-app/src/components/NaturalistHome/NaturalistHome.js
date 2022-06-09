@@ -13,6 +13,7 @@ export default function NaturalistHome() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("hello")
     dispatch(genObservations());
   }, [dispatch]);
 

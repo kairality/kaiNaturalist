@@ -1,0 +1,48 @@
+
+
+.observation-card {
+    width: 280px;
+    height: 280px;
+    margin: 13px;
+    font-size: 1em;
+    border: 1px solid var(--boxborder)
+}
+
+.observation-card-img {
+    display: block;
+    width: 100%;
+    height: 75%;
+}
+
+.no-img {
+    display: flex;
+    color: var(--error);
+    background-color: var(--errorbg);
+    justify-content: center;
+    align-items: center;
+}
+
+.observation-card-caption{
+    padding: 5px 5px;
+}
+
+.observation-title {
+    font-weight: bold;
+}
+
+.observation-taxon {
+    color: var(--lighttext);
+    font-size: 0.9em
+}
+
+.card-top-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+.card-critique{
+    color: var(--medgold);
+    width: 78px;
+    text-align: right;
+}

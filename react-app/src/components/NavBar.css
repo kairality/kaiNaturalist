@@ -1,8 +1,12 @@
 nav {
     display: contents;
+    width: 100%;
+    height: 56px;
 }
 
 nav ul {
+    width: 100%;
+    position: fixed;
     background-color: var(--barbg);
     border-bottom: 1px solid var(--barborder);
     list-style: none;

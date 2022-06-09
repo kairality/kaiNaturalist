@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch} from "react-redux"
+import DatePicker from "react-datepicker"
+import dayjs from "dayjs";
+
 import MapInput from "../MapInputComponent/MapInput";
 import TaxaTypeahead from "../TaxaTypeaheadComponent/TaxaTypeahead";
 import ImageUploader from "../ImageUploadComponent/ImageUpload";
 
+
 import "./ObservationUpload.css"
+import "react-datepicker/dist/react-datepicker.css";
 import { createObservation, genObservations } from "../../store/observation";
+
 
 export default function ObservationUpload() {
     const test = {
@@ -16,7 +22,7 @@ export default function ObservationUpload() {
   const [selectedTaxon, setSelectedTaxon] = useState(null);
   const [date, setDate] = useState(new Date());
   const [image, setImage] = useState(null);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState('test description');
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
@@ -24,7 +30,7 @@ export default function ObservationUpload() {
   const data = {
       position,
       taxon: selectedTaxon,
-      date,
+      date: dayjs(date).format('YYYY-MM-DD'),
       image,
       description
   }
@@ -57,7 +63,15 @@ export default function ObservationUpload() {
             setSelectedTaxon={setSelectedTaxon}
           />
         </div>
-        <button className={"go-button"} id={"obs-submit"} type="submit">Submit Observation</button>
+        <div className={"observation-upload-date"}>
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+          />
+        </div>
+        <button className={"go-button"} id={"observation-submit"} type="submit">
+          Submit Observation
+        </button>
       </div>
       <div className={"observation-upload-right"}>
         <div className={"observation-upload-map"}>

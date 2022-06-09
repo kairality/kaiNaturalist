@@ -13,6 +13,7 @@
     --boxborder: #dedede;
     --boxbg: #ededed;
     --boxaccent: #bbbbbb;
+    --lighttext: #999999;
 
     --inputborder: #cccccc;
 
@@ -32,6 +33,16 @@ html {
   height: 100%;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.crying {
+  height: 56px;
+  width: 100%;
+}
+
 body, html {
     min-height: 100%;
     font-family: 'Catamaran';
@@ -43,4 +54,10 @@ body, html {
 .leaflet-container {
   width: 500px;
   height: 500px;
+}
+
+.go-button {
+  background-color: var(--brightaccent);
+  color:#ededed;
+  border: none;
 }

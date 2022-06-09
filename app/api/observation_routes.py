@@ -31,6 +31,8 @@ def post_observation():
         form = ObservationForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         form['user_id'].data = user_id
+        print(form.data);
+        print(request.__dict__);
         if form.validate_on_submit():
             image = request.files["image"]
             if not allowed_file(image.filename):
@@ -51,7 +53,7 @@ def post_observation():
 
 @observation_routes.route('/<int:id>', methods=["PATCH"])
 @login_required
-def patch_estate(owner_id, estate_id):
+def patch_observation(id):
     """
     Edits an observation
     """

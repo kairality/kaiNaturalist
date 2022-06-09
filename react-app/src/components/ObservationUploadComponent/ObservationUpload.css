@@ -3,3 +3,7 @@
     flex-direction: row;
     justify-content: flex-start;
 }
+
+.observtion-upload-date {
+    width: 500px;
+}

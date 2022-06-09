@@ -17,6 +17,11 @@ from .config import Config
 
 app = Flask(__name__)
 
+import logging
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.ERROR)
+print(logging.getLogger('sqlalchemy.engine'))
+
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'

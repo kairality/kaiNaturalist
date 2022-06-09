@@ -1,3 +1,5 @@
+
+
 const ADD_OBSERVATION = "observations/addObservation";
 const REMOVE_OBSERVATION = "observations/removeObservation";
 const LOAD_OBSERVATIONS = "observations/loadObservations";
@@ -30,6 +32,7 @@ export const editObservation = (observation) => async (dispatch) => {
 
 export const createObservation = (observationData) =>
   async (dispatch) => {
+    console.log('hello');
     const f = new FormData();
     f.append("latitude", observationData.position.lat);
     f.append("longitude", observationData.position.lng);
@@ -37,6 +40,8 @@ export const createObservation = (observationData) =>
     f.append("description", observationData.description);
     f.append("date", observationData.date)
     f.append("image", observationData.image)
+    console.log("hello");
+    console.log(f.get("date"));
     const response = await fetch(`/api/observations/`, {
       method: "POST",
       body: f,
@@ -47,6 +52,7 @@ export const createObservation = (observationData) =>
         dispatch(addObservation(observation))
         return observation;
     } else {
+        console.log(observation.errors)
         return observation;
     }
   };

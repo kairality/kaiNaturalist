@@ -19,3 +19,17 @@ class Observation(db.Model, CrUpMixin):
     taxon = db.relationship("Taxon", back_populates="observations", lazy="joined")
 
     identifications = db.relationship("Identification", back_populates="observation", lazy="joined")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "taxon_id": self.taxon_id,
+            "taxon": self.taxon.to_dict(),
+            "img_url": self.img_url,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "description": self.description,
+            "date": self.date,
+            "verified": self.verified,
+        }
