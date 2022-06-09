@@ -25,11 +25,10 @@ class Observation(db.Model, CrUpMixin):
             "id": self.id,
             "user_id": self.user_id,
             "taxon_id": self.taxon_id,
-            "taxon": self.taxon.to_dict(),
             "img_url": self.img_url,
             "latitude": self.latitude,
             "longitude": self.longitude,
             "description": self.description,
-            "date": self.date,
+            "date": self.date.strftime("%Y-%m-%d"),
             "verified": self.verified,
         }

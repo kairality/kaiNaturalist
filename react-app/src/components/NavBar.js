@@ -2,12 +2,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import UploadButton from './UploadButton/UploadButton';
 import "./NavBar.css"
 
 const NavBar = () => {
   return (
     <nav>
       <ul>
+        <li>
+          <UploadButton />
+        </li>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home

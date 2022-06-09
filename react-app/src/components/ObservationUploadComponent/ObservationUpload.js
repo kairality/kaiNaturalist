@@ -44,6 +44,7 @@ export default function ObservationUpload() {
     setErrors([]);
     setLoading(true);
     const observation = await dispatch(createObservation(data));
+    console.log(observation)
     if (observation.errors) {
       setErrors(observation.errors);
       setLoading(false)
@@ -79,6 +80,7 @@ export default function ObservationUpload() {
         <button className={"go-button"} id={"observation-submit"} type="submit">
           Submit Observation
         </button>
+        <div className={'upload-errorrs'}>{errors}</div>
       </div>
       <div className={"observation-upload-right"}>
         <div className={"observation-upload-map"}>

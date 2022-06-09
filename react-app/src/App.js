@@ -15,6 +15,8 @@ import { MapContainer, TileLayer, Marker, Popup } from '@monsonjeremy/react-leaf
 
 import ObservationUpload from './components/ObservationUploadComponent/ObservationUpload';
 import NaturalistHome from './components/NaturalistHome/NaturalistHome';
+import ObservationCabinet from './components/ObservationCabinetComponent/ObservationCabinet';
+import { genObservations } from './store/observation';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,6 +33,7 @@ function App() {
   useEffect(() => {
     if (loaded) {
       dispatch(genTaxa());
+      dispatch(genObservations())
     }
   }, [dispatch, loaded])
 
@@ -53,12 +56,17 @@ function App() {
           <ProtectedRoute path="/users" exact={true}>
             <UsersList />
           </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true}>
-            <User />
+          <ProtectedRoute path="/observations/:id(\d+)" exact={true}>
+            <ObservationCabinet />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
             <h1>My Home Page</h1>
             <NaturalistHome />
+          </ProtectedRoute>
+          <ProtectedRoute path="/observations/" exact={true}>
+            <div>Observations</div>
+          </ProtectedRoute>
+          <ProtectedRoute path="/observations/new" exact={true}>
             <ObservationUpload />
           </ProtectedRoute>
         </Switch>
