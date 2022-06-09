@@ -21,9 +21,9 @@ export default function ObservationCard({observation}) {
         to={`/observations/${observation.id}`}
         style={{backgroundImage: `url("${observation.img_url}")`, backgroundSize: "cover"}}
        />
-      <div className="observation-card-caption">
-          <div className="observation-title protect-overflow caption-pad">{taxonName}</div>
-          <div className="observation-taxon protect-overflow caption-pad">({taxonTaxon})</div>
+      <div className="observation-card-caption caption-pad">
+          <div className="observation-title protect-overflow">{taxonName}</div>
+          <div className="observation-taxon protect-overflow">({taxonTaxon})</div>
       </div>
     </div>
   );

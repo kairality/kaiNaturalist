@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +19,7 @@ export default function ImageUploader({ image, setImage }) {
     <span className="fileTypes">Accepted Types: {fileTypes.join(", ")}</span>
   );
 
-  const dropArea = useMemo(() => (
+  const dropArea = useRef(
     <div className="dropArea">
       {previewImg ? (
         <img src={previewImg} alt={"img preview"} />
@@ -31,9 +31,9 @@ export default function ImageUploader({ image, setImage }) {
       <span>Drag & Drop or Click to Select an Image</span>
       {typeArea}
     </div>
-  ));
+  );
 
-  const [dropChild, setDropChild] = useState(dropArea);
+  const [dropChild, setDropChild] = useState(dropArea.current);
 
   const dropAreaErrored = (
     <div className="dropArea withError">
@@ -52,22 +52,26 @@ export default function ImageUploader({ image, setImage }) {
       const dropAreaFilled = (
         <div className="dropArea drop-filled">
           <span>Upload this Image?</span>
-          <img src={previewImg} className={"uploadImg"} alt={"this is an alt tag for eslint"} />
+          <img
+            src={previewImg}
+            className={"uploadImg"}
+            alt={"this is an alt tag for eslint"}
+          />
           <span>Drag & Drop or Click to Change the Image</span>
         </div>
       );
       setDropChild(dropAreaFilled);
       setErrors([]);
     } else {
-      setDropChild(dropArea)
+      setDropChild(dropArea.current);
     }
   }, [previewImg, dropArea]);
 
   useEffect(() => {
     if (!image) {
-      setPreviewImg(null)
+      setPreviewImg(null);
     }
-  },[image])
+  }, [image]);
 
   useEffect(() => {
     if (image && errors.length === 0) {
@@ -98,4 +102,4 @@ export default function ImageUploader({ image, setImage }) {
       types={fileTypes}
     />
   );
-};
+}

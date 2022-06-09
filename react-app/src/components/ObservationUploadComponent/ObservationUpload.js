@@ -71,12 +71,11 @@ export default function ObservationUpload() {
           />
         </div>
         <div className={"observation-upload-date"}>
-          <DatePicker
-            selected={date}
-            onChange={(date) => setDate(date)}
-          />
+          <DatePicker selected={date} onChange={(date) => setDate(date)} />
         </div>
-        {loading && <Loader />}
+        <div className={"observation-descrtiption"}>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        </div>
         <button className={"go-button"} id={"observation-submit"} type="submit">
           Submit Observation
         </button>
@@ -90,6 +89,7 @@ export default function ObservationUpload() {
             />
           )}
         </div>
+        {loading && <Loader />}
       </div>
     </form>
   );
