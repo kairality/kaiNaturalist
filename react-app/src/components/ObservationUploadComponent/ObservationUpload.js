@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {useDispatch} from "react-redux"
-import DatePicker from "react-datepicker"
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+
 import UploadCalendarComponent from "../UploadCalendarComponent/UploadCalendar";
 import dayjs from "dayjs";
 
@@ -28,6 +29,7 @@ export default function ObservationUpload() {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   console.log(loading)
 
@@ -40,10 +42,7 @@ export default function ObservationUpload() {
       description
   }
 
-  console.log(data)
-
   const handleSubmit = async (e) => {
-    console.log("here");
     e.preventDefault();
     setErrors([]);
     setLoading(true);
@@ -58,6 +57,7 @@ export default function ObservationUpload() {
         setLoading(false)
         setImage(null)
         setSelectedTaxon(null)
+        history.push(`/observations/${observation.id}`)
         return observation;
     }
   };
