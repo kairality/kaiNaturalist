@@ -1,18 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { titleCase } from "title-case";
 
 import "./ObservationCard.css";
 
 export default function ObservationCard({observation}) {
+  const taxa = useSelector((state) => state.taxonomy);
+
   if (!observation) {
       return null;
   }
 
-  const taxonName = observation.taxon.common_name ?
-    titleCase(observation.taxon.common_name) : titleCase(observation.taxon.scientific_name);
+  const taxon = taxa?.[observation.taxon_id];
+  if(!taxon) {
+    return null;
+  }
 
-  const taxonTaxon = titleCase(`${observation.taxon.rank.toLowerCase()} ${observation.taxon.scientific_name}`);
+  const taxonName = taxon.common_name ?
+    titleCase(taxon.common_name) : titleCase(taxon.scientific_name);
+
+  const taxonTaxon = titleCase(`${taxon.rank.toLowerCase()} ${taxon.scientific_name}`);
 
   return (
     <div className="observation-card" id={`observation-card-${observation.id}`}>
