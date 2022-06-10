@@ -3,14 +3,13 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import {deleteObservation} from "../../store/observation"
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { deleteObservation, editObservation } from "../../store/observation";
 import CabinetPhoto from "./CabinetPhoto";
 
-import "./ObservationCabinet.css"
-import ErrorCard from "../ErrorCard/ErrorCard";
+import "./ObservationCabinet.css";
 
-export default function ObservationTrashCanNotTrashCant({ observation}) {
+export default function ObservationEdit({ observation }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
 
@@ -19,10 +18,10 @@ export default function ObservationTrashCanNotTrashCant({ observation}) {
   }
   return (
     <>
-      <FontAwesomeIcon icon={faTrashCan} onClick={() => setShowModal(true)} />
+      <FontAwesomeIcon icon={faEdit} onClick={() => setShowModal(true)} />
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ObservationTrashCanNotTrashCantModal
+          <ObservationEditModal
             observation={observation}
             setShowModal={setShowModal}
           />
@@ -32,27 +31,25 @@ export default function ObservationTrashCanNotTrashCant({ observation}) {
   );
 }
 
-function ObservationTrashCanNotTrashCantModal({ observation, setShowModal }) {
+function ObservationEditModal({ observation, setShowModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const handleDelete = async (e) => {
-    const deleteConfirm = await dispatch(deleteObservation(observation));
-    if (!deleteConfirm?.errors) {
+  const handleEdit = async (e) => {
+    const editConfirm = await dispatch(editObservation(observation))
+    if (!editConfirm?.errors) {
       setShowModal(false);
-	    history.push("/")
     } else {
-      setErrors(deleteConfirm.errors)
+      setErrors(editConfirm.errors)
     }
   };
   return (
-    <div className={"observation-delete-modal"}>
+    <div className={"observation-edit-modal"}>
       <h2>Delete Observation?</h2>
-	  <CabinetPhoto observation={observation} />
-      <button className="go-button" onClick={handleDelete}>
-        Confirm Delete?
+      <CabinetPhoto observation={observation} />
+      <button className="go-button" onClick={handleEdit}>
+        Confirm Edit
       </button>
-      <ErrorCard errors={errors} />;
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
 
 function VerifiedStatus() {
-    return <span className="verified">Verified</span>
+    return <span className="status verified">Verified</span>
 }
 
 function NeedsIDStatus() {
-    return <span className="needs-id">Needs ID</span>
+    return <span className="status needs-id">Needs ID</span>
 }
 
 export default function ObservationStatus({observation}) {

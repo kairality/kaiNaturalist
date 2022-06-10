@@ -30,7 +30,6 @@ export default function ObservationCabinet() {
         <div className="cabinet-taxon-header">
           <div className="cabinet-header-titles">
             <ObservationHeader observation={observation} />
-            <ObservationStatus observation={observation} />
           </div>
           <div className="cabinet-header-controls">
             <ObservationTrashCanNotTrashCant observation={observation} />

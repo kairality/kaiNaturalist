@@ -7,6 +7,7 @@
     font-size: 1em;
     border: 1px solid var(--boxborder);
     background-color: white;
+    position: relative;
 }
 
 .observation-card-img {
@@ -47,4 +48,24 @@
     color: var(--medgold);
     width: 78px;
     text-align: right;
+}
+
+.status {
+    max-height: 36px;
+    border-radius: 16px;
+    padding: 0px 8px;
+    align-self: center;
+    border: black
+}
+
+.needs-id {
+    background-color: var(--needsid);
+    color: var(--needsidfont);
+}
+
+.observation-card .status {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    opacity: 75%;
 }

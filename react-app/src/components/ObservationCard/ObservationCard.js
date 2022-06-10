@@ -34,13 +34,16 @@ export default function ObservationCard({observation}) {
       <NavLink
         className={"observation-card-img"}
         to={`/observations/${observation.id}`}
-        style={{backgroundImage: `url("${observation.img_url}")`, backgroundSize: "cover"}}
-       />
+        style={{
+          backgroundImage: `url("${observation.img_url}")`,
+          backgroundSize: "cover",
+        }}
+      />
       <div className="observation-card-caption caption-pad">
-          <div className="observation-title protect-overflow">{taxonName}</div>
-          <ObservationTimeCaption observation={observation} />
-          <ObservationStatus observation={observation} />
+        <div className="observation-title protect-overflow">{taxonName}</div>
+        <ObservationTimeCaption observation={observation} />
       </div>
+      <ObservationStatus observation={observation} />
     </div>
   );
 };

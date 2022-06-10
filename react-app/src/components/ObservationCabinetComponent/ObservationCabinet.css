@@ -24,23 +24,43 @@
 
 .cabinet-header-titles {
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
-    margin: 0px;
+    align-items: center;
 }
 
-.cabinet-header-titles * {
+.observation-header {
     margin-top: 0px;
     margin-bottom: 0px;
+    margin-left: 1em;
+    margin-right: 1em;
+    height: 56px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 8px;
 }
 
-.sci-name-header {
+.observation-header span {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: auto;
+}
+
+
+.display-name-header {
     font-weight: normal;
     color: black;
-    font-size: 1.8em;
+    font-size: 2em;
+}
+
+.sci-name-subheader {
+  font-weight: normal;
+  font-size: 1.5em;
+  color: #747474;
 }
 
 .cabinet-row {

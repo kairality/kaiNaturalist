@@ -58,7 +58,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type="submit">Login</button>
-        <DemoLogin />
+        <DemoLogin {...{ setErrors }} />
       </div>
     </form>
   );
