@@ -1,5 +1,7 @@
 import React from "react";
 import {MapContainer, TileLayer, Marker, Popup } from "@monsonjeremy/react-leaflet";
+import MapSearch from "../MapSearch"
+import { OpenStreetMapProvider } from "leaflet-geosearch";
 
 export default function ObservationMap({observation}) {
     if (!observation) {

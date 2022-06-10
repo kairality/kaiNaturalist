@@ -37,7 +37,7 @@ function ObservationTrashCanNotTrashCantModal({ observation, setShowModal }) {
   const history = useHistory();
   const handleDelete = async (e) => {
     const deleteConfirm = await dispatch(deleteObservation(observation));
-    if (!deleteConfirm.errors) {
+    if (!deleteConfirm?.errors) {
       setShowModal(false);
 	  history.push("/")
     } else {

@@ -77,6 +77,7 @@ export const deleteObservation = (observation) => async (dispatch) => {
   }
   if (response.ok) {
     dispatch(removeObservation(observation));
+    return {"message": "Successfully deleted!"}
   } else {
     return {
       errors: ["Something terrible has happened. Try again?"]
