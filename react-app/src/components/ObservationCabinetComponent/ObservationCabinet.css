@@ -1,74 +1,86 @@
-
-
 .observation-cabinet {
-    width: 100%;
+  width: 100%;
 }
 
 .cabinet-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: white;
-    border: 1px solid var(--barborder);
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  max-width: 1200px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  border: 1px solid var(--barborder);
+}
+
+.cabinet-taxon-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.sci-name-header {
+    font-weight: normal;
+    color: black;
+    font-size: 1.8em;
 }
 
 .cabinet-row {
-    height: 100%;
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    border: 1px solid var(--barborder);
-    padding-bottom: 1em;
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid var(--barborder);
+  padding-bottom: 1em;
 }
 
 .cabinet-row-left {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 2em;
-    padding-left: 2em;
-    padding-right: 2em;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .cabinet-row-right {
-    border: 1px solid var(--barborder);
+  border: 1px solid var(--barborder);
 }
 
 .cabinet-row-right .leaflet-container {
-    width: 500px;
-    height: 500px;
-    margin: 2em;
+  width: 500px;
+  height: 500px;
+  margin: 2em;
 }
 
 .cabinet-photo {
-    width: 500px;
-    height: 400px;
-    border: 1px solid var(--barborder);
+  width: 500px;
+  height: 400px;
+  border: 1px solid var(--barborder);
 }
 
 .observation-delete-modal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-
 .cabinet-photo-image {
-    width: inherit;
-    max-width: 500px;
-    max-height: 400px;
-    height: inherit;
-    object-fit: cover;
+  width: inherit;
+  max-width: 500px;
+  max-height: 400px;
+  height: inherit;
+  object-fit: cover;
 }
 
 .cabinet-user-info {
-    width: 100%;
-    height: 96px;
-    border: 1px solid var(--barborder);
+  width: 100%;
+  height: 96px;
+  border: 1px solid var(--barborder);
 }

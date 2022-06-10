@@ -1,41 +1,43 @@
-/* TODO Add site wide styles */
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300&family=Quicksand:wght@300;400&display=swap');
 
 :root {
-    --mainbg:  #ffffff;
-    --barbg: #eeeeee;
-    --barborder: #dddddd;
-    --lightaccent: #dfeed7;
-    --buttonbg: #337ab7;
-    --buttonborder: #2e6da4;
-    --brightaccent: #74ac00;
-    --brighteraccent:  #f16f3a;
+  --mainbg: #ffffff;
+  --barbg: #eeeeee;
+  --barborder: #dddddd;
+  --lightaccent: #dfeed7;
+  --buttonbg: #337ab7;
+  --buttonborder: #2e6da4;
+  --brightaccent: #74ac00;
+  --brighteraccent: #f16f3a;
 
+  --darktab: #565656;
+  --brightab: #86a91c;
 
-     --darktab:  #565656;
-     --brightab: #86A91c;
+  --boxborder: #dedede;
+  --boxbg: #ededed;
+  --boxaccent: #bbbbbb;
+  --lighttext: #999999;
 
-    --boxborder: #dedede;
-    --boxbg: #ededed;
-    --boxaccent: #bbbbbb;
-    --lighttext: #999999;
+  --inputborder: #cccccc;
 
-    --inputborder: #cccccc;
+  --font-major: #333333;
+  --font-tab: #337ab7;
 
-    --font-major: #333333;
-    --font-tab: #337ab7;
-
-    --error: #f44336;
-    --error-highlight: #ffaaaa;
-    --error-bg: #ffdddd;
+  --error: #f44336;
+  --error-highlight: #ffaaaa;
+  --error-bg: #ffdddd;
 }
 
-* {
-    margin: 0px;
+body {
+  margin: 0px;
+  padding: 0px;
 }
 
 html {
   height: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .wrapper {
@@ -50,12 +52,13 @@ html {
   width: 100%;
 }
 
-body, html {
-    min-height: 100%;
-    font-family: 'Catamaran';
-    background-color: var(--mainbg);
-    color: var(--font-major);
-    box-sizing: border-box;
+body,
+html {
+  min-height: 100%;
+  font-family: "Quicksand", sans-serif;
+  background-color: var(--mainbg);
+  color: var(--font-major);
+  box-sizing: border-box;
 }
 
 .leaflet-container {
@@ -65,7 +68,7 @@ body, html {
 
 .go-button {
   background-color: var(--brightaccent);
-  color:#ededed;
+  color: #ededed;
   border: none;
 }
 

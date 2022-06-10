@@ -17,7 +17,7 @@ dayjs.extend(calendar);
 export default function ObservationCabinet() {
   const taxa = useSelector((state) => state.taxonomy);
   const observations = useSelector((state) => state.observations);
-  const {id} = useParams();
+  const { id } = useParams();
   const observation = observations?.[id];
   if (!observation) {
     return null;
@@ -28,16 +28,19 @@ export default function ObservationCabinet() {
       <div className="cabinet-container">
         <div className="cabinet-taxon-header">
           <ObservationHeader observation={observation} />
+          <button className="go-button">Lol</button>
         </div>
         <div className="cabinet-row">
           <div className="cabinet-row-left">
-            <div className="cabinet-photo"><CabinetPhoto observation={observation}/></div>
+            <div className="cabinet-photo">
+              <CabinetPhoto observation={observation} />
+            </div>
             <div className="cabinet-details">Comment goes here</div>
           </div>
           <div className="cabinet-row-right">
             <div className="cabinet-user-info">
               Placeholder for user details!
-              <ObservationTrashCanNotTrashCant observation={observation}/>
+              <ObservationTrashCanNotTrashCant observation={observation} />
             </div>
             <ObservationMap observation={observation} />
           </div>
