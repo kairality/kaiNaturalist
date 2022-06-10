@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { deleteObservation, editObservation } from "../../store/observation";
+import { editObservation } from "../../store/observation";
 import CabinetPhoto from "./CabinetPhoto";
 
 import "./ObservationCabinet.css";

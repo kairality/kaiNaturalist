@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import LogoutButton from './auth/LogoutButton';
 import UploadButton from './UploadButton/UploadButton';
 import "./NavBar.css"
+import { RandomNaturalistIcon } from "./Loader/Loader";
 
 export default function NavBar() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -37,7 +38,9 @@ export default function NavBar() {
     <nav>
       <ul className={loggedOut ? "loggedOutNav" : ""}>
         <li key="logo">
-          <span>kaiNaturalist</span>
+          <span class="logo">
+            <RandomNaturalistIcon /> <span class="logo-inner">Naturalist</span>
+          </span>
         </li>
         <li key="home">
           <NavLink className="homeButton" exact to="/">
