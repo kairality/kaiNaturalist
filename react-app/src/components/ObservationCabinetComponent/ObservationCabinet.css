@@ -16,9 +16,25 @@
 
 .cabinet-taxon-header {
   display: flex;
+  height: 56px;
   width: 100%;
   justify-content: space-between;
   flex-direction: row;
+}
+
+.cabinet-header-titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0px;
+}
+
+.cabinet-header-titles * {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .sci-name-header {
@@ -37,6 +53,7 @@
   border: 1px solid var(--barborder);
   padding-bottom: 1em;
 }
+
 
 .cabinet-row-left {
   display: flex;

@@ -31,8 +31,6 @@ def post_observation():
         form = ObservationForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         form['user_id'].data = user_id
-        print(form.data);
-        print(request.__dict__);
         if form.validate_on_submit():
             image = request.files["image"]
             if not allowed_file(image.filename):

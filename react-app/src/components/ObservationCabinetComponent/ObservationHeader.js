@@ -11,6 +11,15 @@ function CommonNameHeader({taxon}) {
     return taxon.common_name ? <h2 className="sci-name-header">{common}</h2> : <h2 className="sci-name-header">{scientific}</h2>;
 }
 
+function ScientificNameHeader({taxon}) {
+    if (!taxon) {
+        return null;
+    }
+    const scientific = titleCase(taxon.scientific_name);
+    const rank = titleCase(taxon.rank.toLowerCase())
+    return <h3 className="sci-name-subheader">({rank} {scientific})</h3>
+}
+
 export default function ObservationHeader({observation}) {
     const taxa = useSelector((state) => state.taxonomy)
     const sad_taxon = {
@@ -20,6 +29,9 @@ export default function ObservationHeader({observation}) {
 
     const taxon = observation.taxon_id ? taxa?.[observation.taxon_id] : sad_taxon;
     return (
+      <>
         <CommonNameHeader taxon={taxon} />
-    )
+        <ScientificNameHeader taxon={taxon} />
+      </>
+    );
 }

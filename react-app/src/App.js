@@ -32,10 +32,12 @@ function App() {
 
   useEffect(() => {
     if (loaded) {
-      dispatch(genTaxa());
+      if (Object.keys(taxa).length === 0) {
+        dispatch(genTaxa());
+      }
       dispatch(genObservations())
     }
-  }, [dispatch, loaded])
+  }, [dispatch, loaded, taxa])
 
   if (!loaded) {
     return null;
