@@ -1,0 +1,9 @@
+
+.error-card {
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-highlight);
+    color: var(--error);
+    padding: 1em;
+    width: fit-content;
+    word-break: break-all;
+}

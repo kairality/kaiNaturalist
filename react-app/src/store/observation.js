@@ -67,8 +67,20 @@ export const deleteObservation = (observation) => async (dispatch) => {
       method: "DELETE",
     }
   );
+  if (response.status >= 500) {
+    return {"errors": ["The server was unable to process the delete request."]}
+  }
+  if (response.status >= 400) {
+    return {
+      errors: ["The server was unable to process the delete request because the object doesn't exist or you do not own it."],
+    };
+  }
   if (response.ok) {
     dispatch(removeObservation(observation));
+  } else {
+    return {
+      errors: ["Something terrible has happened. Try again?"]
+    }
   }
 };
 

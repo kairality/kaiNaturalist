@@ -14,6 +14,7 @@ import "./ObservationUpload.css"
 import "react-datepicker/dist/react-datepicker.css";
 import { createObservation, genObservations } from "../../store/observation";
 import Loader from "../Loader/Loader";
+import ErrorCard from "../ErrorCard/ErrorCard";
 
 
 export default function ObservationUpload() {
@@ -30,8 +31,6 @@ export default function ObservationUpload() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
-
-  console.log(loading)
 
 
   const data = {
@@ -55,8 +54,6 @@ export default function ObservationUpload() {
       return;
     }
     if (observation.id) {
-        console.log(errors);
-        console.log("we are here")
         setLoading(false)
         setImage(null)
         setSelectedTaxon(null)
@@ -67,6 +64,12 @@ export default function ObservationUpload() {
       return;
     }
   };
+
+  useEffect(() => {
+    if (image) {
+      setErrors(prev => prev.filter(error => !error.toLowerCase().includes("image")))
+    }
+  }, [image])
 
 
   return (
@@ -103,7 +106,7 @@ export default function ObservationUpload() {
           >
             Submit Observation
           </button>
-          <div className={"upload-errorrs"}>{errors}</div>
+          <ErrorCard errors={errors} />
         </div>
         <div className={"observation-upload-right"}>
           <div className={"observation-upload-map"}>

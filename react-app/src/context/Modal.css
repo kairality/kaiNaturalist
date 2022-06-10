@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
 }
 
 #modal-background {
@@ -27,18 +27,18 @@
   min-width: 300px;
   width: fit-content;
   padding: 1em;
-  background-color:var(--lightestegg);
+  background-color:var(--barbg);
   border: none;
   border-radius: 16px;
 }
 
 #modal-content .btn .btn-request {
-  background-color: var(--medgold);
+  background-color: var(--brightaccent);
   color: white;
   padding: 5px;
   margin-top: 5px;
   border-radius: 3px;
-  border: 2px solid var(--darkgold);
+  border: 2px solid var(--brightaccent);
   transition: all 0.3s;
 
 }

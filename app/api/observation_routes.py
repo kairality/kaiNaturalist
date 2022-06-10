@@ -73,13 +73,13 @@ def patch_observation(id):
             return observation.to_dict()
         return {'errors': form.errors}, 403
 
-@observation_routes.route('/<int:id>/', methods=["DELETE"])
+@observation_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
-def del_observation(estate_id):
+def del_observation(id):
     """
     Deletes an observation from the database
     """
-    observation = Observation.query.get(estate_id)
+    observation = Observation.query.get(id)
     permission_check = check_ownership(observation)
     if not permission_check:
         return {"errors": ["You can't modify that object"]}, 401
