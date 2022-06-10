@@ -1,7 +1,6 @@
 import React from "react";
 import {MapContainer, TileLayer, Marker, Popup } from "@monsonjeremy/react-leaflet";
-import MapSearch from "../MapSearch"
-import { OpenStreetMapProvider } from "leaflet-geosearch";
+import ObservationCard from "../ObservationCard/ObservationCard";
 
 export default function ObservationMap({observation}) {
     if (!observation) {
@@ -17,7 +16,7 @@ export default function ObservationMap({observation}) {
             />
             <Marker position={position}>
             <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
+               <ObservationCard observation={observation} />
             </Popup>
             </Marker>
         </MapContainer>
