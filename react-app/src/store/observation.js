@@ -67,7 +67,7 @@ export const createObservation = (observationData) =>
       body: f,
     });
     if (response.status >= 500) {
-      return {"errors": "Did you turn on the backend this time?"}
+      return {"errors": ["Something terrible has happened. Did you forget to turn on the backend?",]}
     }
     const observation = await response.json();
     if (response.ok) {
