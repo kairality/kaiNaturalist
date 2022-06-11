@@ -185,92 +185,55 @@ def seed_order():
     db.session.commit()
     return TaxonOrder.query.all()
 
-# def seed_taxa():
-#     count = 0;
-#     kingdom_data = requests.get(url = api + "taxa", params= kingdom_params)
-#     kingdoms = kingdom_data.json().get("results")
-#     for kingdom in kingdoms:
-#         name = kingdom.get("name");
-#         if name not in kingdom_filter:
-#             return;
-#         else:
-#             # print(kingdom);
-#             dbKingdom = TaxonKingdom()
-#             dbTaxon = Taxon()
-#             dbKingdom.scientific_name = dbTaxon.scientific_name = kingdom.get("name");
-#             dbKingdom.common_name = dbTaxon.common_name = kingdom.get("preferred_common_name")
-#             dbTaxon.taxon_kingdom = dbKingdom
-#             phylum_params["taxon_id"] = kingdom.get("id");
-#             phyla_data = requests.get(url = api + "taxa", params=phylum_params);
-#             phyla = phyla_data.json().get("results")
-#             for phylum in phyla:
-#                  # print(phylum)
-#                 if phylum.get("extinct") is True:
-#                     continue
-#                 count = count + 1;
-#                 if (count >= 60):
-#                     print("sleeping ...")
-#                     time.sleep(60)
-#                     print("waking up")
-#                     count = 0;
-#                 dbPhylum = TaxonPhylum()
-#                 dbTaxonPhylum = Taxon()
-#                 dbPhylum.scientific_name = phylum.get('name')
-#                 dbPhylum.common_name = phylum.get('preferred_common_name')
-#                 dbPhylum.parent_taxon = dbKingdom
-#                 dbTaxonPhylum.taxon_kingdom = dbKingdom
-#                 dbTaxonPhylum.taxon_phylum = dbPhylum
-#                 db.session.add(dbTaxonPhylum)
-#                 class_params["taxon_id"] = phylum.get("id")
-#                 class_data = requests.get(url = api + "taxa", params=class_params);
-#                 try:
-#                     classes = class_data.json();
-#                     classes = classes.get("results");
-#                 except Exception:
-#                     continue;
-#                 for tClass in classes:
-#                     # print(tClass)
-#                     if tClass.get("extinct") is True:
-#                         continue
-#                     count = count + 1;
-#                     if (count >= 60):
-#                         print("sleeping ...")
-#                         time.sleep(60)
-#                         print("waking up")
-#                         count = 0;
-#                     dbClass = TaxonClass()
-#                     dbTaxonClass = Taxon()
-#                     dbClass.scientific_name = tClass.get('name')
-#                     dbClass.common_name = tClass.get('preferred_common_name')
-#                     dbClass.parent_taxon = dbPhylum
-#                     dbTaxonClass.taxon_kingdom = dbKingdom
-#                     dbTaxonClass.taxon_phylum = dbPhylum
-#                     dbTaxonClass.taxon_class = dbClass
-#                     db.session.add(dbTaxonClass)
-#                     family_params['taxon_id'] = tClass.get("id")
-#                     family_data = requests.get(url = api + "taxa", params=family_params);
-#                     families = family_data.json().get("results")
-#                     print(families);
-#                     for family in families:
-#                         if family.get("extinct") is True:
-#                             continue
-#                         count = count + 1;
-#                         if (count >= 60):
-#                             print("sleeping ...")
-#                             time.sleep(60)
-#                             print("waking up")
-#                             count = 0;
-#                         dbFamily = TaxonFamily()
-#                         dbTaxonFamily = Taxon()
-#                         dbFamily.scientific_name = family.get('name')
-#                         dbFamily.common_name = family.get('preferred_common_name')
-#                         dbFamily.parent_taxon = dbClass;
-#                         dbTaxonFamily.taxon_kingdom = dbKingdom
-#                         dbTaxonFamily.taxon_phylum = dbPhylum
-#                         dbTaxonFamily.taxon_class = dbClass
-#                         dbTaxonFamily.taxon_family = dbFamily;
-#                         db.session.add(dbTaxonFamily)
-#             db.session.commit()
+def seed_family():
+    time.sleep(30)
+    orders = TaxonOrder.query.all()
+    count = 0;
+    for order in orders:
+        count = count + 1;
+        if count >= 100:
+            print("sleeping...")
+            time.sleep(60)
+            print("waking  up...")
+            count = 0;
+        tClass = order.parent;
+        phylum = tClass.parent
+        kingdom = phylum.parent
+        family_params["taxon_id"] = order.external_id
+        family_data = requests.get(url = api + "taxa", params=family_params)
+        families = family_data.json()
+        if not families:
+            raise Exception("Oops you're probably throttled")
+        families = families.get("results")
+        for family in families:
+            if family.get('observations_count') < 50:
+                continue
+            if family.get('extinct') is True:
+                continue
+            else:
+                dbFamily = TaxonFamily()
+                dbTaxon = Taxon()
+                dbTaxon.class_id = tClass.id
+                dbTaxon.phylum_id = phylum.id
+                dbTaxon.kingdom_id = kingdom.id
+                dbTaxon.class_id = tClass.id
+                dbFamily.scientific_name = family.get("name");
+                dbFamily.common_name = family.get("preferred_common_name")
+                dbFamily.external_id = family.get("id")
+                dbFamily.parent_taxon_id = order.id
+                dbFamily.rank = TaxonRank.FAMILY
+                dbFamily.parent_rank = TaxonRank.FAMILY
+                dbTaxon.taxon_family  = dbFamily
+                try:
+                    default_photo = family.get("default_photo")
+                    photo_url = default_photo.get("medium_url")
+                    dbTaxon.external_url = photo_url;
+                except:
+                    print("No Photo")
+                dbTaxon.external_rank = family.get("observations_count")
+                db.session.add(dbFamily)
+    db.session.commit()
+    return TaxonFamily.query.all()
 
 def undo_taxa():
     db.session.execute('TRUNCATE taxa RESTART IDENTITY CASCADE;')

@@ -1,6 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
-from .taxa import seed_kingdoms, seed_phyla, seed_class, seed_order, undo_taxa
+from .taxa import seed_kingdoms, seed_phyla, seed_class, seed_order, seed_family, undo_taxa
 import time
 
 # Creates a seed group to hold our commands
@@ -22,6 +22,10 @@ def taxa():
     classes = seed_class()
     time.sleep(15)
     orders = seed_order()
+
+@seed_commands.command('family')
+def family():
+    families = seed_family()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
