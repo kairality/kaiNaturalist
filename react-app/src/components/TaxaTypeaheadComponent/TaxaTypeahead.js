@@ -10,7 +10,8 @@ function TaxonResult({taxon, selectedTaxon, setSelectedTaxon, setShowSearchSugge
     }
     return (
       <div onClick={handleClick}>
-        <img className="taxon-ta-img" src={taxon.external_url} /> {taxon.rank} {taxon.scientific_name} ({taxon.common_name})
+        <img className="taxon-ta-img" src={taxon.external_url} />
+        <span>{taxon.rank} {taxon.scientific_name} ({taxon.common_name})</span>
       </div>
     );
 }
@@ -79,7 +80,7 @@ export default function TaxaTypeahead({selectedTaxon, setSelectedTaxon, maxResul
           className={"taxa-typeahead"}
           type="text"
           placeholder="Search taxa"
-          value={selectedTaxon ? selectedTaxon.scientific_name : query }
+          value={selectedTaxon ? selectedTaxon.scientific_name : query}
           onChange={handleInput}
         />
         <div
@@ -89,15 +90,15 @@ export default function TaxaTypeahead({selectedTaxon, setSelectedTaxon, maxResul
               : "taxa-results-hidden"
           }
         >
-          {(suggestionsData.length &&
-            showSearchSuggestions) &&
-            suggestionsData.map(taxon => {
+          {suggestionsData.length &&
+            showSearchSuggestions &&
+            suggestionsData.map((taxon) => {
               return (
-                <TaxonResult taxon={taxon}
-                    setSelectedTaxon={setSelectedTaxon}
-                    setShowSearchSuggestions={setShowSearchSuggestions}
-                >
-                </TaxonResult>
+                <TaxonResult
+                  taxon={taxon}
+                  setSelectedTaxon={setSelectedTaxon}
+                  setShowSearchSuggestions={setShowSearchSuggestions}
+                ></TaxonResult>
               );
             })}
         </div>
