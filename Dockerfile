@@ -1,7 +1,6 @@
 ARG NPM_TOKEN
 WORKDIR /react-app
 COPY .npmrc .npmrc
-COPY .npmrc .npmrc
 RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc && \
     npm install && \
     rm -f .npmrc
