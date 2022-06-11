@@ -1,11 +1,3 @@
-ARG NPM_TOKEN
-WORKDIR /react-app
-COPY .npmrc .npmrc
-RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc && \
-    npm install && \
-    rm -f .npmrc
-RUN npm run build
-
 # Start with the python:3.9 image
 FROM python:3.9
 
@@ -21,8 +13,6 @@ ENV FLASK_APP=app
 ENV FLASK_ENV=production
 # SQLALCHEMY_ECHO -> Just set it to true
 ENV SQLALCHEMY_ECHO=True
-
-RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
 
 # Set the directory for upcoming commands to /var/www
 WORKDIR /var/www
