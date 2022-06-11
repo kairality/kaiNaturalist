@@ -83,5 +83,4 @@ class Taxon(db.Model, CrUpMixin):
             "parent": self._parent_taxon.id if self._parent else None,
             "parent_info": self._parent_taxon.to_dict() if self._parent else None,
             "parent_rank": self._parent.rank.name if self._parent else None,
-            "descendants": [descendant.id for descendant in self.descendants]
         }

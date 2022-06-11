@@ -55,6 +55,7 @@ def patch_observation(id):
     """
     Edits an observation
     """
+    user_id = current_user.id
     observation = Observation.query.get(id)
     permission_check = check_ownership(observation);
     if not permission_check:
@@ -64,12 +65,12 @@ def patch_observation(id):
     else:
         form = ObservationForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        form['owner_id'].data = owner_id
+        form['user_id'].data = user_id;
         if form.validate_on_submit():
             form.populate_obj(observation)
             db.session.commit()
             return observation.to_dict()
-        return {'errors': form.errors}, 403
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
 @observation_routes.route('/<int:id>', methods=["DELETE"])
 @login_required

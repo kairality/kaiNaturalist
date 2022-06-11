@@ -8,8 +8,6 @@ taxonomy_routes = Blueprint('taxonomy', __name__)
 @taxonomy_routes.route('/')
 def taxonomy():
     import os
-    print(os.environ);
-    print(current_app.config);
     taxa = Taxon.query.all()
     return {'taxa': [taxon.to_dict() for taxon in taxa]}
 

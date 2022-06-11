@@ -26,8 +26,30 @@ const loadObservations = (observations) => {
   };
 };
 
-export const editObservation = (observation) => async (dispatch) => {
-  return observation;
+export const editObservation = (observation, observationData) => async (dispatch) => {
+  const f = new FormData();
+  f.append("latitude", observationData.position.lat);
+  f.append("longitude", observationData.position.lng);
+  f.append("taxon_id", observationData.taxon?.id);
+  f.append("description", observationData.description);
+  f.append("date", observationData.date);
+      const response = await fetch(`/api/observations/${observation.id}`, {
+        method: "PATCH",
+        body: f,
+      });
+   if (response.status >= 500) {
+     return { errors: "Did you turn on the backend this time?" };
+   }
+   const editData = await response.json();
+   if (response.ok && !response.errors) {
+     dispatch(addObservation(editData));
+     console.log('hello')
+     return editData;
+   } else {
+    console.log('hit the errors line')
+     // will have errors inside!
+     return editData;
+   }
 };
 
 export const createObservation = (observationData) =>
@@ -40,8 +62,6 @@ export const createObservation = (observationData) =>
     f.append("description", observationData.description);
     f.append("date", observationData.date)
     f.append("image", observationData.image)
-    console.log("hello");
-    console.log(f.get("date"));
     const response = await fetch(`/api/observations/`, {
       method: "POST",
       body: f,

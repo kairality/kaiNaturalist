@@ -1,0 +1,14 @@
+.observation-edit {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.observation-edit-modal {
+    width: auto;;
+}
+
+.observation-upload-right {
+    width: fit-content;
+    min-width: 500px;
+}

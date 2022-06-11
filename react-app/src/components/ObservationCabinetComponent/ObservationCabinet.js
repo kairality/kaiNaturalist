@@ -12,6 +12,7 @@ import ObservationHeader from "./ObservationHeader";
 import CabinetPhoto from "./CabinetPhoto";
 import ObservationTrashCanNotTrashCant from "./ObservationTrashCanNotTrashCant";
 import ObservationStatus from "../ObservationCard/ObservationStatus";
+import ObservationEdit from "./ObservationEdit";
 
 dayjs.extend(calendar);
 
@@ -32,13 +33,14 @@ export default function ObservationCabinet() {
             <ObservationHeader observation={observation} />
           </div>
           <div className="cabinet-header-controls">
-            <ObservationTrashCanNotTrashCant observation={observation} />
+            <ObservationEdit {...{observation}} />
+            <ObservationTrashCanNotTrashCant {...{observation}} />
           </div>
         </div>
         <div className="cabinet-row">
           <div className="cabinet-row-left">
             <div className="cabinet-photo">
-              <CabinetPhoto observation={observation} />
+              <CabinetPhoto {...{observation}} />
             </div>
             <div className="cabinet-details">Comment goes here</div>
           </div>
