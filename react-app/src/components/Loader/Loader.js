@@ -16,6 +16,20 @@ import {
   faDove,
   faBugs,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCrab,
+    faBee,
+    faDolphin,
+    faSquid,
+    faTurtle,
+    faSquirrel,
+    faRabbitRunning,
+    faElephant,
+    faDeer,
+    faFlower,
+    faLeafOak,
+    faAcorn,
+} from "@fortawesome/pro-solid-svg-icons"
 import "./Loader.css";
 
 export const naturalistIcons = [
@@ -30,7 +44,17 @@ export const naturalistIcons = [
       faHippo,
       faShrimp,
       faDove,
-      faBugs,
+      faCrab,
+      faDolphin,
+      faSquid,
+      faTurtle,
+      faSquirrel,
+      faRabbitRunning,
+      faElephant,
+      faDeer,
+      faLeafOak,
+      faAcorn,
+      faFlower,
     ];
 
 export function RandomNaturalistIcon({additionalIcons}) {

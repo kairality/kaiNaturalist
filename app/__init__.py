@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.taxonomy_routes import taxonomy_routes
 from .api.observation_routes import observation_routes
+from .api.identification_routes import identification_routes
 
 from .seeds import seed_commands
 
@@ -40,6 +41,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(taxonomy_routes, url_prefix='/api/taxa')
 app.register_blueprint(observation_routes, url_prefix='/api/observations')
+app.register_blueprint(identification_routes, url_prefix="/api/identifications")
 db.init_app(app)
 Migrate(app, db)
 

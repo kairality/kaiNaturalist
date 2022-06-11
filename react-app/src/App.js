@@ -17,6 +17,7 @@ import ObservationUpload from './components/ObservationUploadComponent/Observati
 import NaturalistHome from './components/NaturalistHome/NaturalistHome';
 import ObservationCabinet from './components/ObservationCabinetComponent/ObservationCabinet';
 import { genObservations } from './store/observation';
+import { genIdentifications } from './store/identification';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +37,7 @@ function App() {
         dispatch(genTaxa());
       }
       dispatch(genObservations())
+      dispatch(genIdentifications())
     }
   }, [dispatch, loaded, taxa])
 

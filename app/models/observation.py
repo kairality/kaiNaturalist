@@ -30,5 +30,6 @@ class Observation(db.Model, CrUpMixin):
             "longitude": self.longitude,
             "description": self.description,
             "date": self.date.strftime("%Y-%m-%d"),
+            "identifications": [ident.id for ident in self.identifications],
             "verified": self.verified,
         }

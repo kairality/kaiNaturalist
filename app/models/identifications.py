@@ -12,3 +12,12 @@ class Identification(db.Model, CrUpMixin):
     author = db.relationship("User", back_populates="identifications", lazy="joined")
     taxon = db.relationship("Taxon", back_populates="identifications", lazy="joined")
     observation = db.relationship("Observation", back_populates="identifications", lazy="joined")
+
+    def to_dict(self):
+        return {
+            "id" : self.id,
+            "user_id": self.user_id,
+            "observation_id": self.observation_id,
+            "taxon_id": self.taxon_id,
+            "comment": self.comment,
+        }
