@@ -14,6 +14,8 @@ ENV FLASK_ENV=production
 # SQLALCHEMY_ECHO -> Just set it to true
 ENV SQLALCHEMY_ECHO=True
 
+RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+
 # Set the directory for upcoming commands to /var/www
 WORKDIR /var/www
 
