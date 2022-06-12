@@ -1,3 +1,5 @@
+import {addObservation} from "./observation";
+
 const ADD_IDENTIFICATION= "observations/addIdentification";
 const REMOVE_IDENTIFICATION = "observations/removeIdentification";
 const LOAD_IDENTIFICATIONS = "observations/loadIdentifications";
@@ -50,35 +52,36 @@ const loadIdentifications = (identifications) => {
 //     }
 //   };
 
-// export const createObservation = (observationData) => async (dispatch) => {
-//   console.log("hello");
-//   const f = new FormData();
-//   f.append("latitude", observationData.position.lat);
-//   f.append("longitude", observationData.position.lng);
-//   f.append("taxon_id", observationData.taxon?.id);
-//   f.append("description", observationData.description);
-//   f.append("date", observationData.date);
-//   f.append("image", observationData.image);
-//   const response = await fetch(`/api/observations/`, {
-//     method: "POST",
-//     body: f,
-//   });
-//   if (response.status >= 500) {
-//     return {
-//       errors: [
-//         "Something terrible has happened. Did you forget to turn on the backend?",
-//       ],
-//     };
-//   }
-//   const observation = await response.json();
-//   if (response.ok) {
-//     dispatch(addObservation(observation));
-//     return observation;
-//   } else {
-//     console.log(observation.errors);
-//     return observation;
-//   }
-// };
+export const createIdentification = (observation, identificationData) => async (dispatch) => {
+  console.log("hello");
+  const f = new FormData();
+  f.append("observation_id", observation.id);
+  f.append("taxon_id", identificationData.taxon.id);
+  f.append("description", identificationData.description);
+  const response = await fetch(`/api/identifications/`, {
+    method: "POST",
+    body: f,
+  });
+  if (response.status >= 500) {
+    return {
+      errors: [
+        "Something terrible has happened.",
+      ],
+    };
+  }
+  const identification = await response.json();
+  if (identification.errors) {
+        console.log(identification.errors);
+        return identification;
+  }
+  if (response.ok) {
+    dispatch(addIdentification(identification.identification));
+    dispatch(addObservation(identification.observation));
+    return identification;
+  } else {
+    return identification;
+  }
+};
 
 // export const deleteObservation = (observation) => async (dispatch) => {
 //   const { id } = observation;

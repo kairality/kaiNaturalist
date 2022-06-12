@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import identificationReducer from './identification';
 import observationReducer from './observation';
 import session from './session'
 import taxonomyReducer from './taxonomy';
@@ -8,6 +9,7 @@ const rootReducer = combineReducers({
   session,
   taxonomy: taxonomyReducer,
   observations: observationReducer,
+  identifications: identificationReducer,
 });
 
 let enhancer;

@@ -17,6 +17,7 @@ class Identification(db.Model, CrUpMixin):
         return {
             "id" : self.id,
             "user_id": self.user_id,
+            "user": {key:val for key, val in self.author.to_dict().items() if key != 'email'},
             "observation_id": self.observation_id,
             "taxon_id": self.taxon_id,
             "comment": self.comment,

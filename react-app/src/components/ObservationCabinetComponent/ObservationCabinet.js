@@ -15,6 +15,7 @@ import ObservationStatus from "../ObservationCard/ObservationStatus";
 import ObservationEdit from "./ObservationEdit";
 import ObservationUserInfo from "./ObservationUserInfo";
 import ObservationComment from "./ObservationComment";
+import IdentificationForm from "./IdentificationForm/IdentificationForm";
 
 dayjs.extend(calendar);
 
@@ -54,6 +55,9 @@ export default function ObservationCabinet() {
             </div>
             <ObservationMap observation={observation} />
           </div>
+        </div>
+        <div className={"identification-row"}>
+          <IdentificationForm observation={observation} />
         </div>
       </div>
     </div>

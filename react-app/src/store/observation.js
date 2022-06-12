@@ -5,7 +5,7 @@ const REMOVE_OBSERVATION = "observations/removeObservation";
 const LOAD_OBSERVATIONS = "observations/loadObservations";
 const VERIFY_OBSERVATION = "observations/verifyObservation";
 
-const addObservation = (observation) => {
+export const addObservation = (observation) => {
   return {
     type: ADD_OBSERVATION,
     payload: observation,

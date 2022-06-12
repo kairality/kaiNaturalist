@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, DateField
+from wtforms import TextAreaField, IntegerField, FloatField, DateField
 from wtforms.validators import DataRequired, ValidationError
 from ..models import Observation, Taxon
 
@@ -14,9 +14,9 @@ def is_taxon(form, field):
 
 
 class ObservationForm(FlaskForm):
-    user_id = IntegerField('owner_id', validators=[DataRequired()])
-    taxon_id = IntegerField('taxon_id', validators=[is_taxon])
-    latitude = FloatField('latitude', validators=[DataRequired()])
-    longitude = FloatField('longitude', validators=[DataRequired()])
-    date = DateField('date', validators=[DataRequired()])
-    description = StringField('description')
+    user_id = IntegerField('User ID', validators=[DataRequired()])
+    taxon_id = IntegerField('Taxon ID', validators=[is_taxon])
+    latitude = FloatField('Latitude', validators=[DataRequired()])
+    longitude = FloatField('Longitude', validators=[DataRequired()])
+    date = DateField('Date', validators=[DataRequired()])
+    description = TextAreaField('Description')
