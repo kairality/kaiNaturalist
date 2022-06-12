@@ -52,12 +52,12 @@ export default function ObservationUpload() {
       setLoading(false);
       return;
     }
-    if (observation.id) {
+    if (observation.observation) {
       setLoading(false);
       setImage(null);
       setSelectedTaxon(null);
-      history.push(`/observations/${observation.id}`);
-      return observation;
+      history.push(`/observations/${observation.observation.id}`);
+      return observation.observation;
     } else {
       setErrors([
         "An error occured during upload. Please try again. Did you forget to start the backend again?",

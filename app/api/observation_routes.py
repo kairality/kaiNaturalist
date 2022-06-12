@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 
 from app.models import observation
-from ..models import db, Observation
+from ..models import db, Observation, Identification
 from ..forms.observation_form import ObservationForm
 from ..utils.s3utils import get_unique_filename, upload_file_to_s3, allowed_file
 from .route_utils import validation_errors_to_error_messages, check_ownership
@@ -44,8 +44,12 @@ def post_observation():
             observation = Observation(img_url=url)
             form.populate_obj(observation)
             db.session.add(observation)
+            identification = Identification();
+            form.populate_obj(identification);
+            identification.observation = observation;
+            db.session.add(identification);
             db.session.commit()
-            return observation.to_dict()
+            return {"observation": observation.to_dict(), "identification": identification.to_dict()}
         else:
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -68,8 +72,16 @@ def patch_observation(id):
         form['user_id'].data = user_id;
         if form.validate_on_submit():
             form.populate_obj(observation)
+            identifications = observation.identifications
+            print(identifications)
+            identification = next(filter(lambda ident: ident.user_id == user_id, identifications))
+            print(identification)
+            print(identification.to_dict())
+            identification.taxon_id = observation.taxon_id
+            print(identification.to_dict())
+            db.session.add(identification)
             db.session.commit()
-            return observation.to_dict()
+            return {"observation": observation.to_dict(), "identification": identification.to_dict()}
         return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
 @observation_routes.route('/<int:id>', methods=["DELETE"])

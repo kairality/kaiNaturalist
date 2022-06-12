@@ -1,5 +1,5 @@
 
-
+import { addIdentification } from "./identification";
 const ADD_OBSERVATION = "observations/addObservation";
 const REMOVE_OBSERVATION = "observations/removeObservation";
 const LOAD_OBSERVATIONS = "observations/loadObservations";
@@ -42,8 +42,8 @@ export const editObservation = (observation, observationData) => async (dispatch
    }
    const editData = await response.json();
    if (response.ok && !response.errors) {
-     dispatch(addObservation(editData));
-     console.log('hello')
+     dispatch(addObservation(editData.observation));
+      dispatch(addIdentification(editData.identification));
      return editData;
    } else {
     console.log('hit the errors line')
@@ -70,8 +70,13 @@ export const createObservation = (observationData) =>
       return {"errors": ["Something terrible has happened. Did you forget to turn on the backend?",]}
     }
     const observation = await response.json();
+        if (observation.errors) {
+          console.log(observation.errors);
+          return observation;
+        }
     if (response.ok) {
-        dispatch(addObservation(observation))
+        dispatch(addObservation(observation.observation))
+        dispatch(addIdentification(observation.identification))
         return observation;
     } else {
         console.log(observation.errors)

@@ -4,7 +4,7 @@ const ADD_IDENTIFICATION= "observations/addIdentification";
 const REMOVE_IDENTIFICATION = "observations/removeIdentification";
 const LOAD_IDENTIFICATIONS = "observations/loadIdentifications";
 
-const addIdentification = (identification) => {
+export const addIdentification = (identification) => {
   return {
     type: ADD_IDENTIFICATION,
     payload: identification,
