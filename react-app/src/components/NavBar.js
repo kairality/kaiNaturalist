@@ -1,11 +1,10 @@
-
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import LogoutButton from './auth/LogoutButton';
-import UploadButton from './UploadButton/UploadButton';
-import "./NavBar.css"
+import LogoutButton from "./auth/LogoutButton";
+import UploadButton from "./UploadButton/UploadButton";
+import "./NavBar.css";
 import { RandomNaturalistIcon } from "./Loader/Loader";
 
 export default function NavBar() {
@@ -24,22 +23,22 @@ export default function NavBar() {
     ];
   } else {
     sessionLinks = [
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>,
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>,
+      <NavLink to="/login" exact={true} activeClassName="active">
+        Login
+      </NavLink>,
+      <NavLink to="/sign-up" exact={true} activeClassName="active">
+        Sign Up
+      </NavLink>,
     ];
-
   }
 
   return (
     <nav>
       <ul className={loggedOut ? "loggedOutNav" : ""}>
         <li key="logo">
-          <span class="logo">
-            <RandomNaturalistIcon /> <span class="logo-inner">Naturalist</span>
+          <span className="logo">
+            <RandomNaturalistIcon />{" "}
+            <span className="logo-inner">Naturalist</span>
           </span>
         </li>
         <li key="home">

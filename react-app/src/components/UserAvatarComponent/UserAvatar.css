@@ -1,0 +1,22 @@
+.user-avatar {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-info {
+    padding: 1em;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+.user-info-details {
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

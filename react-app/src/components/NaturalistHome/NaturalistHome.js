@@ -11,7 +11,9 @@ import Loader from "../Loader/Loader";
 export default function NaturalistHome() {
 
   const observations = useSelector((state) => state.observations)
+  const taxa = useSelector((state) => state.taxonomy)
   const [loaded, setLoaded] = useState(false);
+  const [taxaLoaded, setTaxaLoaded] = useState(taxa?.[0])
 
   const dispatch = useDispatch();
 
@@ -24,10 +26,18 @@ export default function NaturalistHome() {
     })();
   }, [dispatch]);
 
-  if (!loaded) {
+  useEffect(() => {
+    console.log(taxa);
+    if (taxa[1]) {
+      console.log(taxa[1])
+      setTaxaLoaded(true);
+    }
+  },[taxa])
+
+  if (!loaded || !taxaLoaded) {
     return (
     <div className="home-loading" id="home-container">
-      <Loader />
+      <Loader loadingText={"Initializing Taxonomy"}/>
     </div>
     );
   }

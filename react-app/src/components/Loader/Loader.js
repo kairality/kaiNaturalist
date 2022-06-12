@@ -63,7 +63,7 @@ export function RandomNaturalistIcon({additionalIcons}) {
       return <FontAwesomeIcon icon={icon.current} id={"leaf"} />;
 }
 
-export default function Loader() {
+export default function Loader({loadingText}) {
 
 
     return (
@@ -71,7 +71,7 @@ export default function Loader() {
             <div class="loader-glyph">
                 <RandomNaturalistIcon />
             </div>
-            <div class="loader-caption"></div>
+            <div class="loader-caption">{loadingText ?? "Loading"}</div>
         </div>
     );
 }

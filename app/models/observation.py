@@ -24,6 +24,7 @@ class Observation(db.Model, CrUpMixin):
         return {
             "id": self.id,
             "user_id": self.user_id,
+            "user": {key:val for key, val in self.owner.to_dict().items() if key != 'email'},
             "taxon_id": self.taxon_id,
             "img_url": self.img_url,
             "latitude": self.latitude,
@@ -32,4 +33,5 @@ class Observation(db.Model, CrUpMixin):
             "date": self.date.strftime("%Y-%m-%d"),
             "identifications": [ident.id for ident in self.identifications],
             "verified": self.verified,
+            "created_at": self.created_at.timestamp(),
         }
