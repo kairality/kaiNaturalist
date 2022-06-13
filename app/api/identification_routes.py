@@ -62,7 +62,37 @@ def post_ident():
         db.session.add(ident)
         db.session.commit()
         observation = recalculate_observation(observation_id);
-        return {'identification': ident.to_dict(), "observation": ident.observation.to_dict()}
+        return {'identification': ident.to_dict(), "observation": observation.to_dict()}
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@identification_routes.route("/<int:id>", methods=["PATCH"])
+@login_required
+def patch_ident(id):
+    """
+    Edit an identification
+    """
+    print("hello")
+    user_id = current_user.id
+    identification = Identification.query.get(id)
+    observation = identification.observation
+    observation_id = observation.id
+    permission_check = check_ownership(identification)
+    if not permission_check:
+        return {"errors": ["You can't modify that object"]}, 401
+    if identification == observation.linked_identification:
+        return {"errors": ["You can modify the linked identification for your observation through the observation edit UI"]}
+    form = IdentificationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['user_id'].data = user_id
+    form['observation_id'].data = observation.id
+    if form.validate_on_submit():
+        form.populate_obj(identification)
+        db.session.add(identification)
+        db.session.commit()
+        observation = recalculate_observation(observation_id)
+        print(observation, identification)
+        return {'identification': identification.to_dict(), "observation": observation.to_dict()}
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

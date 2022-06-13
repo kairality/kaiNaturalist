@@ -25,38 +25,36 @@ const loadIdentifications = (identifications) => {
   };
 };
 
-// export const editObservation =
-//   (observation, observationData) => async (dispatch) => {
-//     const f = new FormData();
-//     f.append("latitude", observationData.position.lat);
-//     f.append("longitude", observationData.position.lng);
-//     f.append("taxon_id", observationData.taxon?.id);
-//     f.append("description", observationData.description);
-//     f.append("date", observationData.date);
-//     const response = await fetch(`/api/observations/${observation.id}`, {
-//       method: "PATCH",
-//       body: f,
-//     });
-//     if (response.status >= 500) {
-//       return { errors: "Did you turn on the backend this time?" };
-//     }
-//     const editData = await response.json();
-//     if (response.ok && !response.errors) {
-//       dispatch(addObservation(editData));
-//       console.log("hello");
-//       return editData;
-//     } else {
-//       console.log("hit the errors line");
-//       // will have errors inside!
-//       return editData;
-//     }
-//   };
+export const editIdentification =
+  (identification, identificationData) => async (dispatch) => {
+    const f = new FormData();
+    f.append("taxon_id", identificationData.taxon?.id);
+    f.append("comment", identificationData.comment);
+    const response = await fetch(`/api/identifications/${identification.id}`, {
+      method: "PATCH",
+      body: f,
+    });
+    if (response.status >= 500) {
+      return { errors: "The server was unable to handle the request." };
+    }
+    const editData = await response.json();
+    if (response.ok && !editData.errors) {
+      console.log("---------------------------")
+      console.log(editData);
+      dispatch(addIdentification(editData.identification));
+      dispatch(addObservation(editData.observation))
+      return editData;
+    } else {
+      // will have errors inside!
+      return editData;
+    }
+  };
 
 export const createIdentification = (observation, identificationData) => async (dispatch) => {
   console.log("hello");
   const f = new FormData();
   f.append("observation_id", observation.id);
-  f.append("taxon_id", identificationData.taxon.id);
+  f.append("taxon_id", identificationData.taxon?.id);
   f.append("comment", identificationData.comment);
   const response = await fetch(`/api/identifications/`, {
     method: "POST",

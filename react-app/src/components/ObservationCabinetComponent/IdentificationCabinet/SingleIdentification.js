@@ -4,6 +4,7 @@ import TaxaRow from "../../TaxaRow/TaxaRow"
 import UserAvatar from "../../UserAvatarComponent/UserAvatar"
 
 import "./IdentificationCabinet.css"
+import IdentificationEdit from "./IdentificationEdit"
 import IdentificationTrashCanNotTrashCant from "./IdentificationTrashCanNotTrashCant"
 
 export default function SingleIdentification({identification, showControls}) {
@@ -40,6 +41,7 @@ export default function SingleIdentification({identification, showControls}) {
               </div>
             </div>
             {showControls && (!showControlsOverride) && <div className="single-identification-controls">
+                <IdentificationEdit {...{identification}} />
                 <IdentificationTrashCanNotTrashCant {...{identification}} />
             </div>}
           </div>
