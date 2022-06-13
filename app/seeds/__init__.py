@@ -1,4 +1,7 @@
 from flask.cli import AppGroup
+
+from .observations import undo_observations
+from .identifications import undo_identifications
 from .users import seed_users, undo_users
 from .taxa import seed_kingdoms, seed_phyla, seed_class, seed_order, seed_family, undo_taxa
 import time
@@ -31,6 +34,8 @@ def family():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_observations()
+    undo_identifications()
     # Add other undo functions here
 
 @seed_commands.command('detax')
