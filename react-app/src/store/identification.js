@@ -1,8 +1,8 @@
 import {addObservation} from "./observation";
 
-const ADD_IDENTIFICATION= "observations/addIdentification";
-const REMOVE_IDENTIFICATION = "observations/removeIdentification";
-const LOAD_IDENTIFICATIONS = "observations/loadIdentifications";
+const ADD_IDENTIFICATION= "identifications/addIdentification";
+const REMOVE_IDENTIFICATION = "identifications/removeIdentification";
+const LOAD_IDENTIFICATIONS = "identifications/loadIdentifications";
 
 export const addIdentification = (identification) => {
   return {

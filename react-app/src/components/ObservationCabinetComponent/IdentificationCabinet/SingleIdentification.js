@@ -7,6 +7,9 @@ import "./IdentificationCabinet.css"
 
 export default function SingleIdentification({identification}) {
     const taxa = useSelector((state) => state.taxonomy)
+    if (!identification) {
+        return null;
+    }
     const taxon = taxa[identification.taxon_id]
     return (
           <div className="single-identification">

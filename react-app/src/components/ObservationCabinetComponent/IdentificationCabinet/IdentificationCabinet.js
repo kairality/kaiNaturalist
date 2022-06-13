@@ -9,6 +9,9 @@ export default function IdentificationCabinet({observation}) {
         return <Loader />
     }
     const identification_ids = observation.identifications;
+    if (!identification_ids || identification_ids.length === 0) {
+        return null;
+    }
     return <div>
         {identification_ids.map(id => <SingleIdentification identification={identifications[id]} />)}
     </div>

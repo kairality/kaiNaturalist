@@ -42,8 +42,9 @@ export const editObservation = (observation, observationData) => async (dispatch
    }
    const editData = await response.json();
    if (response.ok && !response.errors) {
+    console.log(editData);
      dispatch(addObservation(editData.observation));
-      dispatch(addIdentification(editData.identification));
+     dispatch(addIdentification(editData.identification));
      return editData;
    } else {
     console.log('hit the errors line')
