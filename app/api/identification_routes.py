@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 
 from app.models import observation
-from ..models import db, Observation, Identification
+from ..models import db, Observation, Identification, Taxon
 from ..forms.identification_form import IdentificationForm
 from ..utils.s3utils import get_unique_filename, upload_file_to_s3, allowed_file
 from .route_utils import validation_errors_to_error_messages, check_ownership
@@ -10,20 +10,21 @@ from .route_utils import validation_errors_to_error_messages, check_ownership
 identification_routes = Blueprint('identifications', __name__)
 
 def recalculate_observation(observation_id):
-    observation = Observation.query.get(observation_id);
-    community_taxon = observation.community_taxon;
-    if community_taxon is not None:
+    observation = Observation.query.get(observation_id)
+    community_taxon_id = observation.community_taxon_id
+    if community_taxon_id is not None:
+        community_taxon = Taxon.query.get(community_taxon_id)
         observation.taxon = community_taxon;
-        observation.verified = True;
+        observation.verified = True
     else:
         ## consensus is off reset
-        linked_ident = observation.linked_identification;
-        linked_taxon = linked_ident.taxon;
-        observation.taxon = linked_taxon;
-        observation.verified = False;
+        linked_ident = observation.linked_identification
+        linked_taxon = linked_ident.taxon
+        observation.taxon = linked_taxon
+        observation.verified = False
     db.session.add(observation)
     db.session.commit()
-    return Observation.query.get(id);
+    return Observation.query.get(id)
 
 
 @identification_routes.route('/')
