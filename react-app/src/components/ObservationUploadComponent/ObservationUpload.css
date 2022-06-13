@@ -6,10 +6,6 @@
     align-items: center;
 }
 
-.upload-form-container {
-    
-}
-
 .upload-form-container .leaflet-container {
     min-width: 500px;
     height: 500px;
@@ -23,8 +19,57 @@
     margin: auto;
 }
 
+.observation-upload-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 75%;
+    margin: auto;
+    max-width: 500px;
+    gap: 1em;
+}
+
+.upload-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    width: 100%;
+    gap: 0.5em;
+}
+
+.upload-form-container label {
+    font-weight: bold;
+}
+
+.upload-form-container input {
+    border-radius: 8px;
+    padding: 8px;
+    width: 300px;
+    font-family: "Quicksand", sans-serif;
+}
+
+.upload-form-container textarea {
+    border-radius: 8px;
+    padding: 8px;
+    width: 400px;
+    min-height: 100px;
+    resize: vertical;
+    font-family: "Quicksand", sans-serif;
+}
+
+
+.observation-upload-taxon {
+    max-width: 500px;
+}
+
 .observtion-upload-date {
     width: 500px;
+}
+
+.observtion-upload-map {
+    height: 100%;
 }
 
 #calendar-upload {

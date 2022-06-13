@@ -93,20 +93,28 @@ export default function ObservationUpload() {
           <div className={"observation-upload-photo"}>
             <ImageUploader image={image} setImage={setImage} />
           </div>
-          <div className={"observation-upload-taxon"}>
+          <div className={"observation-upload-taxon upload-group"}>
+            <label>Identification</label>
             <TaxaTypeahead
               selectedTaxon={selectedTaxon}
               setSelectedTaxon={setSelectedTaxon}
             />
+            <p>
+              Identification is required. But if you don't know what it is exactly, please
+              at least select "Animal", "Plant" or "Fungi" to get the community
+              started.
+            </p>
           </div>
-          <div className={"observation-upload-date"}>
+          <div className={"observation-upload-date upload-group"}>
+            <label>Observation Date</label>
             <UploadCalendarComponent
               date={date}
               setDate={setDate}
               maxDate={new Date()}
             />
           </div>
-          <div className={"observation-descrtiption"}>
+          <div className={"observation-descrtiption upload-group"}>
+            <label>Description (optional)</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
