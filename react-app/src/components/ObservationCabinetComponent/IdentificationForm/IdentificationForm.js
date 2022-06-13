@@ -9,7 +9,7 @@ import TaxaTypeahead from "../../TaxaTypeaheadComponent/TaxaTypeahead";
 export default function IdentificationForm({observation, agreeing_taxon, identification}) {
     const taxa = useSelector((state) => state.taxonomy);
     const identifications = useSelector((state) => state.identifications);
-    
+
     const user = useSelector((state) => state.session.user);
     const [selectedTaxon, setSelectedTaxon] = useState(identification ? taxa?.[identification.taxon_id] : null);
     const [comment, setComment] = useState(identification ? identification.comment : '');
@@ -17,6 +17,11 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if (selectedTaxon) {
+            setErrors([])
+        }
+    },[selectedTaxon]);
 
     const data = {
         taxon: selectedTaxon,

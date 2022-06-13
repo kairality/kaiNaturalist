@@ -60,6 +60,7 @@ function IdentificationEditModal({ identification, setShowModal }) {
     };
     if (selectedTaxon) {
       setIdentificationPreview((prevState) => rebuild(prevState));
+      setErrors([])
     }
   }, [selectedTaxon, comment]);
 
