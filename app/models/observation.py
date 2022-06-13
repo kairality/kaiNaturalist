@@ -32,7 +32,7 @@ class Observation(db.Model, CrUpMixin):
         pass
 
     @property
-    def community_taxon(self):
+    def community_taxon_id(self):
         ids = [ident.taxon_id for ident in self.identifications]
         if not ids:
             return None;
@@ -45,17 +45,17 @@ class Observation(db.Model, CrUpMixin):
         else:
             winning_taxa = [id for id,count in counts.items() if count == winning_count]
             if len(winning_taxa) == 1:
-                return Taxon.query.get(winning_taxa[0]).to_dict()
+                return winning_taxa[0]
             else:
                 return None
 
-    @property
-    def community_taxon_dict(self):
-        ctaxon = self.community_taxon
-        if ctaxon:
-            return ctaxon.to_dict()
-        else:
-            return None
+    # @property
+    # def community_taxon_dict(self):
+    #     ctaxon = self.community_taxon
+    #     if ctaxon:
+    #         return ctaxon.to_dict()
+    #     else:
+    #         return None
 
 
     def to_dict(self):
@@ -72,6 +72,6 @@ class Observation(db.Model, CrUpMixin):
             "identifications": [ident.id for ident in self.identifications],
             "verified": self.verified,
             "linked_identification_id": self.linked_identification.id,
-            "community_taxon": self.community_taxon_dict,
+            "community_taxon_id": self.community_taxon_id,
             "created_at": self.created_at.timestamp(),
         }
