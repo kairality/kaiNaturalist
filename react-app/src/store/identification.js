@@ -57,7 +57,7 @@ export const createIdentification = (observation, identificationData) => async (
   const f = new FormData();
   f.append("observation_id", observation.id);
   f.append("taxon_id", identificationData.taxon.id);
-  f.append("description", identificationData.description);
+  f.append("comment", identificationData.comment);
   const response = await fetch(`/api/identifications/`, {
     method: "POST",
     body: f,

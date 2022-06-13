@@ -8,6 +8,8 @@ import TaxaTypeahead from "../../TaxaTypeaheadComponent/TaxaTypeahead";
 
 export default function IdentificationForm({observation, agreeing_taxon, identification}) {
     const taxa = useSelector((state) => state.taxonomy);
+    const identifications = useSelector((state) => state.identifications);
+    const user = useSelector((state) => state.session.user);
     const [selectedTaxon, setSelectedTaxon] = useState(identification ? taxa?.[identification.taxon_id] : null);
     const [comment, setComment] = useState(identification ? identification.comment : '');
     const [errors, setErrors] = useState([]);
@@ -19,6 +21,7 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
         taxon: selectedTaxon,
         comment,
     };
+    console.log(data);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,8 +47,15 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
       return;
     }
   };
+  if (!observation || !user) {
+    return null;
+  }
 
-   console.log(errors);
+  const existing_ids = observation.identifications.map(id => identifications[id]);
+  const my_id = existing_ids.find(idt => idt.user_id === user.id)
+  if (my_id) {
+    return null;
+  }
 
     return (
     <form className="identification-add-form" onSubmit={handleSubmit}>
