@@ -73,7 +73,8 @@ def del_identification(id):
     Deletes an observation from the database
     """
     identification = Identification.query.get(id)
-    observation_id = Identification.observation.id;
+    observation = identification.observation
+    observation_id = observation.id
     permission_check = check_ownership(identification)
     if not permission_check:
         return {"errors": ["You can't modify that object"]}, 401

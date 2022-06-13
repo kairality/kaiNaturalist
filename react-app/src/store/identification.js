@@ -83,30 +83,36 @@ export const createIdentification = (observation, identificationData) => async (
   }
 };
 
-// export const deleteObservation = (observation) => async (dispatch) => {
-//   const { id } = observation;
-//   const response = await fetch(`/api/observations/${id}`, {
-//     method: "DELETE",
-//   });
-//   if (response.status >= 500) {
-//     return { errors: ["The server was unable to process the delete request."] };
-//   }
-//   if (response.status >= 400) {
-//     return {
-//       errors: [
-//         "The server was unable to process the delete request because the object doesn't exist or you do not own it.",
-//       ],
-//     };
-//   }
-//   if (response.ok) {
-//     dispatch(removeObservation(observation));
-//     return { message: "Successfully deleted!" };
-//   } else {
-//     return {
-//       errors: ["Something terrible has happened. Try again?"],
-//     };
-//   }
-// };
+export const deleteIdentification = (identification) => async (dispatch) => {
+  const { id } = identification;
+  const response = await fetch(`/api/identifications/${id}`, {
+    method: "DELETE",
+  });
+  if (response.status >= 500) {
+    return { errors: ["The server was unable to process the delete request."] };
+  }
+  if (response.status >= 400) {
+    return {
+      errors: [
+        "The server was unable to process the delete request because the object doesn't exist or you do not own it.",
+      ],
+    };
+  }
+  const results = await response.json();
+  if (results.errors) {
+    return results;
+  }
+
+  if (response.ok) {
+    dispatch(removeIdentification(identification));
+    dispatch(addObservation(results.observation));
+    return { message: "Successfully deleted!" };
+  } else {
+    return {
+      errors: ["Something terrible has happened. Try again?"],
+    };
+  }
+};
 
 export const genIdentifications = () => async (dispatch) => {
   // doing it this way in case we want more types of responses here later ...

@@ -4,12 +4,25 @@ import TaxaRow from "../../TaxaRow/TaxaRow"
 import UserAvatar from "../../UserAvatarComponent/UserAvatar"
 
 import "./IdentificationCabinet.css"
+import IdentificationTrashCanNotTrashCant from "./IdentificationTrashCanNotTrashCant"
 
-export default function SingleIdentification({identification}) {
+export default function SingleIdentification({identification, showControls}) {
     const taxa = useSelector((state) => state.taxonomy)
+    const observations = useSelector((state) => state.observations)
     if (!identification) {
         return null;
     }
+    let showControlsOverride = false;
+
+    const observation = observations[identification.observation_id];
+    const linked_identification_id = observation.linked_identification_id;
+    if (linked_identification_id === identification.id) {
+        console.log(linked_identification_id, identification.id)
+        showControlsOverride = true;
+    }
+    console.log(showControls);
+    console.log(showControlsOverride);
+
     const taxon = taxa[identification.taxon_id]
     return (
           <div className="single-identification">
@@ -26,6 +39,9 @@ export default function SingleIdentification({identification}) {
                 {identification.comment}
               </div>
             </div>
+            {showControlsOverride && showControls && <div className="single-identification-controls">
+                <IdentificationTrashCanNotTrashCant {...{identification}} />
+            </div>}
           </div>
     )
 

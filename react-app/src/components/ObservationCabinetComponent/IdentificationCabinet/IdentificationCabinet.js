@@ -13,6 +13,6 @@ export default function IdentificationCabinet({observation}) {
         return null;
     }
     return <div>
-        {identification_ids.map(id => <SingleIdentification identification={identifications[id]} />)}
+        {identification_ids.map(id => <SingleIdentification identification={identifications[id]} showControls/>)}
     </div>
 }
