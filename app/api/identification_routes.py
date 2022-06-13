@@ -24,7 +24,7 @@ def recalculate_observation(observation_id):
         observation.verified = False
     db.session.add(observation)
     db.session.commit()
-    return Observation.query.get(id)
+    return observation;
 
 
 @identification_routes.route('/')
