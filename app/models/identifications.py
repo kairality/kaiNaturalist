@@ -10,8 +10,8 @@ class Identification(db.Model, CrUpMixin):
     comment = db.Column(db.Text)
 
     author = db.relationship("User", back_populates="identifications", lazy="joined")
-    taxon = db.relationship("Taxon", back_populates="identifications", lazy="joined")
-    observation = db.relationship("Observation", back_populates="identifications", lazy="joined")
+    taxon = db.relationship("Taxon", back_populates="identifications")
+    observation = db.relationship("Observation", back_populates="identifications")
 
     def to_dict(self):
         return {

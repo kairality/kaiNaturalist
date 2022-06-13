@@ -18,8 +18,8 @@ class Observation(db.Model, CrUpMixin):
     date = db.Column(db.Date, nullable=False, default=datetime.date.today())
     verified = db.Column(db.Boolean, nullable=False, default=False)
 
-    owner = db.relationship("User", back_populates="observations", lazy="selectin")
-    taxon = db.relationship("Taxon", back_populates="observations", lazy="selectin")
+    owner = db.relationship("User", back_populates="observations", lazy="joined")
+    taxon = db.relationship("Taxon", back_populates="observations")
 
     identifications = db.relationship("Identification", back_populates="observation", lazy="selectin", cascade="all, delete-orphan")
 
