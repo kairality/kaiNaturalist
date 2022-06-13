@@ -39,7 +39,7 @@ export default function SingleIdentification({identification, showControls}) {
                 {identification.comment}
               </div>
             </div>
-            {showControlsOverride && showControls && <div className="single-identification-controls">
+            {showControls && (!showControlsOverride) && <div className="single-identification-controls">
                 <IdentificationTrashCanNotTrashCant {...{identification}} />
             </div>}
           </div>

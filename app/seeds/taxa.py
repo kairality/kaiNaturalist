@@ -172,7 +172,6 @@ def seed_order():
                 dbOrder.parent_taxon_id = tClass.id
                 dbOrder.rank = TaxonRank.ORDER
                 dbOrder.parent_rank = TaxonRank.CLASS
-
                 dbTaxon.taxon_order = dbOrder
                 try:
                     default_photo = order.get("default_photo")
