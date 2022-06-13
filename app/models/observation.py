@@ -53,7 +53,7 @@ class Observation(db.Model, CrUpMixin):
     def community_taxon_dict(self):
         ctaxon = self.community_taxon
         if ctaxon:
-            return ctaxon.to_dict
+            return ctaxon.to_dict()
         else:
             return None
 
