@@ -9,6 +9,22 @@ from .route_utils import validation_errors_to_error_messages, check_ownership
 
 identification_routes = Blueprint('identifications', __name__)
 
+def recalculate_observation(observation_id):
+    observation = Observation.query.get(observation_id);
+    community_taxon = observation.community_taxon;
+    if community_taxon is not None:
+        observation.taxon = community_taxon;
+        observation.verified = True;
+    else:
+        ## consensus is off reset
+        linked_ident = observation.linked_identification;
+        linked_taxon = linked_ident.taxon;
+        observation.taxon = linked_taxon;
+        observation.verified = False;
+    db.session.add(observation)
+    db.session.commit()
+    return Observation.query.get(id);
+
 
 @identification_routes.route('/')
 def get_idents():
@@ -41,8 +57,28 @@ def post_ident():
     if form.validate_on_submit():
         ident = Identification()
         form.populate_obj(ident)
+        observation_id = ident.observation_id;
         db.session.add(ident)
         db.session.commit()
-        return {'identification': {ident.to_dict()}, "observation": ident.observation.to_dict()}
+        observation = recalculate_observation(observation_id);
+        return {'identification': ident.to_dict(), "observation": ident.observation.to_dict()}
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@identification_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def del_identification(id):
+    """
+    Deletes an observation from the database
+    """
+    identification = Identification.query.get(id)
+    observation_id = Identification.observation.id;
+    permission_check = check_ownership(identification)
+    if not permission_check:
+        return {"errors": ["You can't modify that object"]}, 401
+    if identification == observation.linked_identification:
+        return {"errors": ["You can't delete the identification linked to your observation. You can update it or delete the observation instead"]}
+    db.session.delete(identification)
+    db.session.commit()
+    observation = recalculate_observation(observation_id);
+    return {'observation': observation.to_dict(), 'message': 'Identification deleted and observation recalculated'}

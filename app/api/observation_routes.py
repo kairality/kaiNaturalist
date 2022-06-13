@@ -72,13 +72,8 @@ def patch_observation(id):
         form['user_id'].data = user_id;
         if form.validate_on_submit():
             form.populate_obj(observation)
-            identifications = observation.identifications
-            print(identifications)
-            identification = next(filter(lambda ident: ident.user_id == user_id, identifications))
-            print(identification)
-            print(identification.to_dict())
+            identification = observation.linked_identification
             identification.taxon_id = observation.taxon_id
-            print(identification.to_dict())
             db.session.add(identification)
             db.session.commit()
             return {"observation": observation.to_dict(), "identification": identification.to_dict()}

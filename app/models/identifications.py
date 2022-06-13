@@ -11,7 +11,7 @@ class Identification(db.Model, CrUpMixin):
 
     author = db.relationship("User", back_populates="identifications", lazy="joined")
     taxon = db.relationship("Taxon", back_populates="identifications", lazy="joined")
-    observation = db.relationship("Observation", back_populates="identifications", lazy="joined")
+    observation = db.relationship("Observation", back_populates="identifications", lazy="selectin")
 
     def to_dict(self):
         return {
