@@ -30,6 +30,8 @@
   background-color:var(--barbg);
   border: none;
   border-radius: 16px;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 #modal-content .btn .btn-request {
