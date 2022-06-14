@@ -6,13 +6,20 @@
 
 .splash {
     height: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background: black;
 }
 
 .auth-form {
-    position: absolute;
     top: 10%;
     right: 25%;
-    background-color: var(--brighteraccent)
+    flex-grow: 0;
+    background-color: var(--brighteraccent);
+    margin-top: 3em;
+    margin-right: 25%;
+    margin-bottom: 3em;
 }
 
 .auth-form form {
@@ -51,4 +58,71 @@
 .splash-border {
     height: 100px;
     background-color: var(--brightaccent);
+}
+
+.how-it-works {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+
+.how-it-works-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+.how-it-works h3 {
+    height: 2em;
+}
+
+.how-it-works-panel {
+    text-align: center;
+    width: 250px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hiw-icon {
+    font-size: 7em;
+    background-color: var(--barborder);
+    border-radius: 50%;
+    overflow: visible;
+    box-shadow: 2px 2px 4px var(--darktab);
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contribute {
+    display: grid;
+    height: 300px;
+    width: 100%;
+    grid-template-areas: "info photo";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.contribute-info {
+    height: 300px;
+    grid-area: info;
+    background-color: var(--font-major);
+    color: white
+}
+
+.contribute-photo {
+    grid-area: photo;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50%;
 }
