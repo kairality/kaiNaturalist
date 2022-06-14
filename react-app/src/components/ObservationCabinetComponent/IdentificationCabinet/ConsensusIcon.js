@@ -25,7 +25,7 @@ export default function ConsensusIcon({ consensusType, }) {
          classAddendum = " overlap";
         break;
       case ConsensusType.REFINEMENT:
-        icon = <FontAwesomeIcon icon={faPeopleCarryBox} />
+        icon = <FontAwesomeIcon icon={faPersonDigging} />
         classAddendum = " refinement"
         break;
       case ConsensusType.MAVERICK:

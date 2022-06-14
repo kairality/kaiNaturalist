@@ -5,7 +5,11 @@
     color: var(--error);
     padding: 1em;
     width: fit-content;
-    word-break: break-all;
+    word-break: normal;
+}
+
+.error-card h3 {
+    text-align: center;
 }
 
 .error-field {

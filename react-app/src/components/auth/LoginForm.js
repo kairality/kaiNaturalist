@@ -47,9 +47,9 @@ export default function LoginForm() {
             <h3 id="h3-login">Connect with nature</h3>
             <h4 id="h4-login">But first, you must connect to your account.</h4>
           </div>
-          <div className="form-errors center">
+          {errors.length > 0 && <div className="form-errors">
             <ErrorCard {...{ errors }} />
-          </div>
+          </div>}
           <div className="auth-fields">
             <label htmlFor="email">Email</label>
             <input

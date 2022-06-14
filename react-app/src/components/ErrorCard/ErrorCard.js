@@ -3,6 +3,7 @@ import errorMessageTranslator from "./errorFormatter";
 
 import "./ErrorCard.css"
 import errorFormatter from "./errorFormatter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ErrorCard({errors}) {
     if (!errors || errors.length === 0) {
@@ -16,9 +17,9 @@ export default function ErrorCard({errors}) {
         content = <ul className="multiple-errors">{errorsItems}</ul>
     }
     return (
-        <div className="error-card">
-            <h3>There were errors with your submission</h3>
-            {content}
-        </div>
-    )
+      <div className="error-card">
+        <h3>Something Went Amiss 😲</h3>
+        {content}
+      </div>
+    );
 }
