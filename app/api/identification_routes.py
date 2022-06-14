@@ -12,15 +12,16 @@ identification_routes = Blueprint('identifications', __name__)
 def recalculate_observation(observation_id):
     observation = Observation.query.get(observation_id)
     community_taxon_id = observation.community_taxon_id
+    buffer_taxon_id = observation.taxon_id;
     if community_taxon_id is not None:
         community_taxon = Taxon.query.get(community_taxon_id)
         observation.taxon = community_taxon;
         observation.verified = True
     else:
         ## consensus is off reset
-        linked_ident = observation.linked_identification
-        linked_taxon = linked_ident.taxon
-        observation.taxon = linked_taxon
+        # linked_ident = observation.linked_identification
+        # linked_taxon = linked_ident.taxon
+        observation.taxon_id = buffer_taxon_id;
         observation.verified = False
     db.session.add(observation)
     db.session.commit()
