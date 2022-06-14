@@ -39,6 +39,11 @@
     font-size: 1.5em;
 }
 
+.auth-form .error-card {
+    background-color: var(--error);
+    color: white;
+}
+
 
 .form-errors {
     position: absolute;
@@ -191,4 +196,15 @@
 
 .demolition {
     grid-area: demo;
+}
+
+@media screen and (max-width: 900px) {
+    .form-errors {
+        position: static;
+        top: unset;
+        left: unset;
+        transform: unset;
+        margin-bottom: 1em;
+    }
+
 }
