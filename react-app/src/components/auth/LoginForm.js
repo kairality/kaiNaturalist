@@ -74,7 +74,7 @@ export default function LoginForm() {
                 <button className="go-button" type="submit">
                   Login
                 </button>
-                <DemoLogin />
+                <DemoLogin {...{setErrors}} />
               </div>
               <p>Don't have an account?</p>
               <button id="to-sign-up" className="go-button" onClick={() => {}}>

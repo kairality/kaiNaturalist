@@ -15,7 +15,7 @@ export default function ErrorCard({errors}) {
     } else {
         const errorsItems = errors.map(error => <li key={error}>{errorFormatter(error)}</li>)
         content = <ul className="multiple-errors">{errorsItems}</ul>
-    }
+    }   
     return (
       <div className="error-card">
         <h3>Something Went Amiss 😲</h3>
