@@ -1,0 +1,51 @@
+.consensus-icon {
+    position: relative;
+}
+
+.consensus-icon:hover::after {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    padding: 1em;
+    background-color: var(--font-major);
+    color: white;
+    z-index: 2;
+}
+
+.consensus-icon.maverick {
+    color: var(--error);
+}
+
+.consensus-icon.consensus {
+    color: var(--brightaccent);
+}
+
+.consensus-icon.overlap {
+    color: var(--buttonbg);
+}
+
+.consensus-icon.refinement {
+    color: var(--brightestaccent);
+}
+
+.consensus-icon.maverick:hover::after {
+    content: "Maverick ID: not an ancestor or descendant of the community ID";
+}
+
+.consensus-icon.consensus:hover::after {
+    content: "Consensus ID: agrees with the current community ID";
+}
+
+.consensus-icon.consensus:hover::after {
+    content: "Consensus ID: agrees with the current community ID";
+}
+
+.consensus-icon.overlap:hover::after {
+    content: "Overlap ID: this ID is a less specific ancestor of the community taxon";
+}
+
+.consensus-icon.refinement:hover::after {
+    content: "Refining ID: this ID is a descendant of the community taxon";
+}

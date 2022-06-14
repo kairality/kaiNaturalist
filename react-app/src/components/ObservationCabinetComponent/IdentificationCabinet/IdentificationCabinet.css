@@ -46,3 +46,15 @@ content: "";
   left: -16px;
   top: 50%;
 }
+
+.identification-comment-box .consensus-icon {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}
+
+.single-identification-controls {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}

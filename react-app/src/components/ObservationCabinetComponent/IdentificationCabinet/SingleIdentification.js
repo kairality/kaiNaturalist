@@ -6,11 +6,13 @@ import UserAvatar from "../../UserAvatarComponent/UserAvatar"
 import "./IdentificationCabinet.css"
 import IdentificationEdit from "./IdentificationEdit"
 import IdentificationTrashCanNotTrashCant from "./IdentificationTrashCanNotTrashCant"
+import ConsensusIcon from "./ConsensusIcon"
+import { ConsensusType, getConsensusType } from "../../../utils/taxonomy_utils"
 
 export default function SingleIdentification({identification, showControls}) {
     const taxa = useSelector((state) => state.taxonomy)
     const observations = useSelector((state) => state.observations)
-    if (!identification) {
+    if (!identification || !Object.keys(taxa).length) {
         return null;
     }
     let showControlsOverride = false;
@@ -21,30 +23,51 @@ export default function SingleIdentification({identification, showControls}) {
         console.log(linked_identification_id, identification.id)
         showControlsOverride = true;
     }
-    console.log(showControls);
-    console.log(showControlsOverride);
+
+    const consensusType = getConsensusType(taxa, observation, identification);
+    console.log(consensusType);
+    let consensusClassAddendum;
+    switch (consensusType) {
+        case ConsensusType.CONSENSUS:
+            consensusClassAddendum = " consensus";
+            break;
+        case ConsensusType.OVERLAPPING:
+            consensusClassAddendum =  " overlapping";
+            break;
+        case ConsensusType.REFINEMENT:
+            consensusClassAddendum = " refinement";
+            break;
+        case ConsensusType.MAVERICK:
+            consensusClassAddendum = " maverick";
+            break;
+        default:
+            consensusClassAddendum = "";
+    }
 
     const taxon = taxa[identification.taxon_id]
     return (
-          <div className="single-identification">
-            <div className="avatar-wrapper">
-              <UserAvatar user={identification.user} avatarOnly />
-              <span className="comment-username">
-                {identification.user.username}
-              </span>
-            </div>
-            <div className="identification-info-box-wrapper">
-              <div className="identification-comment-box">
-                {identification.user.username} thinks this is
-                <TaxaRow {...{taxon}} />
-                {identification.comment}
+      <div className={`single-identification${consensusClassAddendum}`}>
+        <div className="avatar-wrapper">
+          <UserAvatar user={identification.user} avatarOnly />
+          <span className="comment-username">
+            {identification.user.username}
+          </span>
+        </div>
+        <div className="identification-info-box-wrapper">
+          <div className="identification-comment-box">
+            {identification.user.username} thinks this is
+            <TaxaRow {...{ taxon }} />
+            {identification.comment}
+            <ConsensusIcon consensusType={consensusType} />
+            {showControls && !showControlsOverride && (
+              <div className="single-identification-controls">
+                <IdentificationEdit {...{ identification }} />
+                <IdentificationTrashCanNotTrashCant {...{ identification }} />
               </div>
-            </div>
-            {showControls && (!showControlsOverride) && <div className="single-identification-controls">
-                <IdentificationEdit {...{identification}} />
-                <IdentificationTrashCanNotTrashCant {...{identification}} />
-            </div>}
+            )}
           </div>
-    )
+        </div>
+      </div>
+    );
 
 }
