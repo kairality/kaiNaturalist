@@ -11,17 +11,12 @@
     justify-content: flex-end;
     align-items: flex-start;
     background: black;
+    position: relative;
 }
 
 .auth-form {
-    top: 10%;
-    right: 25%;
     flex-grow: 0;
     background-color: var(--brighteraccent);
-
-}
-
-form.auth-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,18 +24,30 @@ form.auth-form {
     justify-content: space-between;
     border-radius: 5px;
     width: fit-content;
-    padding-left: 15px;
-    padding-right: 15px;
     position: relative;
+    margin-top: 4em;
+    margin-right: 25%;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
 }
+
+#h2-login, #h3-login {
+    text-align: center;
+}
+
+#h3-login {
+    font-size: 1.5em;
+}
+
 
 .form-errors {
     position: absolute;
     top: 0px;
     left: 0px;
-    transform: translate(-125%, 50%)
+    transform: translate(-125%, 50%);
 }
 .auth-fields {
+    width: 100%;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -48,12 +55,27 @@ form.auth-form {
     gap: 1em;
 }
 
+.input-wrapper {
+    position: relative;
+}
+
+#email-icon, #pw-icon {
+    position: absolute;
+    left: 4px;
+    top: 0px;
+    color: var(--brightaccent);
+    transform: translateY(50%);
+}
+
 .auth-form input {
-    margin-bottom: 18px;
-    margin: 0 auto 18px;;
-    border: 0.2px var(--fontmajor) solid;
+    margin-bottom: 1em;
+    margin: 0 auto 1em;
+    border: 1px solid var(--barborder);
     border-radius: 2px;
-    box-shadow: 0px 0px 2px var(--fontmajor);
+    box-shadow: 0px 0px 2px var(--barborder);
+    height: 2em;
+    border-radius: 8px;
+    padding-left: 2em;
 }
 .auth-form input:focus{
     outline: none;
@@ -130,4 +152,43 @@ form.auth-form {
     width: 100%;
     object-fit: cover;
     object-position: 50%;
+}
+
+.login-buttons {
+    display: grid;
+    height: 66px;
+    width: 100%;
+    grid-template-areas: "login demo";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+#form-login-btn, .demolition {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    border-radius: 0px;
+    font-size: 1.5em;
+    display: flex;
+    gap: 4px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border-top: 1px solid var(--darktab);
+    border-bottom: 1px solid var(--darktab);
+}
+
+#form-login-btn:hover, .demolition:hover {
+    color: var(--barbg);
+    background-color: var(--brighttab);
+}
+
+#form-login-btn {
+    grid-area: login;
+    border-right: 1px solid var(--darktab)
+}
+
+.demolition {
+    grid-area: demo;
 }

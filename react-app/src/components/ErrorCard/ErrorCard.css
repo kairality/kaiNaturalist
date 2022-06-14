@@ -16,3 +16,9 @@
     font-weight: bold;
     font-style: italic;
 }
+
+.multiple-errors {
+    list-style: none;
+    margin-block-start: 0px;
+    padding-inline-start: 0px;
+}

@@ -13,7 +13,7 @@
   --brightestaccent: #B14E9D;
 
   --darktab: #565656;
-  --brightab: #86a91c;
+  --brighttab: #86a91c;
 
   --needsid: #ffee91;
   --needsidfont: #85743D;
@@ -78,7 +78,18 @@ html {
   background-color: var(--brightaccent);
   color: #ededed;
   border: none;
+  padding: 6px 1em;
+  width: fit-content;
+  border-radius: 8px;
+  font-size: 1em;
 }
+
+.go-btn:hover {
+    color: var(--barbg);
+    background-color: var(--brighttab);
+}
+
+
 
 .protect-overflow {
   text-overflow: ellipsis;

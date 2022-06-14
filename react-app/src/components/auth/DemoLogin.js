@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/session";
+import { faCircleArrowRight } from "@fortawesome/pro-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function DemoLogin({ setErrors }) {
   const dispatch = useDispatch();
@@ -18,6 +20,7 @@ export default function DemoLogin({ setErrors }) {
       onClick={demoSubmit}
     >
       Demo Login
+      <FontAwesomeIcon icon={faCircleArrowRight}/>
     </button>
   );
 }
