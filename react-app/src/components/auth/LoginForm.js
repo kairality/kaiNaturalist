@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import ErrorCard from "../ErrorCard/ErrorCard";
 import DemoLogin from "./DemoLogin";
@@ -16,7 +16,9 @@ import {
 import {
   faNarwhal,
   faUserBountyHunter,
-  faCommentsQuestionCheck
+  faCommentsQuestionCheck,
+  faPhotoFilm,
+  faNotebook
 } from "@fortawesome/pro-duotone-svg-icons";
 
 import {
@@ -24,6 +26,7 @@ import {
 } from "@fortawesome/pro-regular-svg-icons";
 
 import toucan from "../../images/toucan.jpg";
+import birdwing from "../../images/birdwing.jpg";
 
 import "./LoginForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +41,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -105,7 +109,7 @@ export default function LoginForm() {
               <DemoLogin {...{ setErrors }} />
             </div>
             <p>Don't have an account?</p>
-            <button id="to-sign-up" className="go-button" onClick={() => {}}>
+            <button id="to-sign-up" type="button" className="go-button" onClick={() => history.push('/sign-up')}>
               Sign up!
             </button>
           </div>
@@ -174,7 +178,73 @@ export default function LoginForm() {
             rarest butterfly to the most common backyard weed.
           </p>
         </div>
-        <img className="contribute-photo" src={toucan} />
+        <img className="contribute-photo" src={birdwing} />
+      </div>
+      <div className="details">
+        <h2>Nature At Your Fingertips</h2>
+        <div className="details-wrapper">
+          <div className="panel details-panel-a">
+            <FontAwesomeIcon icon={faNotebook} />
+            <div className="panel-wrapper">
+              <h3>Keep Track</h3>
+              <p>
+                Record your encounters with other organisms all in the{" "}
+                <strike>someone else's computer</strike> cloud!
+              </p>
+            </div>
+          </div>
+          <div className="panel details-panel-b">
+            <FontAwesomeIcon icon={faNotebook} />
+            <div className="panel-wrapper">
+              <h3>Keep Track</h3>
+              <p>
+                Record your encounters with other organisms all in the{" "}
+                <strike>someone else's computer</strike> cloud!
+              </p>
+            </div>
+          </div>
+
+          <div className="panel details-panel-c">
+            <FontAwesomeIcon icon={faNotebook} />
+            <div className="panel-wrapper">
+              <h3>Keep Track</h3>
+              <p>
+                Record your encounters with other organisms all in the{" "}
+                <strike>someone else's computer</strike> cloud!
+              </p>
+            </div>
+          </div>
+          <div className="panel details-panel-d">
+            <FontAwesomeIcon icon={faNotebook} />
+            <div className="panel-wrapper">
+              <h3>Keep Track</h3>
+              <p>
+                Record your encounters with other organisms all in the{" "}
+                <strike>someone else's computer</strike> cloud!
+              </p>
+            </div>
+          </div>
+          <div className="panel details-panel-e">
+            <FontAwesomeIcon icon={faNotebook} />
+            <div className="panel-wrapper">
+              <h3>Keep Track</h3>
+              <p>
+                Record your encounters with other organisms all in the{" "}
+                <strike>someone else's computer</strike> cloud!
+              </p>
+            </div>
+          </div>
+          <div className="panel details-panel-f">
+            <FontAwesomeIcon icon={faNotebook} />
+            <div className="panel-wrapper">
+              <h3>Keep Track</h3>
+              <p>
+                Record your encounters with other organisms all in the{" "}
+                <strike>someone else's computer</strike> cloud!
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

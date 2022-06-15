@@ -231,7 +231,7 @@
 
 .contribute {
     display: grid;
-    height: 300px;
+    height: 400px;
     width: 100%;
     grid-template-areas: "info photo";
     grid-template-columns: 1fr 1fr;
@@ -239,7 +239,7 @@
 }
 
 .contribute-info {
-    height: 300px;
+    height: 400px;
     grid-area: info;
     background-color: var(--font-major);
     color: white
@@ -247,10 +247,11 @@
 
 .contribute-photo {
     grid-area: photo;
-    height: 300px;
-    width: 100%;
+    max-height: 400px;
+    min-height: 400px;
+    min-width: 100%;
     object-fit: cover;
-    object-position: 50%;
+    object-position: center center;
 }
 
 .login-buttons {
@@ -301,4 +302,84 @@
         margin-bottom: 1em;
     }
 
+}
+
+.details {
+    margin-top: 0px;
+    height: 516px;
+    background-color: var(--zhoug);
+    padding-bottom: 1em;
+}
+
+.details h2 {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 1em;
+    font-size: 2em;
+    height: 100px;
+}
+
+.details-wrapper {
+    display: grid;
+    grid-template-areas: "a b"
+                         "c d"
+                         "e f";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 133px 133px 134px;
+}
+
+.panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    height: 100%;
+    width: 100%;
+}
+
+.panel svg {
+    font-size: 4em;
+}
+
+.panel h3 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.panel-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.details-panel-a {
+    grid-area: a;
+
+}
+
+.details-panel-b {
+    grid-area: b;
+
+}
+
+.details-panel-c {
+    grid-area: c;
+
+}
+
+.details-panel-d {
+    grid-area: d;
+}
+
+.details-panel-e {
+    grid-area: e;
+}
+
+.details-panel-f {
+    grid-area: f;
 }
