@@ -54,7 +54,7 @@ nav * {
     align-items: center;
 }
 
-.homeButton {
+/* .homeButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@ nav * {
     border-radius: 16px;
     border: none;
     grid-area: home;
-}
+} */
 
 
 .upload-button {
@@ -99,6 +99,8 @@ nav ul.loggedOutNav {
 
 nav ul {
     display: flex;
+    width: 100%;
+    max-width: 100%;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
@@ -129,4 +131,12 @@ nav .go-button {
     border: none;
     border-radius: 0px;
     padding: 0px 16px;
+}
+
+nav .user-info {
+   color: var(--font-major);
+}
+
+nav .user-info .user-info-username {
+    font-weight: bold;
 }

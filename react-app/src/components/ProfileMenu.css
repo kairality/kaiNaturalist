@@ -1,0 +1,71 @@
+.profile-dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: inherit;
+    height: fit-content;
+    left: 0px;
+    top: 50px;
+    z-index: 500;
+    background-color: black;
+    color: var(--font-major);
+    padding: 0px;
+    z-index: 1000000;
+}
+
+.profile-top {
+    position: relative;
+    width: 300px;
+    font-size: 1em;
+}
+
+.profile-top .profileControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+.profileControls > span, .profileControls > i {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.user-info img {
+    height: 48px !important;
+    width: 48px !important;
+    border-radius: 50%;
+}
+
+.profile-dropdown li {
+    width: inherit;
+    padding: 0px;
+}
+
+.profile-dropdown button {
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+    align-items: center;
+    background-color: var(--font-major);
+    color: #cccccc;
+    border: none;
+    font-size: 1em;
+}
+
+.profileControls svg:not(.user-info-observations *) {
+    color: var(--font-major);
+    font-size: 2em;
+}
+
+.profileControls .fa-secondary {
+   fill: var(--brightaccent);
+   opacity: 0.8;
+   pointer-events: none;
+}

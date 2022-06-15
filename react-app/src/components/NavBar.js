@@ -6,6 +6,7 @@ import LogoutButton from "./auth/LogoutButton";
 import UploadButton from "./UploadButton/UploadButton";
 import "./NavBar.css";
 import { RandomNaturalistIcon } from "./Loader/Loader";
+import ProfileMenu from "./ProfileMenu";
 
 export default function NavBar() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -17,9 +18,12 @@ export default function NavBar() {
       <li key="upload">
         <UploadButton />
       </li>,
-      <li key="logout">
-        <LogoutButton />
-      </li>,
+      // <li key="logout">
+      //   <LogoutButton />
+      // </li>,
+      <li key="menu">
+        <ProfileMenu />
+      </li>
     ];
   } else {
     sessionLinks = [

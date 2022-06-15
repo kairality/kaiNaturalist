@@ -74,9 +74,10 @@ def patch_observation(id):
         form['user_id'].data = user_id;
         if form.validate_on_submit():
             form.populate_obj(observation)
-            ## repopulate form with buffered taxon
-            observation.taxon_id = buffer_taxon_id;
-            ## mutate the identification instead
+            ## repopulate form with buffered taxon if there is no community taxon
+            if observation.community_taxon_id is not None:
+                observation.taxon_id = buffer_taxon_id;
+            ## mutate the linked identification before calculating a new taxon
             identification = observation.linked_identification
             identification.taxon_id = form.data.get("taxon_id");
             db.session.add(observation)

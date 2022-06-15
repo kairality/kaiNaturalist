@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPersonToPortal } from '@fortawesome/pro-regular-svg-icons';
+
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
@@ -8,7 +11,9 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button className="logout-button" onClick={onLogout}>Logout</button>;
+  return <button className="go-button" onClick={onLogout}>
+    <FontAwesomeIcon icon={faPersonToPortal} /> Logout
+    </button>;
 };
 
-export default LogoutButton;  
+export default LogoutButton;

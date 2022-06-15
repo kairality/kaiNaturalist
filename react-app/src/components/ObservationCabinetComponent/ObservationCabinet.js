@@ -25,6 +25,7 @@ export default function ObservationCabinet() {
   const observations = useSelector((state) => state.observations);
   const { id } = useParams();
   const observation = observations?.[id];
+  
   if (!observation) {
     return null;
   }
