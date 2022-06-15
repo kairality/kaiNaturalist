@@ -100,25 +100,31 @@ function ObservationEditModal({ observation, setShowModal }) {
       </p>
       <form className={"observation-edit"} onSubmit={handleEdit}>
         <div className="observation-upload-left">
-          <div className={"observation-upload-taxon"}>
+          <div className={"observation-upload-taxon upload-group"}>
             <label>Select Identification</label>
             <TaxaTypeahead
               selectedTaxon={selectedTaxon}
               setSelectedTaxon={setSelectedTaxon}
             />
-            <p>This will not modify the community's identification directly. Your identification will be updated and the community consensus will be recalculated (if necessary) for this observation.</p>
+            <p>
+              This will not modify the community's identification directly. Your
+              identification will be updated and the community consensus will be
+              recalculated (if necessary) for this observation.
+            </p>
           </div>
           <div className={"observation-upload-photo"}>
             <CabinetPhoto observation={observation} />
           </div>
-          <div className={"observation-upload-date"}>
+          <div className={"observation-upload-date upload-group"}>
+            <label>Observation Date</label>
             <UploadCalendarComponent
               date={date}
               setDate={setDate}
               maxDate={new Date()}
             />
           </div>
-          <div className={"observation-descrtiption"}>
+          <div className={"observation-descrtiption upload-group"}>
+            <label>Description (optional)</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}

@@ -12,3 +12,24 @@
     width: fit-content;
     min-width: 500px;
 }
+
+
+.observation-edit-modal label {
+    font-weight: bold;
+}
+
+.observation-edit-modal input {
+    border-radius: 8px;
+    padding: 8px;
+    width: 300px;
+    font-family: "Quicksand", sans-serif;
+}
+
+.observation-edit-modal textarea {
+    border-radius: 8px;
+    padding: 8px;
+    width: 400px;
+    min-height: 100px;
+    resize: vertical;
+    font-family: "Quicksand", sans-serif;
+}
