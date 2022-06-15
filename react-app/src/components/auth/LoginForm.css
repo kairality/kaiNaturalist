@@ -5,7 +5,7 @@
 }
 
 .splash {
-    height: 50%;
+    min-height: 50%;
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -64,12 +64,16 @@
     position: relative;
 }
 
-#email-icon, #pw-icon {
+#email-icon, #pw-icon, #user-icon, #pw-ok, #pw-no {
     position: absolute;
     left: 4px;
     top: 0px;
     color: var(--brightaccent);
     transform: translateY(50%);
+}
+
+#pw-no {
+    color: var(--error)
 }
 
 .auth-form input {
@@ -393,4 +397,46 @@
 .panel-lil svg {
     font-size: 1.5em;
     width: 1.5em;
+}
+
+.signup-wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-areas: "cover form";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100%;
+}
+
+.signup-cover {
+    grid-area: cover;
+    height: 100%;
+    width: 100%
+}
+
+.signup-form-wrapper {
+    grid-area: form;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--zhoug)
+}
+
+.signup-form-wrapper .auth-form {
+    padding: 1em;
+}
+
+.signup-cover {
+    background-size: cover;
+    background-position-x: 37.5%;
+}
+
+.signup-form-wrapper h1,
+.signup-form-wrapper h2,
+.signup-form-wrapper h3,
+.signup-form-wrapper h4,
+.signup-form-wrapper h5 {
+    text-align: center;
 }

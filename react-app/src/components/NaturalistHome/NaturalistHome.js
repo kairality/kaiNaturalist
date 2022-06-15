@@ -27,9 +27,7 @@ export default function NaturalistHome() {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(taxa);
-    if (taxa[1]) {
-      console.log(taxa[1])
+    if (Object.keys(taxa).length) {
       setTaxaLoaded(true);
     }
   },[taxa])
@@ -44,6 +42,7 @@ export default function NaturalistHome() {
 
   return (
     <div id="home-container">
+      <h1>Recent Observations</h1>
       <div class="observation-display">
         {Object.values(observations).map((observation) => {
           return <ObservationCard key={`observation-${observation.id}`} observation={observation} />;

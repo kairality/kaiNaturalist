@@ -64,11 +64,10 @@ function App() {
             <ObservationCabinet />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
-            <h1>My Home Page</h1>
             <NaturalistHome />
           </ProtectedRoute>
           <ProtectedRoute path="/observations/" exact={true}>
-            <div>Observations</div>
+            <NaturalistHome />
           </ProtectedRoute>
           <ProtectedRoute path="/observations/new" exact={true}>
             <ObservationUpload />

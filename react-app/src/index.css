@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300&family=Quicksand:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@300&family=Quicksand:wght@300;400&display=swap");
 
 :root {
   --mainbg: #ffffff;
@@ -10,14 +9,14 @@
   --buttonborder: #2e6da4;
   --brightaccent: #74ac00;
   --brighteraccent: #f16f3a;
-  --brightestaccent: #B14E9D;
+  --brightestaccent: #b14e9d;
 
   --darktab: #565656;
   --brighttab: #86a91c;
   --zhoug: #eaf3d8;
 
   --needsid: #ffee91;
-  --needsidfont: #85743D;
+  --needsidfont: #85743d;
 
   --boxborder: #dedede;
   --boxbg: #ededed;
@@ -47,16 +46,20 @@ html {
   padding: 0px;
 }
 
+#root {
+  height: 100%;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
-  padding-bottom: 56px;
   background-color: #eeeeee;
   height: 100%;
 }
 
 .crying {
   height: 56px;
+  flex-shrink: 0;
   width: 100%;
 }
 
@@ -87,8 +90,8 @@ html {
 }
 
 .go-btn:hover {
-    color: var(--barbg);
-    background-color: var(--brighttab);
+  color: var(--barbg);
+  background-color: var(--brighttab);
 }
 
 .protect-overflow {
