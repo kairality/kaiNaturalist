@@ -17,8 +17,12 @@ import {
   faNarwhal,
   faUserBountyHunter,
   faCommentsQuestionCheck,
-  faPhotoFilm,
-  faNotebook
+  faBird,
+  faNotebook,
+  faUsersRays,
+  faChartNetwork,
+  faPersonToPortal,
+  faCatSpace,
 } from "@fortawesome/pro-duotone-svg-icons";
 
 import {
@@ -186,7 +190,7 @@ export default function LoginForm() {
           <div className="panel details-panel-a">
             <FontAwesomeIcon icon={faNotebook} />
             <div className="panel-wrapper">
-              <h3>Keep Track</h3>
+              <h3>Keep Track!</h3>
               <p>
                 Record your encounters with other organisms all in the{" "}
                 <strike>someone else's computer</strike> cloud!
@@ -194,53 +198,47 @@ export default function LoginForm() {
             </div>
           </div>
           <div className="panel details-panel-b">
-            <FontAwesomeIcon icon={faNotebook} />
+            <FontAwesomeIcon icon={faChartNetwork} />
             <div className="panel-wrapper">
-              <h3>Keep Track</h3>
+              <h3>Create Useful Data!</h3>
               <p>
-                Record your encounters with other organisms all in the{" "}
-                <strike>someone else's computer</strike> cloud!
+                Help scientists and resource managers understand what lives where all through the simple act of uploading photos!
               </p>
             </div>
           </div>
-
           <div className="panel details-panel-c">
-            <FontAwesomeIcon icon={faNotebook} />
+            <FontAwesomeIcon icon={faUsersRays} />
             <div className="panel-wrapper">
-              <h3>Keep Track</h3>
+              <h3>Crowdsource Identifications!</h3>
               <p>
-                Record your encounters with other organisms all in the{" "}
-                <strike>someone else's computer</strike> cloud!
+                Don't know what that flower was on your hike? Someone else does! Don't just touch grass, find out what <i>kind</i> of grass you've touched.
               </p>
             </div>
           </div>
           <div className="panel details-panel-d">
-            <FontAwesomeIcon icon={faNotebook} />
+            <FontAwesomeIcon icon={faPersonToPortal} />
             <div className="panel-wrapper">
-              <h3>Keep Track</h3>
+              <h3>Become a Citizen Scientist!</h3>
               <p>
-                Record your encounters with other organisms all in the{" "}
-                <strike>someone else's computer</strike> cloud!
+                You can't do that on Instagram!
               </p>
             </div>
           </div>
           <div className="panel details-panel-e">
-            <FontAwesomeIcon icon={faNotebook} />
+            <FontAwesomeIcon icon={faBird} />
             <div className="panel-wrapper">
-              <h3>Keep Track</h3>
+              <h3>Learn About Nature!</h3>
               <p>
-                Record your encounters with other organisms all in the{" "}
-                <strike>someone else's computer</strike> cloud!
+                Build your knowledge by talking to other naturalists and helping others.
               </p>
             </div>
           </div>
           <div className="panel details-panel-f">
-            <FontAwesomeIcon icon={faNotebook} />
+            <FontAwesomeIcon icon={faCatSpace} />
             <div className="panel-wrapper">
-              <h3>Keep Track</h3>
+              <h3>Hire the developer!</h3>
               <p>
-                Record your encounters with other organisms all in the{" "}
-                <strike>someone else's computer</strike> cloud!
+                Head on over to  <span className="panel-lil"><LinkedinLink /></span> and get connected!
               </p>
             </div>
           </div>
