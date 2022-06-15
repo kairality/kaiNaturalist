@@ -6,12 +6,18 @@ import ErrorCard from "../ErrorCard/ErrorCard";
 import DemoLogin from "./DemoLogin";
 
 import {
-  faNarwhal,
-  faUserBountyHunter,
-  faCommentsQuestionCheck,
+  // faNarwhal,
+  // faUserBountyHunter,
+  // faCommentsQuestionCheck,
   faAt,
   faLockKeyhole,
 } from "@fortawesome/pro-solid-svg-icons";
+
+import {
+  faNarwhal,
+  faUserBountyHunter,
+  faCommentsQuestionCheck
+} from "@fortawesome/pro-duotone-svg-icons";
 
 import {
   faCircleArrowRight
@@ -111,7 +117,12 @@ export default function LoginForm() {
         </div>
         <div className="splash-about-links-wrapper">
           <h4>
-            kaiNaturalist is a full-stack application developed by Kai Seward in 2022 inspired by <a href="https://www.inaturalist.org" target="_blank">iNaturalist.org</a>.
+            kaiNaturalist is a full-stack application developed by Kai Seward in
+            2022 inspired by{" "}
+            <a href="https://www.inaturalist.org" target="_blank">
+              iNaturalist.org
+            </a>
+            .
           </h4>
           <ul className="splash-about-links">
             <li>
@@ -131,19 +142,25 @@ export default function LoginForm() {
         <div className="how-it-works-inner">
           <div className="how-it-works-panel">
             <div className="hiw-icon">
-              <FontAwesomeIcon icon={faNarwhal} />
+              <FontAwesomeIcon className="hiw-icon-icon" icon={faNarwhal} />
             </div>
             <h3>Record Your Observations</h3>
           </div>
           <div className="how-it-works-panel">
             <div className="hiw-icon">
-              <FontAwesomeIcon icon={faUserBountyHunter} />
+              <FontAwesomeIcon
+                className="hiw-icon-icon"
+                icon={faUserBountyHunter}
+              />
             </div>
             <h3>Share With Fellow Naturalists</h3>
           </div>
           <div className="how-it-works-panel">
             <div className="hiw-icon">
-              <FontAwesomeIcon icon={faCommentsQuestionCheck} />
+              <FontAwesomeIcon
+                className="hiw-icon-icon"
+                icon={faCommentsQuestionCheck}
+              />
             </div>
             <h3>Discuss Your Findings</h3>
           </div>

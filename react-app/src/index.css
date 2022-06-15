@@ -82,6 +82,7 @@ html {
   width: fit-content;
   border-radius: 8px;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .go-btn:hover {
