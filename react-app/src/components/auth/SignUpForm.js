@@ -72,9 +72,20 @@ const SignUpForm = () => {
 
   return (
     <div className="signup-wrapper">
-      <div className="signup-cover"
-        style={{backgroundImage: `url("${birdwing2}")`}}
-      ></div>
+      <div
+        className="signup-cover"
+        style={{ backgroundImage: `url("${birdwing2}")` }}
+      >
+        <div className="attribution">
+          <a
+            href="https://commons.wikimedia.org/w/index.php?curid=39704554"
+            target="_blank"
+            referrer="noreferrer"
+          >
+            Photo By Peellden - Own work, CC BY-SA 4.0
+          </a>
+        </div>
+      </div>
       <div className="signup-form-wrapper">
         <form className="auth-form" onSubmit={onSignUp}>
           <div className="login-text">
@@ -92,6 +103,7 @@ const SignUpForm = () => {
                 onChange={updateUsername}
                 placeholder="Username"
                 value={username}
+                required={true}
               />
               <FontAwesomeIcon id="user-icon" icon={faUser} />
             </div>
@@ -105,6 +117,7 @@ const SignUpForm = () => {
                 placeholder="Email"
                 value={email}
                 onChange={updateEmail}
+                required={true}
               />
               <FontAwesomeIcon id="email-icon" icon={faAt} />
             </div>
@@ -118,17 +131,18 @@ const SignUpForm = () => {
                 placeholder="Password"
                 value={password}
                 onChange={updatePassword}
+                required={true}
               />
               <FontAwesomeIcon id="pw-icon" icon={faLockKeyhole} />
             </div>
           </div>
           <div className="auth-fields">
-            <label>Repeat Password</label>
+            <label>Confirm Password</label>
             <div className="input-wrapper">
               <input
                 type="password"
                 name="repeat_password"
-                placeholder="Repeat Password"
+                placeholder="Confirm Password"
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 required={true}
@@ -144,7 +158,12 @@ const SignUpForm = () => {
               </button>
             </div>
             <p>Don't have an account?</p>
-            <button type="button" id="to-log-in" className="go-button" onClick={toLogin}>
+            <button
+              type="button"
+              id="to-log-in"
+              className="go-button"
+              onClick={toLogin}
+            >
               Log in!
             </button>
           </div>
