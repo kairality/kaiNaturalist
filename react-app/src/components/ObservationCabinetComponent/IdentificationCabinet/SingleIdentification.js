@@ -20,7 +20,6 @@ export default function SingleIdentification({identification, showControls}) {
     const observation = observations[identification.observation_id];
     const linked_identification_id = observation.linked_identification_id;
     if (linked_identification_id === identification.id) {
-        console.log(linked_identification_id, identification.id)
         showControlsOverride = true;
     }
 

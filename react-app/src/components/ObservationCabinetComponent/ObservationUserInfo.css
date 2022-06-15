@@ -4,12 +4,10 @@
 }
 
 .observation-date {
-    padding-top: 1em;
     display: flex;
     flex-direction: column;
-    padding-bottom: 1em;
-    height: 56px;
     justify-content: space-evenly;
+    align-self: flex-end;
 }
 
 .observation-date > span:first-child {

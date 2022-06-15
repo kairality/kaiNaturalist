@@ -41,6 +41,7 @@ export default function ObservationCard({observation}) {
       />
       <div className="observation-card-caption caption-pad">
         <div className="observation-title protect-overflow">{taxonName}</div>
+        <div className="observation-subtitle protect-overflow">{taxonTaxon}</div>
         <ObservationTimeCaption observation={observation} />
       </div>
       <ObservationStatus observation={observation} />

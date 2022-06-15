@@ -11,6 +11,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-basis: 200px;
+    flex-shrink: 0;
+}
+
+.identification-cabinet {
+  width: 100%;
+  margin-bottom: 1em;
 }
 
 .identification-comment-box {

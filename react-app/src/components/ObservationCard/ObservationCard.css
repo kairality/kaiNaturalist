@@ -10,6 +10,10 @@
     position: relative;
 }
 
+.observation-card:hover {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5)
+}
+
 .observation-card-img {
     display: block;
     width: 100%;
@@ -24,6 +28,12 @@
     align-items: center;
 }
 
+.observation-card-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 
 .caption-pad {
     padding: 9px;
@@ -31,6 +41,10 @@
 
 .observation-title {
     font-weight: bold;
+}
+
+.observation-subtitle {
+    color: var(--darktab)
 }
 
 .observation-taxon {

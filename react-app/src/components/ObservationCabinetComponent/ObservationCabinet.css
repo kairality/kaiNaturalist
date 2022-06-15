@@ -16,6 +16,7 @@
   border: 1px solid var(--barborder);
   margin-top: 1em;
   margin-bottom: 2em;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3)
 }
 
 .cabinet-taxon-header {
