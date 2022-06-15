@@ -22,10 +22,6 @@ nav * {
     height: inherit;
 }
 
-nav button {
-    font-size: 1em;
-}
-
 .logo {
     padding-left: 1em;
     display: flex;
@@ -82,7 +78,7 @@ nav button {
 }
 
 
-nav ul {
+/* nav ul {
     position: fixed;
     display: grid;
     grid-template-areas: "logo home deadspace upload moredeadspace profile";
@@ -99,12 +95,38 @@ nav ul {
 nav ul.loggedOutNav {
     grid-template-areas: "logo home deadspace login signup";
     grid-template-columns: 15% 75px 0.95fr 90px 90px;
+} */
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1em;
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
 
+.home-logo {
+    display: flex;
+    gap: 1em;
+    margin-right: auto;
+}
 nav a {
     text-decoration: none;
 }
 
 nav a:visited {
     text-decoration: none;
+}
+
+nav .go-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    border: none;
+    border-radius: 0px;
+    padding: 0px 16px;
 }

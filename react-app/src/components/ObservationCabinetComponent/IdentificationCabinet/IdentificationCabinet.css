@@ -32,6 +32,7 @@ content: "";
   border-bottom: 10px solid transparent;
   left: -20px;
   top: 50%;
+  word-break: break-all;
 }
 
 .identification-comment-box:after {

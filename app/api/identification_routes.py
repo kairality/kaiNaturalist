@@ -73,7 +73,6 @@ def patch_ident(id):
     """
     Edit an identification
     """
-    print("hello")
     user_id = current_user.id
     identification = Identification.query.get(id)
     observation = identification.observation

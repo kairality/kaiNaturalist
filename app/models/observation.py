@@ -37,7 +37,6 @@ class Observation(db.Model, CrUpMixin):
         if not ids:
             return None;
         counts = collections.Counter(ids)
-        print(counts)
         winning_count = max(counts.items(), key=lambda count: count[1])
         winning_count = winning_count[1]
         if winning_count < self.CONSENSUS_NUMBER:

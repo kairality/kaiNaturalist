@@ -6,9 +6,10 @@
 
 .taxa-results {
     position: absolute;
-    top: 0;
+    right: 0px;
+    bottom: 0px;
     width: 250px;
-    left: 0;
+    left: 100%;
     padding-bottom: 1em;
     z-index: 150;
     background-color: white;

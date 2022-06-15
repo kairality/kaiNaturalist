@@ -11,7 +11,7 @@ function TaxonResult({taxon, selectedTaxon, setSelectedTaxon, setShowSearchSugge
     return (
       <div onClick={handleClick}>
         <img className="taxon-ta-img" src={taxon.external_url} />
-        <span>{taxon.rank} {taxon.scientific_name} ({taxon.common_name})</span>
+        <span>{taxon.rank} {taxon.scientific_name}{taxon.common_name ? ` (${taxon.common_name})` : ''}</span>
       </div>
     );
 }

@@ -23,10 +23,10 @@ export default function NavBar() {
     ];
   } else {
     sessionLinks = [
-      <NavLink to="/login" exact={true} activeClassName="active">
+      <NavLink to="/login" className="go-button" exact={true} activeClassName="active">
         Login
       </NavLink>,
-      <NavLink to="/sign-up" exact={true} activeClassName="active">
+      <NavLink to="/sign-up" className="go-button" exact={true} activeClassName="active">
         Sign Up
       </NavLink>,
     ];
@@ -35,14 +35,12 @@ export default function NavBar() {
   return (
     <nav>
       <ul className={loggedOut ? "loggedOutNav" : ""}>
-        <li key="logo">
+        <li className="home-logo" key="logo">
           <span className="logo">
             <RandomNaturalistIcon />{" "}
             <span className="logo-inner">Naturalist</span>
           </span>
-        </li>
-        <li key="home">
-          <NavLink className="homeButton" exact to="/">
+          <NavLink className="go-button" exact to="/">
             Home
           </NavLink>
         </li>
