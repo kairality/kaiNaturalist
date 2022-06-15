@@ -19,11 +19,12 @@ function LeafletSearch({onPositionChanged}) {
     const searchControl = new GeoSearchControl({
       provider,
       showMarker: false,
+      style: "bar",
     });
     map.addControl(searchControl);
     map.on("geosearch/showlocation", handlePositionChange);
     return () => map.removeControl(searchControl);
-  }, [map]);
+  }, [map, handlePositionChange]);
 
   return null;
 }

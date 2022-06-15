@@ -135,6 +135,7 @@ function ObservationEditModal({ observation, setShowModal }) {
               <MapInput
                 position={position}
                 onPositionChanged={(latlng) => setPosition(latlng)}
+                editMode
               />
             )}
           </div>

@@ -18,15 +18,16 @@ import Loader from "../Loader/Loader";
 import ErrorCard from "../ErrorCard/ErrorCard";
 
 export default function ObservationUpload() {
-  const test = {
-    lat: 37,
-    lng: -122,
+  const start = {
+    //37.756718, -119.596848
+    lat: 37.756718,
+    lng: -119.596848,
   };
-  const [position, setPosition] = useState(test);
+  const [position, setPosition] = useState(start);
   const [selectedTaxon, setSelectedTaxon] = useState(null);
   const [date, setDate] = useState(new Date());
   const [image, setImage] = useState(null);
-  const [description, setDescription] = useState("test description");
+  const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();

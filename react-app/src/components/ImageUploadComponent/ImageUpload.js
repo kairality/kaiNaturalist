@@ -29,6 +29,7 @@ export default function ImageUploader({ image, setImage }) {
         </div>
       )}
       <span>Drag & Drop or Click to Select an Image</span>
+      <span>(Image is required)</span>
       {typeArea}
     </div>
   );

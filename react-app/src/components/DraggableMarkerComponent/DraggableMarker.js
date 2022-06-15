@@ -1,7 +1,7 @@
-import React, { useMemo, useRef, useState, useCallback } from 'react'
+import React, { useMemo, useRef, useState, useCallback, useEffect } from 'react'
 import { Marker, Popup, useMapEvents } from '@monsonjeremy/react-leaflet';
 
-export default function DraggableMarker({position, onPositionChanged}) {
+export default function DraggableMarker({position, onPositionChanged, editMode}) {
   const markerRef = useRef(null);
 
 
@@ -18,11 +18,28 @@ export default function DraggableMarker({position, onPositionChanged}) {
   );
 
   const map = useMapEvents({
+    // load: () => {
+    //   console.log(e, "load")
+    //   map.locate()},
+    locationfound: (e) => {
+      onPositionChanged(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
+    },
     dblclick: (e) => {
       const newPosition = e.latlng;
-      onPositionChanged(newPosition)
+      onPositionChanged(newPosition);
     },
   });
+
+  useEffect(() => {
+    if (!editMode) {
+      map.locate();
+    }
+  }, [map])
+
+  useEffect(() => {
+    map.flyTo(position, map.getZoom());
+  }, [map, position])
 
   return (
     <Marker

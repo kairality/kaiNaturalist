@@ -25,7 +25,7 @@ export default function ObservationCabinet() {
   const observations = useSelector((state) => state.observations);
   const { id } = useParams();
   const observation = observations?.[id];
-  
+
   if (!observation) {
     return null;
   }
@@ -55,7 +55,7 @@ export default function ObservationCabinet() {
             <div className="cabinet-user-info">
               <ObservationUserInfo {...{observation}} />
             </div>
-            <ObservationMap observation={observation} />
+            <ObservationMap observation={observation}/>
           </div>
         </div>
         <div className={"identification-row"}>
