@@ -21,7 +21,7 @@
   width: 100px;
 }
 
-#leaf {
+.loader-glyph svg {
     font-size: 2rem;
 }
 

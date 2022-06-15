@@ -88,8 +88,82 @@
 }
 
 .splash-border {
-    height: 100px;
+    height: 120px;
     background-color: var(--brightaccent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 2em;
+}
+
+.splash-border h4 {
+    text-align: center;
+}
+
+.splash-border h4 a {
+    text-decoration: none;
+    color: white;
+}
+
+.splash-border h4 a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.splash-border h4 a:hover {
+    text-decoration: none;
+    color: var(--brighteraccent);
+}
+
+.random-login-logo {
+    font-size: 5em;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-about-links {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.splash-about-links a {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: baseline;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+
+.splash-about-links a svg {
+    color: var(--brightestaccent);
+}
+
+
+
+.splash-about-links li {
+    padding-right: 1em;
+}
+
+.splash-about-links li+li {
+    border-left: 1px solid white;
+    padding-left: 1em;
+}
+
+.splash-about-links a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.splash-about-links a:hover {
+    color: var(--brighteraccent) !important;
 }
 
 .how-it-works {

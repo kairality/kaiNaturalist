@@ -21,6 +21,10 @@ import toucan from "../../images/toucan.jpg";
 
 import "./LoginForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { RandomNaturalistIcon } from "../Loader/Loader";
+import GitHubLink from "../AboutLinks/GitHubLink";
+import GitHubRepoLink from "../AboutLinks/GitHubRepoLink";
+import LinkedinLink from "../AboutLinks/LinkedInLink";
 
 export default function LoginForm() {
   const [errors, setErrors] = useState([]);
@@ -87,22 +91,40 @@ export default function LoginForm() {
               />
               <FontAwesomeIcon id="pw-icon" icon={faLockKeyhole} />
             </div>
-              <div className="login-buttons">
-                <button id="form-login-btn" className="go-button" type="submit">
-                  Login
-                  <FontAwesomeIcon icon={faCircleArrowRight} />
-                </button>
-                <DemoLogin {...{ setErrors }} />
-              </div>
-              <p>Don't have an account?</p>
-              <button id="to-sign-up" className="go-button" onClick={() => {}}>
-                Sign up!
+            <div className="login-buttons">
+              <button id="form-login-btn" className="go-button" type="submit">
+                Login
+                <FontAwesomeIcon icon={faCircleArrowRight} />
               </button>
+              <DemoLogin {...{ setErrors }} />
             </div>
+            <p>Don't have an account?</p>
+            <button id="to-sign-up" className="go-button" onClick={() => {}}>
+              Sign up!
+            </button>
+          </div>
         </form>
       </div>
       <div className="splash-border">
-        kaiNaturalist is not a joint initiative with anyone.
+        <div className="random-login-logo">
+          <RandomNaturalistIcon />
+        </div>
+        <div className="splash-about-links-wrapper">
+          <h4>
+            kaiNaturalist is a full-stack application developed by Kai Seward in 2022 inspired by <a href="https://www.inaturalist.org" target="_blank">iNaturalist.org</a>.
+          </h4>
+          <ul className="splash-about-links">
+            <li>
+              <GitHubLink />
+            </li>
+            <li>
+              <GitHubRepoLink />
+            </li>
+            <li>
+              <LinkedinLink />
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="how-it-works">
         <h2>How it Works</h2>
