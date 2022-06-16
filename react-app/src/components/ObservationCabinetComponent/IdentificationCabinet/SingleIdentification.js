@@ -52,9 +52,13 @@ export default function SingleIdentification({ identification, showControls }) {
       </div>
       <div className="identification-info-box-wrapper">
         <div className="identification-comment-box">
-          {identification.user.username} thinks this is
-          <TaxaRow {...{ taxon }} />
-          {identification.comment}
+          <div className="comment-box-header">
+            <span>{identification.user.username}</span> thinks this is
+          </div>
+          <div className="comments-box-content">
+            <TaxaRow {...{ taxon }} />
+            {identification.comment}
+          </div>
           <ConsensusIcon consensusType={consensusType} />
           {showControls && !showControlsOverride && (
             <div className="single-identification-controls">

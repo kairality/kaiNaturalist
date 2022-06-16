@@ -28,7 +28,7 @@
 .identification-comment-box {
   width: 100%;
   border: 1px solid var(--barborder);
-  padding: 20px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -73,6 +73,9 @@ content: "";
     position: absolute;
     top: 8px;
     right: 8px;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
 }
 
 .identification-row {
@@ -89,4 +92,25 @@ content: "";
   margin-right: auto;
   margin-left: auto;
   max-width: 750px;
+}
+
+.comment-box-header {
+  padding: 8px;
+  background-color: var(--zhoug);
+  border: 1px solid var(--barborder);
+  min-width: 100%;
+}
+
+.comment-box-header span {
+  font-weight: bold;
+}
+
+.comments-box-content {
+  padding: 1em;
+  width: 100%;
+}
+
+.comments-box-content .taxon-row {
+  margin-bottom: 8px;
+  font-weight: bold;
 }

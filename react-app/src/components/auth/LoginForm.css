@@ -237,7 +237,8 @@
     height: 400px;
     grid-area: info;
     background-color: var(--font-major);
-    color: white
+    color: white;
+    padding: 1em;
 }
 
 .contribute-photo {
@@ -460,4 +461,8 @@
 .signup-form-wrapper h4,
 .signup-form-wrapper h5 {
     text-align: center;
+}
+
+#peace-out-yo {
+    cursor: pointer;
 }

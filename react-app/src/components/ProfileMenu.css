@@ -12,6 +12,7 @@
     color: var(--font-major);
     padding: 0px;
     z-index: 1000000;
+
 }
 
 .profile-top {
@@ -26,6 +27,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
 }
 
 .profileControls > span, .profileControls > i {

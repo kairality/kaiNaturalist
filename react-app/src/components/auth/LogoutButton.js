@@ -11,7 +11,7 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button className="go-button" onClick={onLogout}>
+  return <button id="peace-out-yo" className="go-button" onClick={onLogout}>
     <FontAwesomeIcon icon={faPersonToPortal} /> Logout
     </button>;
 };
