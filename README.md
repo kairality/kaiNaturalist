@@ -55,6 +55,9 @@ The main grid is separated into three sections for the user's uploads, uploads f
 The taxonomy picker, draggable/searchable map component (based on Leaflet), and image uploader are all custom-built for this project!
 ![image](https://user-images.githubusercontent.com/8377372/174169649-c5f6a7ed-057d-4186-a737-f316094b0fd1.png)
 
+## Loading Spinner
+I'm really proud of this CSS loading spinner that I built so it has to go here. It uses a random nature-themed FontAwesome icon each time.
+![image](https://user-images.githubusercontent.com/8377372/174169867-88c4bded-248f-46eb-b4c3-3aeb578c9432.png)
 
 
 
