@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import {MapContainer, TileLayer, Marker, Popup, useMap } from "@monsonjeremy/react-leaflet";
 import ObservationCard from "../ObservationCard/ObservationCard";
+import { useSelector } from "react-redux";
 
 export default function ObservationMap({observation}) {
-    // if (!observation) {
-    //     return null;
-    // }
+    const observations = useSelector(state => state.session.observations);
+    if (!observation) {
+        return null;
+    }
     const position = {lat: observation.latitude, lng: observation.longitude}
+
+    const taxon_id = observation.taxon_id;
+
 
     return (
         <MapContainer
