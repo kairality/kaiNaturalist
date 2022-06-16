@@ -18,3 +18,22 @@ Upcoming features:
 - My observations map
 - Taxon pages with map and grid views
 - Continue to expand available taxonomic ranks
+
+## Main Stack Technologies
+- React
+- Redux 
+- Python
+- PostgreSQL
+- Flask SQLAlchemy
+
+## Other Major Technologies / Packages used
+- WTForms (for backend validations)
+- Leaflet / React Leaflet (for map components)
+- AWS S3 (for image uploads)
+- dayjs (for manipulating dates)
+
+## Honorable Mentions
+- FontAwesome
+- Leaflet Geosearch
+- geopy
+- react-date-picker
