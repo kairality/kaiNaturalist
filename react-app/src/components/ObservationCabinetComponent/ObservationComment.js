@@ -5,13 +5,13 @@ import "./ObservationComment.css";
 
 
 export default function ObservationComment({observation}) {
-    if (!observation) {
-        return null;
+    if (!observation || !observation.description) {
+        return <h4>No notes were provided for this observation</h4>
     }
     return (
       <div className="observation-description">
         <div className="avatar-wrapper">
-          <UserAvatar user={observation.user} avatarOnly />
+          <UserAvatar user={observation.user} avatarOnly /> 
           <span className="comment-username">
             {observation.user.username}
           </span>

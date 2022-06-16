@@ -7,6 +7,10 @@
     margin-top: 1em;
 }
 
+.cabinet-details h4 {
+  text-align: center;
+}
+
 .avatar-wrapper {
     display: flex;
     flex-direction: column;

@@ -17,7 +17,7 @@ export default function IdentificationCabinet({observation}) {
     console.log(observation.linked_identification_id);
 
     const identification_ids = observation.identifications.filter(ide => ide !== observation.linked_identification_id)
-    if (!identification_ids || identification_ids.length === 0) {
+    if (!observation.linked_identification_id && (!identification_ids || identification_ids.length === 0)) {
         return null;
     }
     console.log(identification_ids)
