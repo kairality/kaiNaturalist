@@ -24,6 +24,7 @@ Upcoming features:
 - Redux 
 - Python
 - PostgreSQL
+- Flask
 - Flask SQLAlchemy
 
 ## Other Major Technologies / Packages used
