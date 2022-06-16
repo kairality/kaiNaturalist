@@ -400,7 +400,7 @@
 }
 
 .signup-wrapper {
-    height: 100%;
+    flex-grow: 1;
     display: grid;
     grid-template-areas: "cover form";
     grid-template-columns: 1fr 1fr;
