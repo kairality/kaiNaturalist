@@ -13,6 +13,10 @@
     align-items: center;
 }
 
+.observation-description-box-wrapper {
+  margin-right: 60px;
+}
+
 .observation-description-box {
   width: 100%;
   border: 1px solid var(--barborder);

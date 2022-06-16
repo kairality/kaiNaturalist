@@ -7,6 +7,11 @@
     margin-top: 1em;
 }
 
+.identification-info-box-wrapper {
+  flex-grow: 1;
+  margin-right: 60px;
+}
+
 .avatar-wrapper {
     display: flex;
     flex-direction: column;
@@ -22,10 +27,12 @@
 
 .identification-comment-box {
   width: 100%;
-  min-width: 50%;
   border: 1px solid var(--barborder);
   padding: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
 }
 
@@ -79,4 +86,7 @@ content: "";
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 750px;
 }
