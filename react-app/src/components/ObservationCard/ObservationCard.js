@@ -34,6 +34,7 @@ export default function ObservationCard({observation}) {
       <NavLink
         className={"observation-card-img"}
         to={`/observations/${observation.id}`}
+        onClick={(e) => e.stopPropagation()}
         style={{
           backgroundImage: `url("${observation.img_url}")`,
           backgroundSize: "cover",

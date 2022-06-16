@@ -29,11 +29,12 @@ function LeafletSearch({onPositionChanged}) {
   return null;
 }
 
-export default function MapInput({position, onPositionChanged}) {
+export default function MapInput({position, onPositionChanged, editMode}) {
     const marker =
         <DraggableMarker
           position={position}
           onPositionChanged={onPositionChanged}
+          editMode={editMode}
         />;
     return (
       <>
