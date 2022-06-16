@@ -22,7 +22,7 @@
   border: 1px solid var(--barborder);
   text-align: center;
   position: relative;
-  word-break: break-all;
+  overflow-wrap: break-word;
   padding: 20px;
 }
 

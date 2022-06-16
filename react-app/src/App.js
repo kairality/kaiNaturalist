@@ -48,8 +48,8 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <div class="wrapper">
-        <div class="crying" />
+      <div className="wrapper">
+        <div className="crying" />
         <Switch>
           <Route path="/login" exact={true}>
             <LoginForm />

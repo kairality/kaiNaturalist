@@ -38,6 +38,7 @@ import { RandomNaturalistIcon } from "../Loader/Loader";
 import GitHubLink from "../AboutLinks/GitHubLink";
 import GitHubRepoLink from "../AboutLinks/GitHubRepoLink";
 import LinkedinLink from "../AboutLinks/LinkedInLink";
+import TechnologiesUsed from "../TechnologiesUsed/TechnologiesUsed";
 
 export default function LoginForm() {
   const [errors, setErrors] = useState([]);
@@ -244,6 +245,7 @@ export default function LoginForm() {
           </div>
         </div>
       </div>
+      <TechnologiesUsed />
     </div>
   );
 }
