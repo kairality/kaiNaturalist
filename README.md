@@ -42,10 +42,19 @@ Upcoming features:
 # kaiNaturalist in Action
 
 ## Splash Page
-I worked really hard to make this look pretty, I hope you enjoy it as much as I do.
+I worked really hard to make this look pretty, I hope you enjoy it as much as I do.  It's hard to resist space cat isn't it?
 ![image](https://user-images.githubusercontent.com/8377372/174169070-9d752dfe-a348-4a2b-9f33-e063ae8a37a0.png)
 I had some fun with the page while keeping iNaturalist's form / style.
 ![image](https://user-images.githubusercontent.com/8377372/174169152-d4fa61d0-5c87-4f4b-838c-26a0feffdc56.png)
+
+## Home / Grid View
+The main grid is separated into three sections for the user's uploads, uploads from the community that need attention, and verified observation.
+![image](https://user-images.githubusercontent.com/8377372/174169415-ac685bd1-ea74-4775-8305-0f776291ebc1.png)
+
+## Upload
+The taxonomy picker, draggable/searchable map component (based on Leaflet), and image uploader are all custom-built for this project!
+![image](https://user-images.githubusercontent.com/8377372/174169649-c5f6a7ed-057d-4186-a737-f316094b0fd1.png)
+
 
 
 
