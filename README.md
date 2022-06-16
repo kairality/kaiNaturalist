@@ -13,7 +13,7 @@ https://kainaturalist.herokuapp.com/
 - Create, view, edit, and delete Identifications with comments and a taxonomy typeahead with automated consensus calculation on Observations.
 - Homempage grid view with My Observations, Observations waiting to be identified by the community, and recently verified observations.
 
-Upcoming features: 
+## Future features: 
 - Explore map view allowing users to explore the map and see what lives near them!
 - My observations map
 - Taxon pages with map and grid views
