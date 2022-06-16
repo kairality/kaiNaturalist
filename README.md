@@ -38,3 +38,14 @@ Upcoming features:
 - Leaflet Geosearch
 - geopy
 - react-date-picker
+
+# kaiNaturalist in Action
+
+## Splash Page
+I worked really hard to make this look pretty, I hope you enjoy it as much as I do.
+![image](https://user-images.githubusercontent.com/8377372/174169070-9d752dfe-a348-4a2b-9f33-e063ae8a37a0.png)
+![image](https://user-images.githubusercontent.com/8377372/174169117-2a7202d7-ea89-4917-9841-59492a03d21e.png)
+![image](https://user-images.githubusercontent.com/8377372/174169152-d4fa61d0-5c87-4f4b-838c-26a0feffdc56.png)
+
+
+
