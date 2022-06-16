@@ -59,8 +59,11 @@ The taxonomy picker, draggable/searchable map component (based on Leaflet), and 
 I'm really proud of this CSS loading spinner that I built so it has to go here. It uses a random nature-themed FontAwesome icon each time.
 ![image](https://user-images.githubusercontent.com/8377372/174169867-88c4bded-248f-46eb-b4c3-3aeb578c9432.png)
 
-#Observation View
+## Observation View
 The orange circles on the map are other places banana slugs have been observed.  You can click them to bring up a link to those other observations.
 ![image](https://user-images.githubusercontent.com/8377372/174170185-e911a717-0c73-4335-b6ae-b76b80e342de.png)
 
+## Identification Activity
+The icons represent the level to which the particular ID agrees with the community.
+![image](https://user-images.githubusercontent.com/8377372/174170434-6c15b2fc-a99b-4134-831a-18fdfdbfc1cc.png)
 
