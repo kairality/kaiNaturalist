@@ -101,9 +101,9 @@ export default function ObservationUpload() {
               setSelectedTaxon={setSelectedTaxon}
             />
             <p>
-              Identification is required. But if you don't know what it is exactly, please
-              at least select "Animal", "Plant" or "Fungi" to get the community
-              started.
+              Identification is required. But if you don't know what it is
+              exactly, please at least select "Animal", "Plant" or "Fungi" to
+              get the community started.
             </p>
           </div>
           <div className={"observation-upload-date upload-group"}>
@@ -128,7 +128,6 @@ export default function ObservationUpload() {
           >
             Submit Observation
           </button>
-          <ErrorCard errors={errors} />
         </div>
         <div className={"observation-upload-right"}>
           <div className={"observation-upload-map"}>
@@ -140,6 +139,7 @@ export default function ObservationUpload() {
             )}
           </div>
           {loading && <Loader />}
+          <ErrorCard errors={errors} />
         </div>
       </form>
     </div>

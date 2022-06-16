@@ -1,7 +1,7 @@
 import { titleCase
  } from "title-case";
 export default function errorFormatter(error) {
-    const NOT_AN_INTEGER = "Not a valid integer value";
+    const NOT_AN_INTEGER = "Not a valid integer value.";
     const error_tokens = error.split(" : ");
     if (error_tokens.length === 1) {
         // this isn't an error we need to format
