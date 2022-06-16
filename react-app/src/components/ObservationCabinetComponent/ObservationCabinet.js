@@ -49,6 +49,7 @@ export default function ObservationCabinet() {
             </div>
             <div className="cabinet-details">
               <ObservationComment {...{ observation }} />
+              <IdentificationForm observation={observation} />
             </div>
           </div>
           <div className="cabinet-row-right">
@@ -59,7 +60,6 @@ export default function ObservationCabinet() {
           </div>
         </div>
         <div className={"identification-row"}>
-          <IdentificationForm observation={observation} />
           <IdentificationCabinet {...{ observation }} />
         </div>
       </div>

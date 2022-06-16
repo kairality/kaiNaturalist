@@ -18,7 +18,7 @@ export default function ObservationComment({observation}) {
         </div>
         <div className="observation-description-box-wrapper">
           <div className="observation-description-box">
-            {observation.description}
+            <span>{observation.description}</span>
           </div>
         </div>
       </div>

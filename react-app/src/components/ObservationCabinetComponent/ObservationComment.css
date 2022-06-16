@@ -19,10 +19,7 @@
   text-align: center;
   position: relative;
   word-break: break-all;
-}
-
-.observation-description-box > * {
-  margin: 8px;
+  padding: 20px;
 }
 
 .observation-description-box:before {

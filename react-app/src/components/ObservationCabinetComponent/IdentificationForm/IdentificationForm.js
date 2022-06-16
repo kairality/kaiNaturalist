@@ -5,6 +5,8 @@ import ErrorCard from "../../ErrorCard/ErrorCard";
 
 import TaxaTypeahead from "../../TaxaTypeaheadComponent/TaxaTypeahead";
 
+import "./IdentificationForm.css";
+
 
 export default function IdentificationForm({observation, agreeing_taxon, identification}) {
     const taxa = useSelector((state) => state.taxonomy);
@@ -57,10 +59,6 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
     return null;
   }
 
-  console.log(observation)
-  console.log(observation.identifications);
-  console.log(observation.identifications.map(id => id));
-
   const existing_ids = observation.identifications.map(id => identifications[id]);
   console.log(existing_ids);
   const my_id = existing_ids.find(idt => idt?.user_id === user.id)
@@ -69,14 +67,21 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
   }
 
     return (
-    <form className="identification-add-form" onSubmit={handleSubmit}>
-        <TaxaTypeahead {...{ selectedTaxon, setSelectedTaxon }} />
-        <textarea
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        />
+      <form className="identification-add-form" onSubmit={handleSubmit}>
+        <h3>Know what it is? Add your ID</h3>
+        <div className="id-form-group">
+          <label>Select ID (Required)</label>
+          <TaxaTypeahead {...{ selectedTaxon, setSelectedTaxon }} />
+        </div>
+        <div className="id-form-group">
+          <label>Comments (Optional)</label>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+        </div>
         <button className="go-button">Add Identification</button>
-        <ErrorCard {...{errors}} />
-    </form>
+        <ErrorCard {...{ errors }} />
+      </form>
     );
 }

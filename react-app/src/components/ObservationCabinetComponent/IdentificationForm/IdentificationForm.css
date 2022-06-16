@@ -1,0 +1,32 @@
+
+.identification-add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.identification-add-form label {
+    font-weight: bold;
+}
+
+.identification-add-form input {
+    border-radius: 8px;
+    padding: 8px;
+    width: 300px;
+    font-family: "Quicksand", sans-serif;
+}
+
+.id-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.identification-add-form textarea {
+    border-radius: 8px;
+    padding: 8px;
+    width: 400px;
+    min-height: 100px;
+    resize: vertical;
+    font-family: "Quicksand", sans-serif;
+}
