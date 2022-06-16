@@ -11,7 +11,6 @@ nav {
     margin: 0px;
     z-index: 10;
     color: white;
-
 }
 
 nav li {
@@ -133,10 +132,21 @@ nav .go-button {
     padding: 0px 16px;
 }
 
+nav .profile-top {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+
 nav .user-info {
    color: var(--font-major);
+   padding: 8px;
 }
 
 nav .user-info .user-info-username {
     font-weight: bold;
+}
+
+nav .user-info-details {
+    justify-content: center;
 }
