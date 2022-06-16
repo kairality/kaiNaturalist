@@ -128,6 +128,7 @@ function ObservationEditModal({ observation, setShowModal }) {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              maxLength={300}
             />
           </div>
           <button type="submut" className="go-button">

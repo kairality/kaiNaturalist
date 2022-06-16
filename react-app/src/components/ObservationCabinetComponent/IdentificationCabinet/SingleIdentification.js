@@ -43,6 +43,8 @@ export default function SingleIdentification({ identification, showControls }) {
       consensusClassAddendum = "";
   }
 
+  const header = <><span>{identification.user.username}</span> {showControlsOverride ? " uploaded this observation and thinks it is": "thinks this is"}</>;
+
   const taxon = taxa[identification.taxon_id];
   return (
     <div className={`single-identification${consensusClassAddendum}`}>
@@ -53,7 +55,7 @@ export default function SingleIdentification({ identification, showControls }) {
       <div className="identification-info-box-wrapper">
         <div className="identification-comment-box">
           <div className="comment-box-header">
-            <span>{identification.user.username}</span> thinks this is
+            {header}
           </div>
           <div className="comments-box-content">
             <TaxaRow {...{ taxon }} />

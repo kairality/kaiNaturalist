@@ -91,11 +91,18 @@ function IdentificationEditModal({ identification, setShowModal }) {
     <div className={"identification-edit-modal"}>
       <h2>Update your Identification</h2>
       <form className="identification-add-form" onSubmit={handleEdit}>
-        <TaxaTypeahead {...{ selectedTaxon, setSelectedTaxon }} />
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
+        <div className="id-form-group">
+          <label>Select ID (Required)</label>
+          <TaxaTypeahead {...{ selectedTaxon, setSelectedTaxon }} />
+        </div>
+        <div className="id-form-group">
+          <label>Comments (Optional)</label>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            maxLength={300}
+          />
+        </div>
         <SingleIdentification identification={identificationPreview} />
         <button className="go-button">Add Identification</button>
         <ErrorCard {...{ errors }} />

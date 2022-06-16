@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, IntegerField, FloatField, DateField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Length
 from ..models import Observation, Taxon
 
 def is_taxon(form, field):
@@ -19,4 +19,4 @@ class ObservationForm(FlaskForm):
     latitude = FloatField('Latitude', validators=[DataRequired("You must provide a location")])
     longitude = FloatField('Longitude', validators=[DataRequired("You must provide a location")])
     date = DateField('Date', validators=[DataRequired("You must provide an observation date")])
-    description = TextAreaField('Description')
+    description = TextAreaField('Description', validators=[Length(max=300, message="Observation descriptions should be 300 characters or less.")])

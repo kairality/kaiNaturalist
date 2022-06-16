@@ -119,6 +119,7 @@ export default function ObservationUpload() {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              maxLength={300}
             />
           </div>
           <button

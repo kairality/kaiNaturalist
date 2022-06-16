@@ -26,7 +26,7 @@
 }
 
 .identification-comment-box {
-  width: 100%;
+  max-width: 500px;
   border: 1px solid var(--barborder);
   padding: 0px;
   display: flex;
@@ -34,7 +34,9 @@
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  overflow-wrap: break-word;
 }
+
 
 .identification-comment-box:before {
 content: "";
@@ -47,7 +49,7 @@ content: "";
   border-bottom: 10px solid transparent;
   left: -20px;
   top: 50%;
-  overflow-wrap: break-word;
+
 }
 
 .identification-comment-box:after {
@@ -106,8 +108,10 @@ content: "";
 }
 
 .comments-box-content {
+  max-width: 500px;
   padding: 1em;
-  width: 100%;
+  flex-grow: 1;
+  overflow-wrap: break-word;
 }
 
 .comments-box-content .taxon-row {

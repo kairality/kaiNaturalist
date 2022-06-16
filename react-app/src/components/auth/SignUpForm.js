@@ -103,6 +103,7 @@ const SignUpForm = () => {
                 onChange={updateUsername}
                 placeholder="Username"
                 value={username}
+                maxLength={40}
                 required
               />
               <FontAwesomeIcon id="user-icon" icon={faUser} />
@@ -117,6 +118,7 @@ const SignUpForm = () => {
                 placeholder="Email"
                 value={email}
                 onChange={updateEmail}
+                maxLength={255}
                 required
               />
               <FontAwesomeIcon id="email-icon" icon={faAt} />
@@ -132,6 +134,7 @@ const SignUpForm = () => {
                 value={password}
                 onChange={updatePassword}
                 required={true}
+                maxLength={128}
               />
               <FontAwesomeIcon id="pw-icon" icon={faLockKeyhole} />
             </div>
@@ -146,6 +149,7 @@ const SignUpForm = () => {
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 required={true}
+                maxLength={128}
               />
               <FontAwesomeIcon
                 id={pwMatch ? "pw-ok" : "pw-no"}

@@ -78,6 +78,7 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
+            maxLength={300}
           />
         </div>
         <button className="go-button">Add Identification</button>

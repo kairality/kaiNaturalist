@@ -18,11 +18,11 @@
 }
 
 .observation-description-box-wrapper {
-  margin-right: 60px;
+  margin-right: 40px;
 }
 
 .observation-description-box {
-  width: 100%;
+  max-width: 400px;
   border: 1px solid var(--barborder);
   text-align: center;
   position: relative;
@@ -55,14 +55,6 @@ content: "";
   left: -16px;
   top: 50%;
 
-}.clamp-lines__button {
-  background: none;
-  border: 0;
-  color: red;
-  cursor: pointer;
-  padding: 0;
-}
-
-.clamp-lines__button:hover {
-  border-bottom: 1px solid red;
+}.observation-description-box span {
+  overflow-wrap: break-word;
 }
