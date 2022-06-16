@@ -22,6 +22,7 @@ jobs:
       # CI=false allows the build to ignore any warnings when building
       run: npm config set "@fortawesome:registry" https://npm.fontawesome.com/
         && npm config set "//npm.fontawesome.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+        && npm install react-clamp-lines --legacy-peer-deps
         && npm install && CI=false npm run build
 
     # https://github.com/actions/setup-python
