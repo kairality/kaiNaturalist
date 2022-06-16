@@ -23,6 +23,7 @@ import NaturalistHome from "./components/NaturalistHome/NaturalistHome";
 import ObservationCabinet from "./components/ObservationCabinetComponent/ObservationCabinet";
 import { genObservations } from "./store/observation";
 import { genIdentifications } from "./store/identification";
+import ExploreHome from "./components/ExploreHome/ExploreHome";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -76,6 +77,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/observations/new" exact={true}>
             <ObservationUpload />
+          </ProtectedRoute>
+          <ProtectedRoute path="/explore" exact={true}>
+            <ExploreHome />
           </ProtectedRoute>
         </Switch>
       </div>

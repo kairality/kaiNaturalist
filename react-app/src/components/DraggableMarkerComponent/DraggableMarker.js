@@ -21,7 +21,11 @@ export default function DraggableMarker({position, onPositionChanged, editMode})
     // load: () => {
     //   console.log(e, "load")
     //   map.locate()},
+    locationerror: (e) => {
+      console.log(e);
+    },
     locationfound: (e) => {
+      console.log("here");
       onPositionChanged(e.latlng);
       map.flyTo(e.latlng, map.getZoom());
     },
@@ -32,10 +36,12 @@ export default function DraggableMarker({position, onPositionChanged, editMode})
   });
 
   useEffect(() => {
+    console.log('here')
     if (!editMode) {
+      console.log('here')
       map.locate();
     }
-  }, [map])
+  }, [map, editMode])
 
   useEffect(() => {
     map.flyTo(position, map.getZoom());

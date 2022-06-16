@@ -6,15 +6,15 @@ import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 import { marker } from "leaflet";
 
 function LeafletSearch({onPositionChanged}) {
-  const handlePositionChange = (e) => {
-    console.log(e);
-    console.log(e.target);
-    const garbledLocation = e.location;
-    const newPosition = {lat: garbledLocation.y, lng: garbledLocation.x}
-    onPositionChanged(newPosition)
-  }
   const map = useMap();
   useEffect(() => {
+      const handlePositionChange = (e) => {
+        console.log(e);
+        console.log(e.target);
+        const garbledLocation = e.location;
+        const newPosition = { lat: garbledLocation.y, lng: garbledLocation.x };
+        onPositionChanged(newPosition);
+      };
     const provider = new OpenStreetMapProvider();
     const searchControl = new GeoSearchControl({
       provider,
@@ -24,7 +24,7 @@ function LeafletSearch({onPositionChanged}) {
     map.addControl(searchControl);
     map.on("geosearch/showlocation", handlePositionChange);
     return () => map.removeControl(searchControl);
-  }, [map, handlePositionChange]);
+  }, [map, onPositionChanged]);
 
   return null;
 }
