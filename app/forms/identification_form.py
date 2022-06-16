@@ -5,7 +5,7 @@ from ..models import Observation, Taxon
 from .observation_form import is_taxon;
 
 class IdentificationForm(FlaskForm):
-    observation_id = IntegerField("Observation ID", validators=[DataRequired()])
+    observation_id = IntegerField("Observation ID", validators=[DataRequired("Unable to post an identification without an observation")])
     user_id = IntegerField('User ID', validators=[DataRequired()])
-    taxon_id = IntegerField('Taxon ID', validators=[is_taxon])
+    taxon_id = IntegerField('Taxon ID', validators=[DataRequired("You must select an initial identification."), is_taxon])
     comment = TextAreaField('Comment')

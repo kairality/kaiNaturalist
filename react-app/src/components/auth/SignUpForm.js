@@ -103,7 +103,7 @@ const SignUpForm = () => {
                 onChange={updateUsername}
                 placeholder="Username"
                 value={username}
-                required={true}
+                required
               />
               <FontAwesomeIcon id="user-icon" icon={faUser} />
             </div>
@@ -113,11 +113,11 @@ const SignUpForm = () => {
             <div className="input-wrapper">
               <input
                 name="email"
-                type="text"
+                type="email"
                 placeholder="Email"
                 value={email}
                 onChange={updateEmail}
-                required={true}
+                required
               />
               <FontAwesomeIcon id="email-icon" icon={faAt} />
             </div>

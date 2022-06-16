@@ -16,7 +16,7 @@ def is_taxon(form, field):
 class ObservationForm(FlaskForm):
     user_id = IntegerField('User ID', validators=[DataRequired()])
     taxon_id = IntegerField('Taxon ID', validators=[is_taxon])
-    latitude = FloatField('Latitude', validators=[DataRequired()])
-    longitude = FloatField('Longitude', validators=[DataRequired()])
-    date = DateField('Date', validators=[DataRequired()])
+    latitude = FloatField('Latitude', validators=[DataRequired("You must provide a location")])
+    longitude = FloatField('Longitude', validators=[DataRequired("You must provide a location")])
+    date = DateField('Date', validators=[DataRequired("You must provide an observation date")])
     description = TextAreaField('Description')
