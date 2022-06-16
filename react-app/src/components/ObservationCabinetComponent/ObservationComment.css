@@ -14,12 +14,15 @@
 }
 
 .observation-description-box {
-  width: 300px;
+  width: 100%;
   border: 1px solid var(--barborder);
-  padding: 20px;
   text-align: center;
   position: relative;
   word-break: break-all;
+}
+
+.observation-description-box > * {
+  margin: 8px;
 }
 
 .observation-description-box:before {
@@ -46,4 +49,15 @@ content: "";
   border-bottom: 10px solid transparent;
   left: -16px;
   top: 50%;
+
+}.clamp-lines__button {
+  background: none;
+  border: 0;
+  color: red;
+  cursor: pointer;
+  padding: 0;
+}
+
+.clamp-lines__button:hover {
+  border-bottom: 1px solid red;
 }

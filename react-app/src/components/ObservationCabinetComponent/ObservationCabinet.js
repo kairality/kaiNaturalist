@@ -38,29 +38,29 @@ export default function ObservationCabinet() {
             <ObservationHeader observation={observation} />
           </div>
           <div className="cabinet-header-controls">
-            <ObservationEdit {...{observation}} />
-            <ObservationTrashCanNotTrashCant {...{observation}} />
+            <ObservationEdit {...{ observation }} />
+            <ObservationTrashCanNotTrashCant {...{ observation }} />
           </div>
         </div>
         <div className="cabinet-row">
           <div className="cabinet-row-left">
             <div className="cabinet-photo">
-              <CabinetPhoto {...{observation}} />
+              <CabinetPhoto {...{ observation }} />
             </div>
             <div className="cabinet-details">
-              <ObservationComment {...{observation}} />
+              <ObservationComment {...{ observation }} />
             </div>
           </div>
           <div className="cabinet-row-right">
             <div className="cabinet-user-info">
-              <ObservationUserInfo {...{observation}} />
+              <ObservationUserInfo {...{ observation }} />
             </div>
-            <ObservationMap observation={observation}/>
+            <ObservationMap observation={observation} />
           </div>
         </div>
         <div className={"identification-row"}>
           <IdentificationForm observation={observation} />
-          <IdentificationCabinet {...{observation}} />
+          <IdentificationCabinet {...{ observation }} />
         </div>
       </div>
     </div>

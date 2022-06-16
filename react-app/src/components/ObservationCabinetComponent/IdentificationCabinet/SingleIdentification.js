@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 import {useSelector} from "react-redux"
+import ClampLines from "react-clamp-lines"
 import TaxaRow from "../../TaxaRow/TaxaRow"
 import UserAvatar from "../../UserAvatarComponent/UserAvatar"
 
@@ -56,7 +57,11 @@ export default function SingleIdentification({identification, showControls}) {
           <div className="identification-comment-box">
             {identification.user.username} thinks this is
             <TaxaRow {...{ taxon }} />
-            {identification.comment}
+            <ClampLines
+              text={identification?.comment ?? ""}
+              lines={3}
+              className="id-comment-clamp"
+            />
             <ConsensusIcon consensusType={consensusType} />
             {showControls && !showControlsOverride && (
               <div className="single-identification-controls">

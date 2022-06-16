@@ -106,11 +106,13 @@ def del_identification(id):
     observation = identification.observation
     observation_id = observation.id
     permission_check = check_ownership(identification)
+    print(permission_check)
     if not permission_check:
         return {"errors": ["You can't modify that object"]}, 401
     if identification == observation.linked_identification:
         return {"errors": ["You can't delete the identification linked to your observation. You can update it or delete the observation instead"]}
     db.session.delete(identification)
     db.session.commit()
-    observation = recalculate_observation(observation_id);
+    observation = recalculate_observation(observation_id)
+    ## return the recalculated observation and the delete message
     return {'observation': observation.to_dict(), 'message': 'Identification deleted and observation recalculated'}

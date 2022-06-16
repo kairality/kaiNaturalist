@@ -16,12 +16,14 @@ def check_ownership(dbObject):
     If there is no user_id in the object, this validation fails.
     """
     user_id = getattr(dbObject, "user_id", None);
+    print(user_id)
     # shouldn't try to validate ownership of unowned objects
     # if they are not owned we will assume that checking ownership
     # should fail.
     if not user_id:
         return False;
     logged_in_user_id = current_user.id
+    print(logged_in_user_id);
     if user_id == logged_in_user_id:
         return True;
     else:
