@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import ExploreMap from "./ExploreMap";
 
+import "./ExploreHome.css"
+
 export default function ExploreHome() {
-    return <ExploreMap onPositionChanged={(position) => console.log(position)} />
+    const [observations, setObservations] = useState([]);
+    return (
+      <div className="explore-home">
+        <ExploreMap onPositionChanged={(position) => console.log(position)} />
+      </div>
+    );
 }

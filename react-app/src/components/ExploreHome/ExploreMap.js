@@ -8,7 +8,7 @@ import {
 } from "@monsonjeremy/react-leaflet";
 import ObservationCard from "../ObservationCard/ObservationCard";
 import { useSelector } from "react-redux";
-import {useMapEvents} from "@monsonjeremy/react-leaflet";
+import {useMapEvents, useMap } from "@monsonjeremy/react-leaflet";
 import {OpenStreetMapProvider, GeoSearchControl} from "leaflet-geosearch";
 
 export function ExploreSearch({ onPositionChanged }) {

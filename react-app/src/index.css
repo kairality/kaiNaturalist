@@ -107,3 +107,7 @@ html {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.error-card {
+  margin-top: 1em;
+}
