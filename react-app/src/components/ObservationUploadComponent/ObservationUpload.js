@@ -45,10 +45,13 @@ export default function ObservationUpload() {
     e.preventDefault();
     setErrors([]);
     setLoading(true);
-    const observation = await dispatch(createObservation(data));
-    console.log(observation);
+    const observation = await dispatch(createObservation(data)).catch(
+      () => {
+        setErrors(["The upload service encountered an error. Please try again"])
+        setLoading(false);
+      },
+    );
     if (observation && observation.errors) {
-      console.log("hello");
       setErrors(observation.errors);
       setLoading(false);
       return;
