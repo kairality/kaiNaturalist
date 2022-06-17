@@ -122,9 +122,17 @@ export default function ExploreMapMarker({
 
   const getIcon = (observation) => {
     const taxon = taxa[observation.taxon_id];
-    const ancestry = taxonomyWalkUp(taxa, taxon);
+    let ancestry = taxonomyWalkUp(taxa, taxon);
+    ancestry.add(observation.taxon_id)
+    ancestry = Array.from(ancestry);
+    ancestry.sort((a,b) => b - a)
     for (let item of ancestry) {
       const ancestor = taxa[item];
+      if(observation.id == 9) {
+      console.log(ancestry)
+     console.log(ancestor);
+      }
+
       const scientific_name = ancestor.scientific_name;
       if (ORDER_ICONS[scientific_name]) {
         return ORDER_ICONS[scientific_name];
@@ -149,7 +157,6 @@ export default function ExploreMapMarker({
     className: `map-marker ${iconType.iconName}`,
     html: renderToString(jsxIcon),
     iconSize: [24, 24],
-    iconAnchor: [8, 0],
   });
 
   return (
