@@ -5,9 +5,13 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
+import { renderToPipeableStream, renderToString } from "react-dom/server";
 import { Marker, Popup, useMapEvents } from "@monsonjeremy/react-leaflet";
 import ObservationCard from "../ObservationCard/ObservationCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector } from "react-redux";
+import { divIcon } from "leaflet";
+
 import {
   faLeaf,
   faMushroom,
@@ -15,9 +19,16 @@ import {
   faLocust,
   faFishFins,
   faTurtle,
+  faCrab,
+  faSpider,
+  faBee,
+  faMosquito,
+  faFrog,
+  faSquid,
 } from "@fortawesome/pro-solid-svg-icons";
 import { getRank, taxonomyWalkUp } from "../../utils/taxonomy_utils";
-import { faHandLizard } from "@fortawesome/pro-regular-svg-icons";
+
+import { faOctopus, faOctopusDeploy } from "@fortawesome/free-brands-svg-icons";
 
 const KINGDOM_ICONS = {
   Animalia: faPaw,
@@ -25,11 +36,23 @@ const KINGDOM_ICONS = {
   Plantae: faLeaf,
 };
 
+const PHYLUM_ICONS = {
+  Arthropoda: faSpider,
+  Mollusca: faSquid,
+};
+
 const CLASS_ICONS = {
   Aves: faPaw,
   Reptilia: faTurtle,
-  Pisces: faFishFins,
+  Actinopterygii: faFishFins,
   Insecta: faLocust,
+  Malacostraca: faCrab,
+  Amphibia: faFrog,
+};
+
+const ORDER_ICONS = {
+  Hymenoptera: faBee,
+  Diptera: faMosquito,
 };
 
 export default function ExploreMapMarker({
@@ -40,10 +63,12 @@ export default function ExploreMapMarker({
   popup,
   setPopup,
 }) {
+  const taxa = useSelector((state) => state.taxonomy);
   const position = { lat: observation.latitude, lng: observation.longitude };
 
   const [refReady, setRefReady] = useState(false);
   let popupRef = useRef();
+  const markerRef = useRef();
 
   const map = useMapEvents({
     move: (e) => {
@@ -79,8 +104,61 @@ export default function ExploreMapMarker({
     }
   }, [isActive, refReady, map]);
 
+  const eventHandlers = useMemo(
+    () => ({
+      mouseover() {
+        if (markerRef) markerRef.current.openPopup();
+      },
+      // mouseout() {
+      //   if (markerRef) markerRef.current.closePopup();
+      // },
+    }),
+    []
+  );
+
+  if (!taxa[1]) {
+    return null;
+  }
+
+  const getIcon = (observation) => {
+    const taxon = taxa[observation.taxon_id];
+    const ancestry = taxonomyWalkUp(taxa, taxon);
+    for (let item of ancestry) {
+      const ancestor = taxa[item];
+      const scientific_name = ancestor.scientific_name;
+      if (ORDER_ICONS[scientific_name]) {
+        return ORDER_ICONS[scientific_name];
+      }
+      if (CLASS_ICONS[scientific_name]) {
+        return CLASS_ICONS[scientific_name];
+      }
+      if (PHYLUM_ICONS[scientific_name]) {
+        return PHYLUM_ICONS[scientific_name];
+      }
+      if (KINGDOM_ICONS[scientific_name]) {
+        return KINGDOM_ICONS[scientific_name];
+      }
+    }
+    console.log(taxon);
+    return null;
+  };
+
+  const iconType = getIcon(observation);
+  const jsxIcon = <FontAwesomeIcon icon={iconType} />;
+  const icon = divIcon({
+    className: `map-marker ${iconType.iconName}`,
+    html: renderToString(jsxIcon),
+    iconSize: [24, 24],
+    iconAnchor: [8, 0],
+  });
+
   return (
-    <Marker position={position}>
+    <Marker
+      ref={markerRef}
+      position={position}
+      icon={icon}
+      eventHandlers={eventHandlers}
+    >
       {" "}
       <Popup
         onClose={() => setPopup(null)}

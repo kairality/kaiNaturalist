@@ -13,6 +13,8 @@ import {OpenStreetMapProvider, GeoSearchControl} from "leaflet-geosearch";
 import ExploreMapMarker from "./ExploreMapMarker";
 import { LatLngBounds } from "leaflet";
 
+import "./ExploreMap.css"
+
 export function ExploreSearch({ onPositionChanged }) {
 
       const map = useMapEvents({
@@ -28,6 +30,7 @@ export function ExploreSearch({ onPositionChanged }) {
 
       useEffect(() => {
           map.locate();
+          console.log(map.getZoom());
         }, [map]);
 
   useEffect(() => {
@@ -53,6 +56,7 @@ export function ExploreSearch({ onPositionChanged }) {
 export default function ExploreMap({observations, onPositionChanged, showObservation, removeObservation, popup, explorePosition, setPopup}) {
 
   const additionalMarkers = Object.values(observations).map(obs => <ExploreMapMarker
+            key={obs.id}
             observation={obs}
             showObservation={showObservation}
             removeObservation={removeObservation}
@@ -67,11 +71,11 @@ export default function ExploreMap({observations, onPositionChanged, showObserva
     <MapContainer
       key={JSON.stringify(explorePosition)}
       center={explorePosition}
-      zoom={5}
+      zoom={13}
       scrollWheelZoom={false}
       maxBounds={maxBounds}
       maxBoundsViscosity={0.75}
-      minZoom={5}
+      minZoom={10}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

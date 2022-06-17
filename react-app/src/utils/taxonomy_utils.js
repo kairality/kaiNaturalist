@@ -28,8 +28,6 @@ export const getRank = (taxon) => TaxonomyRank[taxon.rank];
 
 export const taxonomyWalkUp = (taxa, taxon) => {
     let currentTaxon = {...taxon};
-    console.log("*****  ")
-    console.log(currentTaxon)
     const ancestry = new Set();
     while (currentTaxon.parent) {
         const parentId = currentTaxon.parent;
@@ -53,9 +51,7 @@ export const getConsensusType = (taxa, observation, identification) => {
     if (observationTaxonId === idTaxonId) {
        return ConsensusType.CONSENSUS;
     }
-    console.log(taxa);
     const communityTaxon = taxa[observationTaxonId];
-    console.log(communityTaxon);
     const communityTaxonRank = getRank(communityTaxon);
     const idTaxon= taxa[idTaxonId];
     const idTaxonRank = getRank(idTaxon);
