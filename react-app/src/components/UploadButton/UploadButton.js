@@ -13,6 +13,7 @@ export default function UploadButton() {
 
     return (
         <NavLink
+            activeClassName="active-nav"
             className={"upload-button go-button"}
             to={`/observations/new`}
         >Upload</NavLink>

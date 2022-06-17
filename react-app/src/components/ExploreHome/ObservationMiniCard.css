@@ -1,0 +1,40 @@
+.observation-card-mini {
+    display: grid;
+    height: 96px;
+    max-width: 100%;
+    grid-template-areas: "img captiona"
+                         "img captionb";
+    grid-template-columns: 96px 1fr;
+    grid-template-rows: 50% 50%;
+    background-color: var(--font-major);
+    color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+.observation-mini-card-img {
+    height: 96px;
+    width: 96px;
+    min-width: 96px;
+    grid-area: img;
+}
+
+.observation-mini-title {
+    grid-area: captiona;
+    padding-left: 1em;
+}
+
+.observation-mini-subtitle {
+    color: var(--barborder);
+    grid-area: captionb;
+    padding-left: 1em;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.observation-card-mini .status {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    opacity: 0.75;
+}

@@ -15,15 +15,15 @@ export default function NavBar() {
   let sessionLinks;
   if (!loggedOut) {
     sessionLinks = [
+      <NavLink key="explore" activeClassName="active-nav" className="go-button" exact to="/explore">
+        Explore (β)
+      </NavLink>,
       <li key="upload">
         <UploadButton />
       </li>,
-      // <li key="logout">
-      //   <LogoutButton />
-      // </li>,
       <li key="menu">
         <ProfileMenu />
-      </li>
+      </li>,
     ];
   } else {
     sessionLinks = [
@@ -44,7 +44,12 @@ export default function NavBar() {
             <RandomNaturalistIcon />{" "}
             <span className="logo-inner">Naturalist</span>
           </span>
-          <NavLink className="go-button" exact to="/">
+          <NavLink
+            className="go-button"
+            activeClassName="active-nav"
+            exact
+            to="/"
+          >
             Home
           </NavLink>
         </li>

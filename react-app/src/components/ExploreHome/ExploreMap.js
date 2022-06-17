@@ -10,6 +10,7 @@ import ObservationCard from "../ObservationCard/ObservationCard";
 import { useSelector } from "react-redux";
 import {useMapEvents, useMap } from "@monsonjeremy/react-leaflet";
 import {OpenStreetMapProvider, GeoSearchControl} from "leaflet-geosearch";
+import ExploreMapMarker from "./ExploreMapMarker";
 
 export function ExploreSearch({ onPositionChanged }) {
 
@@ -48,36 +49,23 @@ export function ExploreSearch({ onPositionChanged }) {
   return null;
 }
 
-export default function ExploreMap({onPositionChanged}) {
-  const observations = useSelector((state) => state.observations);
+export default function ExploreMap({observations, onPositionChanged, showObservation, removeObservation, popup }) {
 
   const [explorePosition, setExplorePosition] = useState({ lat: 0, lng: 0 });
 
-  const makeMarker = (obs) => {
-    const position = { lat: obs.latitude, lng: obs.longitude };
-    return (
-      <CircleMarker
-        center={position}
-        size={3}
-        color={"#f16f3a"}
-        fillColor={"#f16f3a"}
-        fillOpacity={0.8}
-      >
-        {" "}
-        <Popup>
-          <ObservationCard observation={obs} />
-        </Popup>
-      </CircleMarker>
-    );
-  };
+  const additionalMarkers = Object.values(observations).map(obs => <ExploreMapMarker
+            observation={obs}
+            showObservation={showObservation}
+            removeObservation={removeObservation}
+            isActive={obs.id === popup}
+        />);
 
-  const additionalMarkers = Object.values(observations).map((obs) => makeMarker(obs));
 
   return (
     <MapContainer
       key={JSON.stringify(explorePosition)}
-      center={{lat: 0, lng: 0}}
-      zoom={13}
+      center={explorePosition}
+      zoom={5}
       scrollWheelZoom={false}
     >
       <TileLayer

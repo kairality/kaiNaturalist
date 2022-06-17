@@ -112,3 +112,7 @@ html {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
+.go-button.active-nav {
+  background-color: var(--brighteraccent) !important;
+}
