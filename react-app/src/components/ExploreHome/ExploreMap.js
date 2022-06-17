@@ -71,7 +71,7 @@ export default function ExploreMap({observations, onPositionChanged, showObserva
       scrollWheelZoom={false}
       maxBounds={maxBounds}
       maxBoundsViscosity={0.75}
-      maxZoom={4}
+      minZoom={5}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
