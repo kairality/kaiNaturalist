@@ -1,0 +1,44 @@
+.map-marker, .map-marker svg {
+    font-size: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+  /* stroke: white;
+  stroke-width: 20; */
+}
+
+.map-marker svg {
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
+.map-marker.locust, .locust svg {
+    color: green;
+}
+
+.map-marker.paw {
+    color: var(--brighteraccent)
+}
+
+.map-marker.leaf {
+    color: var(--brightaccent)
+}
+
+.map-marker.mushroom {
+    color: darkred;
+}
+
+.map-marker.crab {
+    color: red;
+}
+
+.map-marker.squid {
+    color:  #FFA600
+}
+
+.map-marker.fish-fins {
+    color: var(--buttonbg);
+}
+
+.map-marker svg:hover {
+    filter: drop-shadow(6px 10px 4px rgb(0 0 0 / 0.4)) brightness(1.5);
+    font-size: 2em;
+}
