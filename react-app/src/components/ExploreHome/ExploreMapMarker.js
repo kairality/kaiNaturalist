@@ -62,6 +62,7 @@ export default function ExploreMapMarker({
         removeObservation(observation);
       }
     },
+
     viewreset: (e) => {
       const bounds = map.getBounds();
       if (bounds.contains(position)) {

@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import {useMapEvents, useMap } from "@monsonjeremy/react-leaflet";
 import {OpenStreetMapProvider, GeoSearchControl} from "leaflet-geosearch";
 import ExploreMapMarker from "./ExploreMapMarker";
+import { LatLngBounds } from "leaflet";
 
 export function ExploreSearch({ onPositionChanged }) {
 
@@ -59,6 +60,8 @@ export default function ExploreMap({observations, onPositionChanged, showObserva
             setPopup={setPopup}
         />);
 
+    // prevent map from wrapping
+    const maxBounds = new LatLngBounds([-90, -180], [90, 180]);
 
   return (
     <MapContainer
@@ -66,10 +69,14 @@ export default function ExploreMap({observations, onPositionChanged, showObserva
       center={explorePosition}
       zoom={5}
       scrollWheelZoom={false}
+      maxBounds={maxBounds}
+      maxBoundsViscosity={0.75}
+      maxZoom={4}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        noWrap={true}
       />
       {additionalMarkers}
       <ExploreSearch onPositionChanged={onPositionChanged}/>
