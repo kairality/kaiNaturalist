@@ -49,15 +49,14 @@ export function ExploreSearch({ onPositionChanged }) {
   return null;
 }
 
-export default function ExploreMap({observations, onPositionChanged, showObservation, removeObservation, popup }) {
-
-  const [explorePosition, setExplorePosition] = useState({ lat: 0, lng: 0 });
+export default function ExploreMap({observations, onPositionChanged, showObservation, removeObservation, popup, explorePosition, setPopup}) {
 
   const additionalMarkers = Object.values(observations).map(obs => <ExploreMapMarker
             observation={obs}
             showObservation={showObservation}
             removeObservation={removeObservation}
             isActive={obs.id === popup}
+            setPopup={setPopup}
         />);
 
 

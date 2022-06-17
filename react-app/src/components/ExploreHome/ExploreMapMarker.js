@@ -37,6 +37,8 @@ export default function ExploreMapMarker({
   observation,
   showObservation,
   removeObservation,
+  popup,
+  setPopup,
 }) {
   const position = { lat: observation.latitude, lng: observation.longitude };
 
@@ -80,6 +82,7 @@ export default function ExploreMapMarker({
     <Marker position={position}>
       {" "}
       <Popup
+        onClose={() => setPopup(null)}
         ref={(r) => {
           popupRef = r;
           setRefReady(true);
