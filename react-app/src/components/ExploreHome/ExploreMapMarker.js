@@ -140,6 +140,7 @@ export default function ExploreMapMarker({
 
   useEffect(() => {
     if (taxa[1] && initialZoomDone) {
+      console.log("hi");
       map.flyTo(map.getCenter());
     }
   },[taxa, initialZoomDone, map])

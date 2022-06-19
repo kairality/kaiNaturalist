@@ -69,7 +69,7 @@ export default function ExploreHome() {
         explorePosition={explorePosition}
       />
       <div className="divider"></div>
-      <div className="preview">
+      <div className="preview" key={JSON.stringify(visible)}>
         <h1>Explore Your World</h1>
         {Object.values(visible).map((obs) => (
           <ObservationMiniCard
