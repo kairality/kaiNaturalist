@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas: "map bar";
   grid-template-columns: 80% 20%;
-  grid-template-rows: 100vh;
+  grid-template-rows: 1fr;
 }
 
 .explore-home .leaflet-container {
@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-height: 100vh;
+  height: calc(100vh - 56px);
   overflow-y: auto;
   overflow-x: hidden;
   gap: 1em;

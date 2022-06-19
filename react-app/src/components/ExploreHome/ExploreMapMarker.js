@@ -82,6 +82,20 @@ export default function ExploreMapMarker({
   const markerRef = useRef();
 
   const map = useMapEvents({
+    load: (e) => {
+      console.log("--------------------")
+      console.log("--------------------");
+      console.log("--------------------");
+      console.log("--------------------");
+      console.log("--------------------");
+      console.log("--------------------");
+      const bounds = map.getBounds();
+      if (bounds.contains(position)) {
+        showObservation(observation);
+      } else {
+        removeObservation(observation);
+      }
+    },
     move: (e) => {
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
@@ -126,6 +140,12 @@ export default function ExploreMapMarker({
     }),
     []
   );
+
+  useEffect(() => {
+    if (taxa[1]) {
+      map.flyTo(map.getCenter());
+    }
+  },)
 
   if (!taxa[1]) {
     return null;
