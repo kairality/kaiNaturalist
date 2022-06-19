@@ -73,6 +73,7 @@ export default function ExploreHome() {
         <h1>Explore Your World</h1>
         {Object.values(visible).map((obs) => (
           <ObservationMiniCard
+            key={obs.id}
             observation={obs}
             handleClick={(e) => clickHandler(e, obs)}
           />

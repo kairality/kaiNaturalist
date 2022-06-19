@@ -79,7 +79,7 @@ export default function ExploreMapMarker({
   const position = { lat: observation.latitude, lng: observation.longitude };
 
   const [refReady, setRefReady] = useState(false);
-  const [initialZoomDone, setInitialZoomDone] = useState(localStorage.getItem("explorePosition"));
+  const [initialZoomDone, setInitialZoomDone] = useState(sessionStorage.getItem("explorePosition"));
   let popupRef = useRef();
   const markerRef = useRef();
 
@@ -112,7 +112,6 @@ export default function ExploreMapMarker({
       }
     },
     viewreset: (e) => {
-      console.log("this fired")
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
@@ -142,10 +141,7 @@ export default function ExploreMapMarker({
 
   useEffect(() => {
     if (taxaLoaded && initialZoomDone) {
-      console.log("recentering")
       map.flyTo(map.getCenter());
-    } else {
-      console.log(taxa[1], initialZoomDone);
     }
   },[taxaLoaded, initialZoomDone, map])
 
