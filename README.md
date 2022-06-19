@@ -67,3 +67,10 @@ The orange circles on the map are other places banana slugs have been observed. 
 The icons represent the level to which the particular ID agrees with the community.
 ![image](https://user-images.githubusercontent.com/8377372/174170434-6c15b2fc-a99b-4134-831a-18fdfdbfc1cc.png)
 
+## Eplore Your World
+The map markers adjust based on what was observed.
+![image](https://user-images.githubusercontent.com/8377372/174500352-b1f30d72-aca7-44f5-b9c0-7a3f3f24d2b9.png)
+The right sidebar adjusts to show what's currently on the map!
+![image](https://user-images.githubusercontent.com/8377372/174500452-a905e858-1954-4ab0-a9a9-0eae0722bd25.png)
+
+
