@@ -13,7 +13,10 @@ export default function ExploreHome() {
     (observation) => observation.id
   );
   const [popup, setPopup] = useState(null);
-  const [explorePosition, setExplorePosition] = useState({lat: 0, lng: 0});
+  // const [explorePosition, setExplorePosition] = useState({lat: 0, lng: 0});
+
+  const explorePositionLocal = sessionStorage.getItem('explorePosition');
+  const explorePosition = explorePositionLocal ? JSON.parse(explorePositionLocal) : {lat: 0, lng: 0};
 
   const [visible, setVisible] = useState({ observationIDs });
   const merge = (obs, prevState) => {
@@ -47,12 +50,15 @@ export default function ExploreHome() {
     // setExplorePosition({lat: observation.latitude, lng: observation.longitude})
   };
 
+  const storePosition = (position) => sessionStorage.setItem(
+          'explorePosition',
+          JSON.stringify({'lat': position.lat, lng: position.lng}));
+
   return (
     <div className="explore-home">
       <ExploreMap
-        key={JSON.stringify(explorePosition)}
         observations={observations}
-        onPositionChanged={(position) => console.log(position)}
+        onPositionChanged={storePosition}
         showObservation={showObservation}
         removeObservation={removeObservation}
         popup={popup}

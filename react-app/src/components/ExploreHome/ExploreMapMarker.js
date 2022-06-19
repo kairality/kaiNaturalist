@@ -25,6 +25,7 @@ import {
   faMosquito,
   faFrog,
   faSquid,
+  faCrow,
 } from "@fortawesome/pro-solid-svg-icons";
 import { getRank, taxonomyWalkUp } from "../../utils/taxonomy_utils";
 
@@ -42,7 +43,7 @@ const PHYLUM_ICONS = {
 };
 
 const CLASS_ICONS = {
-  Aves: faPaw,
+  Aves: faCrow,
   Reptilia: faTurtle,
   Actinopterygii: faFishFins,
   Insecta: faLocust,
@@ -123,12 +124,14 @@ export default function ExploreMapMarker({
   const getIcon = (observation) => {
     const taxon = taxa[observation.taxon_id];
     let ancestry = taxonomyWalkUp(taxa, taxon);
-    ancestry.add(observation.taxon_id)
-    ancestry = Array.from(ancestry);
-    ancestry.sort((a,b) => b - a)
+    ancestry = [observation.taxon_id, ...ancestry];
+    if (observation.id == 27) {
+      console.log(taxon);
+      console.log(ancestry);
+    }
     for (let item of ancestry) {
       const ancestor = taxa[item];
-      if(observation.id == 9) {
+      if(observation.id == 27) {
       console.log(ancestry)
      console.log(ancestor);
       }
