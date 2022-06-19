@@ -75,6 +75,7 @@ export default function ExploreMapMarker({
   setPopup,
 }) {
   const taxa = useSelector((state) => state.taxonomy);
+  const taxaLoaded = taxa[1] !== undefined;
   const position = { lat: observation.latitude, lng: observation.longitude };
 
   const [refReady, setRefReady] = useState(false);
@@ -111,6 +112,7 @@ export default function ExploreMapMarker({
       }
     },
     viewreset: (e) => {
+      console.log("this fired")
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
@@ -139,14 +141,24 @@ export default function ExploreMapMarker({
   );
 
   useEffect(() => {
-    if (taxa[1] && initialZoomDone) {
-      console.log("hi");
+    if (taxaLoaded && initialZoomDone) {
+      console.log("recentering")
       map.flyTo(map.getCenter());
+    } else {
+      console.log(taxa[1], initialZoomDone);
     }
-  },[taxa, initialZoomDone, map])
+  },[taxaLoaded, initialZoomDone, map])
 
   if (!taxa[1]) {
-    return null;
+    return (
+      <Marker
+        ref={markerRef}
+        position={position}
+        className="not-map-marker"
+        eventHandlers={eventHandlers}
+      />
+    );
+
   }
 
   const getIcon = (observation) => {
