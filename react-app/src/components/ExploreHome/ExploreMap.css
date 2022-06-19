@@ -38,6 +38,14 @@
     color:  #FFA600
 }
 
+.map-marker.crow {
+    color: orangered,
+}
+
+.map-marker.shrimp {
+    color: pink,
+}
+
 .map-marker.turtle {
     color: #5e474a;
 }

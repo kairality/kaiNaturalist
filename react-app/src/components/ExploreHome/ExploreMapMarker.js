@@ -30,6 +30,7 @@ import {
   faTreePalm,
   faTree,
   faTreeDeciduous,
+  faShrimp,
 } from "@fortawesome/pro-solid-svg-icons";
 import { getRank, taxonomyWalkUp } from "../../utils/taxonomy_utils";
 
@@ -52,6 +53,7 @@ const CLASS_ICONS = {
   Actinopterygii: faFishFins,
   Insecta: faLocust,
   Malacostraca: faCrab,
+  Branchiopoda: faShrimp,
   Amphibia: faFrog,
 };
 
