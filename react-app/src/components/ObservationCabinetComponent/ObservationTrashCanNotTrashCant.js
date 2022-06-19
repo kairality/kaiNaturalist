@@ -52,7 +52,7 @@ function ObservationTrashCanNotTrashCantModal({ observation, setShowModal }) {
       <button className="go-button" onClick={handleDelete}>
         Confirm Delete?
       </button>
-      <ErrorCard errors={errors} />;
+      <ErrorCard errors={errors} />
     </div>
   );
 }

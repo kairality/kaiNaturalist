@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { deleteIdentification } from "../../../store/identification";
 
-import "./IdentificationCabinet.css"
+import "./IdentificationCabinet.css";
 import ErrorCard from "../../ErrorCard/ErrorCard";
 import SingleIdentification from "./SingleIdentification";
 
@@ -23,7 +23,7 @@ export default function IdentificationTrashCanNotTrashCant({ identification }) {
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <IdentificationTrashCanNotTrashCantModal
-            {...{identification, setShowModal}}
+            {...{ identification, setShowModal }}
           />
         </Modal>
       )}
@@ -31,7 +31,10 @@ export default function IdentificationTrashCanNotTrashCant({ identification }) {
   );
 }
 
-function IdentificationTrashCanNotTrashCantModal({ identification, setShowModal }) {
+function IdentificationTrashCanNotTrashCantModal({
+  identification,
+  setShowModal,
+}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState([]);
@@ -47,11 +50,11 @@ function IdentificationTrashCanNotTrashCantModal({ identification, setShowModal 
   return (
     <div className={"observation-delete-modal"}>
       <h2>Withdraw Identification?</h2>
-      <SingleIdentification {...{identification}} />
+      <SingleIdentification {...{ identification }} />
       <button className="go-button" onClick={handleDelete}>
         Confirm Withdrawal
       </button>
-      <ErrorCard errors={errors} />;
+      <ErrorCard errors={errors} />
     </div>
   );
 }

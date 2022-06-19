@@ -135,17 +135,8 @@ export default function ExploreMapMarker({
     const taxon = taxa[observation.taxon_id];
     let ancestry = taxonomyWalkUp(taxa, taxon);
     ancestry = [observation.taxon_id, ...ancestry];
-    if (observation.id == 27) {
-      console.log(taxon);
-      console.log(ancestry);
-    }
     for (let item of ancestry) {
       const ancestor = taxa[item];
-      if(observation.id == 27) {
-      console.log(ancestry)
-     console.log(ancestor);
-      }
-
       const scientific_name = ancestor.scientific_name;
       if (ORDER_ICONS[scientific_name]) {
         return ORDER_ICONS[scientific_name];
