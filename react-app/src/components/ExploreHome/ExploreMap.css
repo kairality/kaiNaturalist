@@ -11,7 +11,7 @@
 }
 
 .map-marker.locust, .locust svg {
-    color: green;
+    color: #82b25d;
 }
 
 .map-marker.paw {
@@ -30,13 +30,30 @@
     color: red;
 }
 
+.map-marker.flower-tulip {
+    color: var(--brightestaccent);
+}
+
 .map-marker.squid {
     color:  #FFA600
+}
+
+.map-marker.turtle {
+    color: #5e474a;
 }
 
 .map-marker.fish-fins {
     color: var(--buttonbg);
 }
+
+.map-marker.frog {
+    color: #6d9d72;
+}
+
+.map-marker.tree, .map-marker.tree-palm, .map-marker.tree-deciduous {
+    color: darkgreen
+}
+
 
 .map-marker svg:hover {
     filter: drop-shadow(6px 10px 4px rgb(0 0 0 / 0.4)) brightness(1.5);

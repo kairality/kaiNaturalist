@@ -36,5 +36,6 @@
     position: absolute;
     bottom: 0px;
     right: 0px;
+    margin-right: 8px;
     opacity: 0.75;
 }

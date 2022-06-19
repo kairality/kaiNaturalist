@@ -26,6 +26,10 @@ import {
   faFrog,
   faSquid,
   faCrow,
+  faFlowerTulip,
+  faTreePalm,
+  faTree,
+  faTreeDeciduous,
 } from "@fortawesome/pro-solid-svg-icons";
 import { getRank, taxonomyWalkUp } from "../../utils/taxonomy_utils";
 
@@ -54,6 +58,10 @@ const CLASS_ICONS = {
 const ORDER_ICONS = {
   Hymenoptera: faBee,
   Diptera: faMosquito,
+  Pinales: faTree,
+  Arecales: faTreePalm,
+  Liliales: faFlowerTulip,
+  Fagales: faTreeDeciduous,
 };
 
 export default function ExploreMapMarker({
