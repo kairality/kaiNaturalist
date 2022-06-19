@@ -1,31 +1,31 @@
 .explore-home {
-    display: grid;
-    grid-template-areas: "map bar";
-    grid-template-columns: 80% 20%;
-    grid-template-rows: 100vh;
+  display: grid;
+  grid-template-areas: "map bar";
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 100vh;
 }
 
 .explore-home .leaflet-container {
-    min-width: 100%;
-    height: 100vh !important;
-    grid-area:  map;
+  min-width: 100%;
+  height: calc(100vh - 56px) !important;
+  grid-area: map;
 }
 
 .explore-home .preview {
-    grid-area: bar;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    max-height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    gap: 1em;
-    background-color: var(--font-major);
-    border-left: 6px solid var(--brighteraccent);
-    padding-left: 1em;
-    padding-bottom: 1em;
+  grid-area: bar;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 1em;
+  background-color: var(--font-major);
+  border-left: 6px solid var(--brighteraccent);
+  padding-left: 1em;
+  padding-bottom: 1em;
 }
 
 .preview h1 {
-    color: white;
+  color: white;
 }
