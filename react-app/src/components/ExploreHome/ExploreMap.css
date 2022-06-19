@@ -5,6 +5,7 @@
     height: 1.5em;
   /* stroke: white;
   stroke-width: 20; */
+  transition: font-size 0.5s ease;
 }
 
 .map-marker svg {
@@ -13,6 +14,17 @@
 
 .leaflet-container .loader {
     z-index: 1000;
+}
+
+.explore-home .leaflet-container .observation-card {
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0px;
+    border: none;
+}
+
+.explore-home .leaflet-popup-content{
+    margin: 0px;
 }
 
 .map-marker svg {
@@ -51,8 +63,12 @@
     color:  #FFA600
 }
 
+.map-marker.bee {
+    color: #eb9605;
+}
+
 .map-marker.crow {
-    color: orangered;
+    color: tomato;
 }
 
 .map-marker.shrimp {
@@ -64,11 +80,11 @@
 }
 
 .map-marker.bug {
-    color: blue;
+    color: #48487f;
 }
 
 .map-marker.elephant {
-    color: gray,
+    color: darkslategray;
 }
 
 .map-marker.fish-fins {

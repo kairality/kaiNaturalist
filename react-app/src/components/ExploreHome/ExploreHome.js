@@ -7,6 +7,7 @@ import ObservationCabinet from "../ObservationCabinetComponent/ObservationCabine
 import ObservationCard from "../ObservationCard/ObservationCard";
 import ObservationMiniCard from "./ObservationMiniCard";
 import Loader from "../Loader/Loader";
+import { YOSEMITE_COORDS } from "../ObservationUploadComponent/ObservationUpload";
 
 export default function ExploreHome() {
   const taxa = useSelector((state) => state.taxonomy);
@@ -18,7 +19,7 @@ export default function ExploreHome() {
   // const [explorePosition, setExplorePosition] = useState({lat: 0, lng: 0});
 
   const explorePositionLocal = sessionStorage.getItem('explorePosition');
-  const explorePosition = explorePositionLocal ? JSON.parse(explorePositionLocal) : {lat: 0, lng: 0};
+  const explorePosition = explorePositionLocal ? JSON.parse(explorePositionLocal) : YOSEMITE_COORDS;
 
   const [visible, setVisible] = useState({ observationIDs });
   const merge = (obs, prevState) => {

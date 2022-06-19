@@ -61,7 +61,7 @@ export default function NaturalistHome() {
       {myObservations.length > 0 && (
         <>
           <h1>My Observations</h1>
-          <div class="observation-display">
+          <div className="observation-display">
             {myObservations.map((observation) => {
               return (
                 <ObservationCard
@@ -76,7 +76,7 @@ export default function NaturalistHome() {
       {needsIDObservations.length > 0 && (
         <>
           <h1>Observations Needing Verification</h1>
-          <div class="observation-display">
+          <div className="observation-display">
             {needsIDObservations.map((observation) => {
               return (
                 <ObservationCard
@@ -91,7 +91,7 @@ export default function NaturalistHome() {
       {othersObservations.length > 0 && (
         <>
           <h1>Recent Community IDs</h1>
-          <div class="observation-display">
+          <div className="observation-display">
             {othersObservations.map((observation) => {
               return (
                 <ObservationCard

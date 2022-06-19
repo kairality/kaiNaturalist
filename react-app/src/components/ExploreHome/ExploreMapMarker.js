@@ -200,6 +200,7 @@ export default function ExploreMapMarker({
     className: `map-marker ${iconType.iconName}`,
     html: renderToString(jsxIcon),
     iconSize: [24, 24],
+    popupAnchor: [-8, -36]
   });
 
   return (

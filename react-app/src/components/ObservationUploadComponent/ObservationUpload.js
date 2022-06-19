@@ -17,13 +17,15 @@ import { createObservation, genObservations } from "../../store/observation";
 import Loader from "../Loader/Loader";
 import ErrorCard from "../ErrorCard/ErrorCard";
 
-export default function ObservationUpload() {
-  const start = {
+  export const YOSEMITE_COORDS = {
     //37.756718, -119.596848
     lat: 37.756718,
     lng: -119.596848,
   };
-  const [position, setPosition] = useState(start);
+
+export default function ObservationUpload() {
+
+  const [position, setPosition] = useState(YOSEMITE_COORDS);
   const [selectedTaxon, setSelectedTaxon] = useState(null);
   const [date, setDate] = useState(new Date());
   const [image, setImage] = useState(null);
@@ -64,7 +66,7 @@ export default function ObservationUpload() {
       return observation.observation;
     } else {
       setErrors([
-        "An error occured during upload. Please try again. Did you forget to start the backend again?",
+        "An unexpected error occured during upload. Please try again.",
       ]);
       return;
     }
