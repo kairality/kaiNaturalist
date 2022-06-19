@@ -31,6 +31,12 @@ import {
   faTree,
   faTreeDeciduous,
   faShrimp,
+  faBug,
+  faElephant,
+  faRabbit,
+  faBat,
+  faDuck,
+  faPawClaws,
 } from "@fortawesome/pro-solid-svg-icons";
 import { getRank, taxonomyWalkUp } from "../../utils/taxonomy_utils";
 
@@ -51,6 +57,8 @@ const CLASS_ICONS = {
   Aves: faCrow,
   Reptilia: faTurtle,
   Actinopterygii: faFishFins,
+  Chondrichthyes: faFishFins,
+  Sarcopterygii: faFishFins,
   Insecta: faLocust,
   Malacostraca: faCrab,
   Branchiopoda: faShrimp,
@@ -60,10 +68,16 @@ const CLASS_ICONS = {
 const ORDER_ICONS = {
   Hymenoptera: faBee,
   Diptera: faMosquito,
+  Coleoptera: faBug,
   Pinales: faTree,
   Arecales: faTreePalm,
   Liliales: faFlowerTulip,
   Fagales: faTreeDeciduous,
+  Proboscidea: faElephant,
+  Lagomorpha: faRabbit,
+  Chiroptera: faBat,
+  Anseriformes: faDuck,
+  Carnivora: faPawClaws,
 };
 
 export default function ExploreMapMarker({

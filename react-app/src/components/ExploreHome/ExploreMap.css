@@ -27,7 +27,7 @@
     color: #82b25d;
 }
 
-.map-marker.paw {
+.map-marker.paw, .map-marker.paw-claws {
     color: var(--brighteraccent)
 }
 
@@ -47,7 +47,7 @@
     color: var(--brightestaccent);
 }
 
-.map-marker.squid {
+.map-marker.squid, .map-marker.duck {
     color:  #FFA600
 }
 
@@ -59,8 +59,16 @@
     color: pink;
 }
 
-.map-marker.turtle {
+.map-marker.turtle, .map-marker.rabbit {
     color: #5e474a;
+}
+
+.map-marker.bug {
+    color: blue;
+}
+
+.map-marker.elephant {
+    color: gray,
 }
 
 .map-marker.fish-fins {
