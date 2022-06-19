@@ -6,8 +6,10 @@ import "./ExploreHome.css";
 import ObservationCabinet from "../ObservationCabinetComponent/ObservationCabinet";
 import ObservationCard from "../ObservationCard/ObservationCard";
 import ObservationMiniCard from "./ObservationMiniCard";
+import Loader from "../Loader/Loader";
 
 export default function ExploreHome() {
+  const taxa = useSelector((state) => state.taxonomy);
   const observations = useSelector((state) => state.observations);
   const observationIDs = Object.values(observations).map(
     (observation) => observation.id
@@ -56,6 +58,7 @@ export default function ExploreHome() {
 
   return (
     <div className="explore-home">
+      {!taxa[1] && <Loader></Loader>}
       <ExploreMap
         observations={observations}
         onPositionChanged={storePosition}
@@ -63,7 +66,7 @@ export default function ExploreHome() {
         removeObservation={removeObservation}
         popup={popup}
         setPopup={setPopup}
-        explorePosition = {explorePosition}
+        explorePosition={explorePosition}
       />
       <div className="divider"></div>
       <div className="preview">

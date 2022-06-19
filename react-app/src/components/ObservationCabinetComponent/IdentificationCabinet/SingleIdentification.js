@@ -24,7 +24,6 @@ export default function SingleIdentification({ identification, showControls }) {
   }
 
   const consensusType = getConsensusType(taxa, observation, identification);
-  console.log(consensusType);
   let consensusClassAddendum;
   switch (consensusType) {
     case ConsensusType.CONSENSUS:

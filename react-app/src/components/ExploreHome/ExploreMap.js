@@ -12,6 +12,7 @@ import {useMapEvents, useMap } from "@monsonjeremy/react-leaflet";
 import {OpenStreetMapProvider, GeoSearchControl} from "leaflet-geosearch";
 import ExploreMapMarker from "./ExploreMapMarker";
 import { LatLngBounds } from "leaflet";
+import Loader from "../Loader/Loader";
 
 import "./ExploreMap.css"
 
@@ -27,7 +28,6 @@ export function ExploreSearch({ onPositionChanged }) {
           onPositionChanged(newPosition);
         },
         moveend:  (e) => {
-          console.log(e);
           onPositionChanged(map.getCenter());
         },
       });

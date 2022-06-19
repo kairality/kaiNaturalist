@@ -29,16 +29,13 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
         taxon: selectedTaxon,
         comment,
     };
-    console.log(data);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
     setLoading(true);
     const results = await dispatch(createIdentification(observation, data))
-    console.log(results);
     if (results && results.errors) {
-      console.log("hello");
       setErrors(results.errors)
       setLoading(false);
       return;
@@ -60,7 +57,6 @@ export default function IdentificationForm({observation, agreeing_taxon, identif
   }
 
   const existing_ids = observation.identifications.map(id => identifications[id]);
-  console.log(existing_ids);
   const my_id = existing_ids.find(idt => idt?.user_id === user.id)
   if (my_id) {
     return null;

@@ -1,8 +1,22 @@
 .explore-home {
   display: grid;
+  height: 100%;
+  width: 100%;
   grid-template-areas: "map bar";
   grid-template-columns: 80% 20%;
   grid-template-rows: 1fr;
+  position: relative;
+}
+
+.explore-home .loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 500;
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .explore-home .leaflet-container {

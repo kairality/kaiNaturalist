@@ -72,17 +72,6 @@ export default function ObservationUpload() {
 
   useEffect(() => {
     if (image) {
-      // console.log("beep")
-      // const exif = async(file) => {
-      //   console.log("beep beep")
-      //   const tags = await ExifReader.load(file, {expanded: true, includeUnknown: true});
-      //   console.log(tags)
-      // }
-      // try {
-      //   exif(image)
-      // } catch (e) {
-
-      // }
       setErrors((prev) =>
         prev.filter((error) => !error.toLowerCase().includes("image"))
       );

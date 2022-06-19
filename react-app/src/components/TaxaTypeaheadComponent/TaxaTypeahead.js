@@ -29,7 +29,6 @@ function TaxonPreview({ taxon }) {
   const ancestry = [];
   let currentTaxon = { ...taxon };
   ancestry.unshift(currentTaxon);
-  console.log(currentTaxon);
   while (currentTaxon.parent) {
     const parentId = currentTaxon.parent;
     const parent = { ...taxa[parentId] };

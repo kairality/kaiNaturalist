@@ -78,17 +78,12 @@ export default function ExploreMapMarker({
   const position = { lat: observation.latitude, lng: observation.longitude };
 
   const [refReady, setRefReady] = useState(false);
+  const [initialZoomDone, setInitialZoomDone] = useState(localStorage.getItem("explorePosition"));
   let popupRef = useRef();
   const markerRef = useRef();
 
   const map = useMapEvents({
     load: (e) => {
-      console.log("--------------------")
-      console.log("--------------------");
-      console.log("--------------------");
-      console.log("--------------------");
-      console.log("--------------------");
-      console.log("--------------------");
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
@@ -105,6 +100,9 @@ export default function ExploreMapMarker({
       }
     },
     moveend: (e) => {
+      if (!initialZoomDone) {
+        setInitialZoomDone(true);
+      }
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
@@ -112,7 +110,6 @@ export default function ExploreMapMarker({
         removeObservation(observation);
       }
     },
-
     viewreset: (e) => {
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
@@ -142,10 +139,10 @@ export default function ExploreMapMarker({
   );
 
   useEffect(() => {
-    if (taxa[1]) {
+    if (taxa[1] && initialZoomDone) {
       map.flyTo(map.getCenter());
     }
-  },)
+  },[taxa, initialZoomDone, map])
 
   if (!taxa[1]) {
     return null;
@@ -171,7 +168,6 @@ export default function ExploreMapMarker({
         return KINGDOM_ICONS[scientific_name];
       }
     }
-    console.log(taxon);
     return null;
   };
 

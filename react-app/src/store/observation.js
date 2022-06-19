@@ -42,12 +42,10 @@ export const editObservation = (observation, observationData) => async (dispatch
    }
    const editData = await response.json();
    if (response.ok && !response.errors) {
-    console.log(editData);
      dispatch(addObservation(editData.observation));
      dispatch(addIdentification(editData.identification));
      return editData;
    } else {
-    console.log('hit the errors line')
      // will have errors inside!
      return editData;
    }
@@ -55,7 +53,6 @@ export const editObservation = (observation, observationData) => async (dispatch
 
 export const createObservation = (observationData) =>
   async (dispatch) => {
-    console.log('hello');
     const f = new FormData();
     f.append("latitude", observationData.position.lat);
     f.append("longitude", observationData.position.lng);
@@ -72,7 +69,6 @@ export const createObservation = (observationData) =>
     }
     const observation = await response.json();
         if (observation.errors) {
-          console.log(observation.errors);
           return observation;
         }
     if (response.ok) {
@@ -80,7 +76,6 @@ export const createObservation = (observationData) =>
         dispatch(addIdentification(observation.identification))
         return observation;
     } else {
-        console.log(observation.errors)
         return observation;
     }
   };

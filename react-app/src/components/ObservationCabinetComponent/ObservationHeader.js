@@ -34,15 +34,12 @@ function ScientificNameHeader({ taxon }) {
 
 export default function ObservationHeader({ observation }) {
   const taxa = useSelector((state) => state.taxonomy)
-  console.log(taxa);
   const sad_taxon = {
     scientific_name: "Unidentified",
     common_name: "Unidentified",
   };
 
   const taxon = observation.taxon_id ? taxa?.[observation.taxon_id] : sad_taxon;
-  console.log("---------");
-  console.log(taxon);
   return (
     <div className={"observation-header"}>
       <CommonNameHeader {...{ taxon }} />

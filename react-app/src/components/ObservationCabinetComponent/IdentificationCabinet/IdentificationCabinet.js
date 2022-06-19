@@ -13,14 +13,11 @@ export default function IdentificationCabinet({observation}) {
     if (!observation) {
         return null;
     }
-    console.log(observation.identifications);
-    console.log(observation.linked_identification_id);
 
     const identification_ids = observation.identifications.filter(ide => ide !== observation.linked_identification_id)
     if (!observation.linked_identification_id && (!identification_ids || identification_ids.length === 0)) {
         return null;
     }
-    console.log(identification_ids)
     return <div className="identification-cabinet">
         <h2>Activity</h2>
         <SingleIdentification id={"linked-id"} identification={identifications[observation.linked_identification_id]} />

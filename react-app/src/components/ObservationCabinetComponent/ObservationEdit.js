@@ -77,8 +77,6 @@ function ObservationEditModal({ observation, setShowModal }) {
   const handleEdit = async (e) => {
     e.preventDefault();
     const editConfirm = await dispatch(editObservation(observation, data))
-    console.log(editConfirm);
-    console.log(editConfirm.errors);
     if (editConfirm && !editConfirm.errors) {
       setShowModal(false);
     } else {

@@ -9,8 +9,6 @@ function LeafletSearch({onPositionChanged}) {
   const map = useMap();
   useEffect(() => {
       const handlePositionChange = (e) => {
-        console.log(e);
-        console.log(e.target);
         const garbledLocation = e.location;
         const newPosition = { lat: garbledLocation.y, lng: garbledLocation.x };
         onPositionChanged(newPosition);

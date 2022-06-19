@@ -39,8 +39,6 @@ export const editIdentification =
     }
     const editData = await response.json();
     if (response.ok && !editData.errors) {
-      console.log("---------------------------")
-      console.log(editData);
       dispatch(addIdentification(editData.identification));
       dispatch(addObservation(editData.observation))
       return editData;
@@ -51,7 +49,6 @@ export const editIdentification =
   };
 
 export const createIdentification = (observation, identificationData) => async (dispatch) => {
-  console.log("hello");
   const f = new FormData();
   f.append("observation_id", observation.id);
   f.append("taxon_id", identificationData.taxon?.id);
@@ -69,7 +66,6 @@ export const createIdentification = (observation, identificationData) => async (
   }
   const identification = await response.json();
   if (identification.errors) {
-        console.log(identification.errors);
         return identification;
   }
   if (response.ok) {

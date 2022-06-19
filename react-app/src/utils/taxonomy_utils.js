@@ -68,14 +68,8 @@ export const getConsensusType = (taxa, observation, identification) => {
     const higherTaxon = idPosition < communityPosition ? communityTaxon : idTaxon;
 
     const idIsLower = lowerTaxon.id === idTaxon.id;
-    // console.log(idIsLower, "idIsLower")
-
-    // console.log(lowerTaxon)
 
     const ancestryTree = taxonomyWalkUp(taxa, lowerTaxon)
-    // console.log("---------------------")
-    // console.log(ancestryTree);
-    // console.log(higherTaxon.id);
 
     const isOverlap = ancestryTree.has(higherTaxon.id);
 

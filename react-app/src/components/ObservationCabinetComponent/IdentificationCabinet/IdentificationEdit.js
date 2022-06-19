@@ -68,14 +68,9 @@ function IdentificationEditModal({ identification, setShowModal }) {
     taxon: selectedTaxon,
     comment: comment,
   };
-
-  console.log(data);
-
   const handleEdit = async (e) => {
     e.preventDefault();
     const editConfirm = await dispatch(editIdentification(identification, data));
-    console.log(editConfirm);
-    console.log(editConfirm.errors);
     if (editConfirm && !editConfirm.errors) {
       setShowModal(false);
     } else {
