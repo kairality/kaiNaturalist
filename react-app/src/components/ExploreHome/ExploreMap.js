@@ -26,18 +26,23 @@ export function ExploreSearch({ onPositionChanged }) {
           const newPosition = e.latlng;
           onPositionChanged(newPosition);
         },
+        moveend:  (e) => {
+          console.log(e);
+          onPositionChanged(map.getCenter());
+        },
       });
 
       useEffect(() => {
-          map.locate();
-          console.log(map.getZoom());
+          if(!sessionStorage.getItem("explorePosition")) {
+            map.locate();
+          }
         }, [map]);
 
   useEffect(() => {
       const handlePositionChange = (e) => {
         const garbledLocation = e.location;
         const newPosition = { lat: garbledLocation.y, lng: garbledLocation.x };
-        onPositionChanged(newPosition);
+        // onPositionChanged(newPosition);
       };
     const provider = new OpenStreetMapProvider();
     const searchControl = new GeoSearchControl({
@@ -69,7 +74,6 @@ export default function ExploreMap({observations, onPositionChanged, showObserva
 
   return (
     <MapContainer
-      key={JSON.stringify(explorePosition)}
       center={explorePosition}
       zoom={13}
       scrollWheelZoom={false}
