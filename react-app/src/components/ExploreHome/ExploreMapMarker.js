@@ -130,7 +130,7 @@ export default function ExploreMapMarker({
         map.flyTo(map.getCenter());
       }
     },
-    mouseover: (e) => {
+    click: (e) => {
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
