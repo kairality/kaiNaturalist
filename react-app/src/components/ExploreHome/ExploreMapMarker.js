@@ -37,6 +37,7 @@ import {
   faBat,
   faDuck,
   faPawClaws,
+  faCactus,
 } from "@fortawesome/pro-solid-svg-icons";
 import { getRank, taxonomyWalkUp } from "../../utils/taxonomy_utils";
 
@@ -78,6 +79,7 @@ const ORDER_ICONS = {
   Chiroptera: faBat,
   Anseriformes: faDuck,
   Carnivora: faPawClaws,
+  Caryophyllales: faCactus,
 };
 
 export default function ExploreMapMarker({

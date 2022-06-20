@@ -16,8 +16,9 @@
 
 .observation-card-img {
     display: block;
-    width: 100%;
+    width: 280px;
     height: 75%;
+    background-position: center;
 }
 
 .no-img {
