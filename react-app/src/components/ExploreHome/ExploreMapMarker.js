@@ -117,9 +117,19 @@ export default function ExploreMapMarker({
       }
     },
     moveend: (e) => {
+      console.log("hi");
       if (!initialZoomDone) {
         setInitialZoomDone(true);
       }
+      const bounds = map.getBounds();
+      if (bounds.contains(position)) {
+        showObservation(observation);
+      } else {
+        removeObservation(observation);
+        map.flyTo(map.getCenter());
+      }
+    },
+    mouseover: (e) => {
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
