@@ -111,6 +111,7 @@ export default function ExploreMapMarker({
       }
     },
     move: (e) => {
+      console.log("y")
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
@@ -122,12 +123,13 @@ export default function ExploreMapMarker({
       if (!initialZoomDone) {
         setInitialZoomDone(true);
       }
+      console.log("z")
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
       } else {
         removeObservation(observation);
-        map.flyTo(map.getCenter());
+        // map.flyTo(map.getCenter());
       }
     },
     click: (e) => {
@@ -139,6 +141,7 @@ export default function ExploreMapMarker({
       }
     },
     viewreset: (e) => {
+      console.log("x")
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
