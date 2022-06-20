@@ -95,7 +95,9 @@ export default function ExploreMapMarker({
   const position = { lat: observation.latitude, lng: observation.longitude };
 
   const [refReady, setRefReady] = useState(false);
-  const [initialZoomDone, setInitialZoomDone] = useState(sessionStorage.getItem("explorePosition"));
+  const [initialZoomDone, setInitialZoomDone] = useState(
+    sessionStorage.getItem("explorePosition")
+  );
   let popupRef = useRef();
   const markerRef = useRef();
 
@@ -117,7 +119,6 @@ export default function ExploreMapMarker({
       }
     },
     moveend: (e) => {
-      console.log("hi");
       if (!initialZoomDone) {
         setInitialZoomDone(true);
       }
@@ -169,7 +170,7 @@ export default function ExploreMapMarker({
     if (taxaLoaded && initialZoomDone) {
       map.flyTo(map.getCenter());
     }
-  },[taxaLoaded, initialZoomDone, map])
+  }, [taxaLoaded, initialZoomDone, map]);
 
   if (!taxa[1]) {
     return (
@@ -180,7 +181,6 @@ export default function ExploreMapMarker({
         eventHandlers={eventHandlers}
       />
     );
-
   }
 
   const getIcon = (observation) => {
@@ -212,7 +212,7 @@ export default function ExploreMapMarker({
     className: `map-marker ${iconType.iconName}`,
     html: renderToString(jsxIcon),
     iconSize: [24, 24],
-    popupAnchor: [-8, -36]
+    popupAnchor: [-8, -36],
   });
 
   return (
