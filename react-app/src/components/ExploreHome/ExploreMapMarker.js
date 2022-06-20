@@ -111,7 +111,6 @@ export default function ExploreMapMarker({
       }
     },
     move: (e) => {
-      console.log("y")
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
@@ -123,7 +122,6 @@ export default function ExploreMapMarker({
       if (!initialZoomDone) {
         setInitialZoomDone(true);
       }
-      console.log("z")
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
@@ -141,7 +139,7 @@ export default function ExploreMapMarker({
       }
     },
     viewreset: (e) => {
-      console.log("x")
+      console.log("x");
       const bounds = map.getBounds();
       if (bounds.contains(position)) {
         showObservation(observation);
