@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ExploreMap from "./ExploreMap";
 
@@ -21,23 +21,30 @@ export default function ExploreHome() {
   const explorePositionLocal = sessionStorage.getItem('explorePosition');
   const explorePosition = explorePositionLocal ? JSON.parse(explorePositionLocal) : YOSEMITE_COORDS;
 
-  const [visible, setVisible] = useState({ observationIDs });
+  const [visible, setVisible] = useState({...observations });
+
   const merge = (obs, prevState) => {
+    console.log(prevState, obs)
     if (prevState[obs.id]) {
       return prevState;
     } else {
       const doppelganger = { ...prevState };
+
       doppelganger[obs.id] = obs;
       return doppelganger;
     }
   };
 
   const unmerge = (obs, prevState) => {
+     console.log("----------****");
+    console.log(prevState);
+    console.log(obs);
     if (!prevState[obs.id]) {
       return prevState;
     } else {
       const doppelganger = { ...prevState };
       delete doppelganger[obs.id];
+      console.log(doppelganger);
       return doppelganger;
     }
   };
@@ -68,6 +75,7 @@ export default function ExploreHome() {
         popup={popup}
         setPopup={setPopup}
         explorePosition={explorePosition}
+        visibleMarkers={visible}
       />
       <div className="divider"></div>
       <div className="preview" key={JSON.stringify(visible)}>

@@ -23,15 +23,10 @@ export function ExploreSearch({ onPositionChanged }) {
           onPositionChanged(e.latlng);
           map.flyTo(e.latlng, map.getZoom());
         },
-        dblclick: (e) => {
-          const newPosition = e.latlng;
-          onPositionChanged(newPosition);
-        },
-        moveend:  (e) => {
+        moveend: (e) => {
           onPositionChanged(map.getCenter());
         },
       });
-
       useEffect(() => {
           if(!sessionStorage.getItem("explorePosition")) {
             map.locate();
@@ -42,13 +37,14 @@ export function ExploreSearch({ onPositionChanged }) {
       const handlePositionChange = (e) => {
         const garbledLocation = e.location;
         const newPosition = { lat: garbledLocation.y, lng: garbledLocation.x };
-        // onPositionChanged(newPosition);
+        onPositionChanged(newPosition);
       };
     const provider = new OpenStreetMapProvider();
     const searchControl = new GeoSearchControl({
       provider,
       showMarker: false,
       style: "bar",
+      animateZoom: true,
     });
     map.addControl(searchControl);
     map.on("geosearch/showlocation", handlePositionChange);
@@ -58,7 +54,7 @@ export function ExploreSearch({ onPositionChanged }) {
   return null;
 }
 
-export default function ExploreMap({observations, onPositionChanged, showObservation, removeObservation, popup, explorePosition, setPopup}) {
+export default function ExploreMap({observations, onPositionChanged, showObservation, removeObservation, popup, explorePosition, setPopup, visibleMarkers}) {
 
   const additionalMarkers = Object.values(observations).map(obs => <ExploreMapMarker
             key={obs.id}
@@ -67,6 +63,7 @@ export default function ExploreMap({observations, onPositionChanged, showObserva
             removeObservation={removeObservation}
             isActive={obs.id === popup}
             setPopup={setPopup}
+            visibleMarkers={visibleMarkers}
         />);
 
     // prevent map from wrapping
@@ -77,6 +74,7 @@ export default function ExploreMap({observations, onPositionChanged, showObserva
       center={explorePosition}
       zoom={13}
       scrollWheelZoom={false}
+      zoomAnimation={true}
       maxBounds={maxBounds}
       maxBoundsViscosity={0.75}
       minZoom={10}

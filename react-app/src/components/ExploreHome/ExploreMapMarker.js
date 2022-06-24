@@ -89,6 +89,7 @@ export default function ExploreMapMarker({
   removeObservation,
   popup,
   setPopup,
+  visibleMarkers,
 }) {
   const taxa = useSelector((state) => state.taxonomy);
   const taxaLoaded = taxa[1] !== undefined;
@@ -98,55 +99,44 @@ export default function ExploreMapMarker({
   const [initialZoomDone, setInitialZoomDone] = useState(
     sessionStorage.getItem("explorePosition")
   );
+  const [mapStable, setMapStable] = useState(false);
   let popupRef = useRef();
   const markerRef = useRef();
 
+  const maybeGetUpdateMethod = (map) => {
+    const bounds = map.getBounds();
+    const inBounds = bounds.contains(position);
+    console.log(visibleMarkers);
+    const currentlyVisible = visibleMarkers[observation.id];
+    if (inBounds) {
+      return currentlyVisible ? null : showObservation;
+    } else {
+      return currentlyVisible ? removeObservation : null;
+    }
+  }
+
+  const handleUpdate = (map) => {
+    const updater = maybeGetUpdateMethod(map);
+    if (updater) {
+      setTimeout(() => updater(observation), 1000);
+    } else {
+      return;
+    }
+  }
+
   const map = useMapEvents({
-    load: (e) => {
-      const bounds = map.getBounds();
-      if (bounds.contains(position)) {
-        showObservation(observation);
-      } else {
-        removeObservation(observation);
-      }
-    },
-    move: (e) => {
-      const bounds = map.getBounds();
-      if (bounds.contains(position)) {
-        showObservation(observation);
-      } else {
-        removeObservation(observation);
-      }
-    },
     moveend: (e) => {
       if (!initialZoomDone) {
         setInitialZoomDone(true);
       }
-      const bounds = map.getBounds();
-      if (bounds.contains(position)) {
-        showObservation(observation);
-      } else {
-        removeObservation(observation);
-        // map.flyTo(map.getCenter());
-      }
+      console.log("updating")
+      handleUpdate(map);
     },
-    click: (e) => {
-      const bounds = map.getBounds();
-      if (bounds.contains(position)) {
-        showObservation(observation);
-      } else {
-        removeObservation(observation);
-      }
-    },
-    viewreset: (e) => {
-      console.log("x");
-      const bounds = map.getBounds();
-      if (bounds.contains(position)) {
-        showObservation(observation);
-      } else {
-        removeObservation(observation);
-      }
-    },
+    click: (e) => handleUpdate(map)
+  });
+
+  map.on("geosearch/showlocation", (e) => {
+    handleUpdate(map);
   });
 
   useEffect(() => {
@@ -168,10 +158,11 @@ export default function ExploreMapMarker({
   );
 
   useEffect(() => {
-    if (taxaLoaded && initialZoomDone) {
+    if (taxaLoaded && initialZoomDone && !mapStable) {
       map.flyTo(map.getCenter());
+      setMapStable(true);
     }
-  }, [taxaLoaded, initialZoomDone, map]);
+  }, [taxaLoaded, initialZoomDone, map, mapStable]);
 
   if (!taxa[1]) {
     return (
